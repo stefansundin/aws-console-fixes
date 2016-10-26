@@ -1,3 +1,9 @@
 .ui-widget-overlay, .I3C, .C3C {
   display: none !important;
 }
+
+/* RDS security group box */
+#rds-instances-modify-dlg-security-grp-multi-slct-bx {
+  width: 500px !important;
+  height: 300px !important;
+}
