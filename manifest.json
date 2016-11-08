@@ -8,6 +8,9 @@
     {
       "matches": ["https://*.console.aws.amazon.com/*"],
       "css": ["mystyles.css"]
+    }, {
+      "matches": ["https://aws.amazon.com/*"],
+      "js": ["whitepaper.js"]
     }
   ],
   "permissions": [
