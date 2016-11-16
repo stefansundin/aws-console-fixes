@@ -11,6 +11,9 @@
     }, {
       "matches": ["https://aws.amazon.com/*"],
       "js": ["whitepaper.js"]
+    }, {
+      "matches": ["https://*.console.aws.amazon.com/cloudformation/home*"],
+      "js": ["cloudformation.js"]
     }
   ],
   "permissions": [
