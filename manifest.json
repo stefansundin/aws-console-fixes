@@ -14,6 +14,9 @@
     }, {
       "matches": ["https://*.console.aws.amazon.com/cloudformation/home*"],
       "js": ["cloudformation.js"]
+    }, {
+      "matches": ["https://www.amazon.com/ap/signin*"],
+      "js": ["signin.js"]
     }
   ],
   "permissions": [
