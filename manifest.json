@@ -15,7 +15,10 @@
       "matches": ["https://*.console.aws.amazon.com/cloudformation/home*"],
       "js": ["cloudformation.js"]
     }, {
-      "matches": ["https://www.amazon.com/ap/signin*"],
+      "matches": [
+        "https://www.amazon.com/ap/signin*",
+        "https://*.signin.aws.amazon.com/oauth*"
+      ],
       "js": ["signin.js"]
     }
   ],

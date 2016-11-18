@@ -1,33 +1,40 @@
 function toObject(arr) {
   var obj = {};
   arr.forEach(function(e) {
-    obj[e[0]] = e[1];
+    obj[e[0]] = decodeURIComponent(e[1]);
   });
   return obj;
 }
 
-var args = toObject(window.location.search.substr(1).split("&").map(function(arg){ return arg.split("="); }));
-var url = decodeURIComponent(args["openid.return_to"]);
-console.log(url)
-
-if (url.indexOf("redirect_uri") != -1) {
-  var re = /redirect_uri=([^&]*)/g;
-  var matches = re.exec(url);
-  url = decodeURIComponent(matches[1]);
+function getParams(url) {
+  return toObject(url.substr(url.indexOf("?")+1).split("&").map(function(arg){ return arg.split("="); }));
 }
 
-url = url.replace("&isauthcode=true", "");
-url = url.replace(/[?&]state=hashArgs([^&]+)/, function(state, hashArgs) {
-  console.log(state, hashArgs);
-  return decodeURIComponent(hashArgs);
-});
-console.log(url);
+var args = getParams(window.location.search);
+console.log(args);
 
-var link = document.createElement("a");
-link.href = url;
-link.appendChild(document.createTextNode(`Go to ${url}`));
+if (args["openid.return_to"]) {
+  args = getParams(args["openid.return_to"]);
+  console.log(args);
+}
 
-var div = document.createElement("div");
-div.style.textAlign = "center";
-div.appendChild(link);
-document.body.insertBefore(div, document.body.firstChild);
+if (args.redirect_uri) {
+  var url = args.redirect_uri;
+  console.log(url);
+
+  url = url.replace("&isauthcode=true", "");
+  url = url.replace(/[?&]state=hashArgs([^&]+)/, function(state, hashArgs) {
+    console.log(state, hashArgs);
+    return decodeURIComponent(hashArgs);
+  });
+  console.log(url);
+
+  var link = document.createElement("a");
+  link.href = url;
+  link.appendChild(document.createTextNode(`Go to ${url}`));
+
+  var div = document.createElement("div");
+  div.style.textAlign = "center";
+  div.appendChild(link);
+  document.body.insertBefore(div, document.body.firstChild);
+}
