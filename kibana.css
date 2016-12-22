@@ -1,0 +1,4 @@
+/* Kibana typeahead crap blocking the input field */
+.typeahead-items {
+  margin-top: 33px;
+}
