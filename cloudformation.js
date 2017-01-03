@@ -42,7 +42,7 @@ setInterval(function() {
       textarea.value = "";
       textarea.addEventListener("focus", function() { focused = true; });
       textarea.addEventListener("blur", function() { focused = false; });
-      form.parentNode.insertBefore(textarea, form.parentNode.firstChild);
+      form.parentNode.appendChild(textarea);
     }
     if (!focused) {
       var stackName = form.querySelector("input[name=stackName]");
