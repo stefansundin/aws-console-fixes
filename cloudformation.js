@@ -8,6 +8,28 @@ function esc(str) {
   return str.replace(/'/g, "'\\''");
 }
 
+// this is a function that gets injected into the page in order to read the angular scope.
+// it then puts this into DOM attributes, that is then accessible by this content script.
+function injected_script() {
+  setInterval(function() {
+    var form = document.getElementById("frm-wiz-params");
+    if (form) {
+      var params = form.querySelectorAll("ng-form[name='parameterForm']");
+      for (var i=0; i < params.length; i++) {
+        var param = params[i];
+        if (!param.title) {
+          var scope = angular.element(param).scope();
+          param.title = scope.parameter.parameterKey;
+        }
+      }
+    }
+  }, 1000);
+}
+// inject the function above in a script tag
+var script = document.createElement("script");
+script.appendChild(document.createTextNode(`(${injected_script})();`));
+(document.body || document.head || document.documentElement).appendChild(script);
+
 setInterval(function() {
   var checkbox = document.querySelector("input[name=CAPABILITY_IAM]");
   if (checkbox && !checkbox.checked) {
@@ -82,7 +104,7 @@ setInterval(function() {
       var params = form.querySelectorAll("ng-form[name='parameterForm']");
       for (var i=0; i < params.length; i++) {
         var param = params[i];
-        var key = param.getElementsByTagName("label")[0].textContent;
+        var key = param.title || param.getElementsByTagName("label")[0].textContent;
         cli += ` \\\n'ParameterKey=${key},`;
         var value = "";
 
