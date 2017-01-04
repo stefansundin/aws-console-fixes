@@ -1,6 +1,6 @@
 {
   "name": "AWS Console Fixes",
-  "version": "1.0",
+  "version": "1.0.0",
   "icons": {
     "128": "icon.png"
   },
@@ -24,10 +24,6 @@
       ],
       "js": ["signin.js"]
     }
-  ],
-  "permissions": [
-    "tabs",
-    "https://*.console.aws.amazon.com/"
   ],
   "manifest_version": 2
 }

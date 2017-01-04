@@ -1,3 +1,7 @@
+// this script does two things:
+// 1. checks the CAPABILITY_IAM checkbox for you
+// 2. adds a textarea with the awscli command you can use to create/update the template along with the parameters
+
 var templateUrl, filename, focused=false;
 
 function basename(path) {

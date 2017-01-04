@@ -1,3 +1,6 @@
+// this script adds a link at the top of the signin page, to the page you would end up at
+// useful to see what tabs you had open from yesterday, and close them rather than refresh
+
 function toObject(arr) {
   var obj = {};
   arr.forEach(function(e) {
