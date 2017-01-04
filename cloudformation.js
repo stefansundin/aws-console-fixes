@@ -95,7 +95,7 @@ setInterval(function() {
         }
         else if (dropdown_single) {
           value = dropdown_single.textContent.trim();
-          if (re=/\((Z[A-Z0-9]{13})\)/.exec(value)) {
+          if (re=/\((Z[A-Z0-9]{10,15})\)/.exec(value)) {
             value = re[1];
           }
         }
