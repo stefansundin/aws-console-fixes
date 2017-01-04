@@ -36,12 +36,19 @@ setInterval(function() {
       var textarea = document.createElement("textarea");
       textarea.id = "awscli-command";
       textarea.style.width = "100%";
-      textarea.style.height = "100px";
+      textarea.style.height = "90px";
       textarea.style.resize = "vertical";
       textarea.spellcheck = false;
       textarea.value = "";
       textarea.addEventListener("focus", function() { focused = true; });
       textarea.addEventListener("blur", function() { focused = false; });
+      textarea.addEventListener("mouseup", function() {
+        // just nudge the resize control downwards a little bit and it will expand
+        var height = parseInt(this.style.height, 10);
+        if (height > 95 && height < 150) {
+          this.style.height = "600px";
+        }
+      });
       form.parentNode.appendChild(textarea);
     }
     if (!focused) {
@@ -109,7 +116,7 @@ setInterval(function() {
         cli += `ParameterValue=${esc(value)}'`;
       }
 
-      cli = `# Always review this command (or you are a fool)!\n\n${cli}`;
+      cli = `# Always review this command (or you are a fool)!\n\n${cli}\n`;
       if (cli != textarea.value) {
         textarea.value = cli;
       }
