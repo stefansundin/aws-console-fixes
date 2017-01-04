@@ -145,7 +145,7 @@ setInterval(function() {
         cli += `ParameterValue=${esc(value)}'`;
       }
 
-      cli = `# Always review this command (or you are a fool)!\n\n${cli}\n`;
+      cli = `# Always review this command before you run it! (or you are a fool)\n\n${cli}\n`;
       if (cli != textarea.value) {
         textarea.value = cli;
       }
