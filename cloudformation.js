@@ -19,7 +19,10 @@ function injected_script() {
         var param = params[i];
         if (!param.title) {
           var scope = angular.element(param).scope();
-          param.title = scope.parameter.parameterKey;
+          var text = param.getElementsByTagName("label")[0].textContent;
+          if (scope.parameter.parameterKey != text) {
+            param.title = scope.parameter.parameterKey;
+          }
         }
       }
     }
