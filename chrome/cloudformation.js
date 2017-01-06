@@ -2,6 +2,10 @@
 // 1. checks the CAPABILITY_IAM checkbox for you
 // 2. adds a textarea with the awscli command you can use to create/update the template along with the parameters
 
+// supply a profile here to use it in the awscli command:
+var profile = null;
+// var profile = "admin";
+
 var templateUrl, filename, focused=false;
 
 function basename(path) {
@@ -100,6 +104,9 @@ setInterval(function() {
       }
       else {
         cli += `${stackName.disabled?"update":"create"}-stack`;
+      }
+      if (profile) {
+        cli += ` --profile ${profile}`;
       }
       cli += ` --stack-name ${stackName.value}`;
       if (filename) {
