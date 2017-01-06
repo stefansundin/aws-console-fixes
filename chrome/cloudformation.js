@@ -12,6 +12,14 @@ function esc(str) {
   return str.replace(/'/g, "'\\''");
 }
 
+function esc_value(str) {
+  str = esc(str);
+  if (str.indexOf(",") !== -1) {
+    str = `"${str}"`;
+  }
+  return str;
+}
+
 // this is a function that gets injected into the page in order to read the angular scope.
 // it then puts this into DOM attributes, that is then accessible by this content script.
 function injected_script() {
@@ -107,7 +115,7 @@ setInterval(function() {
           cli += ` --change-set-type CREATE`;
         }
       }
-      cli += ` --parameters`;
+      cli += ` --use-previous-template --capabilities CAPABILITY_IAM --parameters`;
       var params = form.querySelectorAll("ng-form[name='parameterForm']");
       for (var i=0; i < params.length; i++) {
         var param = params[i];
@@ -142,7 +150,7 @@ setInterval(function() {
           value = input.value;
         }
         // else debugger;
-        cli += `ParameterValue=${esc(value)}'`;
+        cli += `ParameterValue=${esc_value(value)}'`;
       }
 
       cli = `# Always review this command before you run it! (or you are a fool)\n\n${cli}\n`;
