@@ -115,6 +115,9 @@ setInterval(function() {
       else if (templateUrl) {
         cli += ` --template-url ${templateUrl}`;
       }
+      else {
+        cli += ` --use-previous-template`
+      }
       if (changeSet) {
         cli += ` --change-set-name ${changeSetName.value}`;
         cli += ` --description '${esc(changeSetDescription.value)}'`;
@@ -122,7 +125,7 @@ setInterval(function() {
           cli += ` --change-set-type CREATE`;
         }
       }
-      cli += ` --use-previous-template --capabilities CAPABILITY_IAM --parameters`;
+      cli += ` --capabilities CAPABILITY_IAM --parameters`;
       var params = form.querySelectorAll("ng-form[name='parameterForm']");
       for (var i=0; i < params.length; i++) {
         var param = params[i];
@@ -138,7 +141,7 @@ setInterval(function() {
           var values = [];
           for (var j=0; j < repeat.length; j++) {
             var text = repeat[j].textContent;
-            if (re=/(subnet|sg)-[0-9a-f]+/.exec(text)) {
+            if (re=/(subnet|sg|vpc)-[0-9a-f]+/.exec(text)) {
               values.push(re[0]);
             }
           }
@@ -146,7 +149,10 @@ setInterval(function() {
         }
         else if (dropdown_single) {
           value = dropdown_single.textContent.trim();
-          if (re=/\((Z[A-Z0-9]{10,15})\)/.exec(value)) {
+          if (re=/(subnet|sg|vpc)-[0-9a-f]+/.exec(value)) {
+            value = re[0];
+          }
+          else if (re=/\((Z[A-Z0-9]{10,15})\)/.exec(value)) {
             value = re[1];
           }
         }
