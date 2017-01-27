@@ -30,6 +30,7 @@ if (args.redirect_uri) {
     console.log(state, hashArgs);
     return decodeURIComponent(hashArgs);
   });
+  url = url.replace(/\?$/, "");
   console.log(url);
 
   var link = document.createElement("a");
