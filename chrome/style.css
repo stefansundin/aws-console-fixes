@@ -3,10 +3,19 @@
   display: none !important;
 }
 
-/* RDS security group box */
-#rds-instances-modify-dlg-security-grp-multi-slct-bx {
+/* RDS and ElastiCache security group boxes */
+#rds-launch-wizard-security-grps-multi-slct-bx,
+#rds-instances-modify-dlg-security-grp-multi-slct-bx,
+#ecs-modify-cache-cluster-dlg-vpc-sg-slctbx,
+#ecs-modify-rg-sg-slctbx {
   width: 500px !important;
   height: 300px !important;
+}
+
+/* ElastiCache creation wizard security group box */
+.GKIC3DMLYE {
+  height: 400px !important;
+  width: 700px !important;
 }
 
 /* CodeDeploy target dropdown */
