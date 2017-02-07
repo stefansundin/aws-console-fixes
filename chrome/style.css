@@ -22,3 +22,8 @@
 .autocomplete-values-instance {
   width: 600px !important;
 }
+
+/* IAM policy dropdown */
+.actionsOptions {
+  min-height: 400px;
+}

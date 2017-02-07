@@ -24,6 +24,9 @@
       "matches": ["https://*.console.aws.amazon.com/sns/v2/home*"],
       "js": ["sns.js"]
     }, {
+      "matches": ["https://*.console.aws.amazon.com/iam/home*"],
+      "js": ["iam.js"]
+    }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",
         "https://*.signin.aws.amazon.com/oauth*"
