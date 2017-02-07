@@ -27,6 +27,9 @@
       "matches": ["https://*.console.aws.amazon.com/iam/home*"],
       "js": ["iam.js"]
     }, {
+      "matches": ["https://*.console.aws.amazon.com/cloudwatch/home*"],
+      "js": ["cloudwatch.js"]
+    }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",
         "https://*.signin.aws.amazon.com/oauth*"
