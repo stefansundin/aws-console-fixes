@@ -26,4 +26,5 @@
 /* IAM policy dropdown */
 .actionsOptions {
   min-height: 400px;
+  min-width: 400px;
 }
