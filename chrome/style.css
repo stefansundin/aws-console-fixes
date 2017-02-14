@@ -12,8 +12,8 @@
   height: 300px !important;
 }
 
-/* ElastiCache creation wizard security group box */
-.GKIC3DMLYE {
+/* ElastiCache Redis/Memcached creation wizard security group box */
+.GKIC3DMLYE, .GKIC3DMEYE {
   height: 400px !important;
   width: 700px !important;
 }
