@@ -1,4 +1,5 @@
 /* Kibana typeahead crap blocking the input field */
-.typeahead-items {
+/* Using "navbar" makes sure we don't apply this fix on the newer Kibana versions where this bug is fixed (elasticsearch v5.1) */
+navbar .typeahead-items {
   margin-top: 33px;
 }
