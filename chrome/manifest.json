@@ -9,7 +9,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://*.console.aws.amazon.com/*"],
+      "matches": [
+        "https://*.console.aws.amazon.com/*",
+        "https://forums.aws.amazon.com/*"
+      ],
       "css": ["style.css"]
     }, {
       "matches": ["https://*.es.amazonaws.com/_plugin/kibana/*"],
