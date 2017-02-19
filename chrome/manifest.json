@@ -24,6 +24,9 @@
       "matches": ["https://*.console.aws.amazon.com/cloudformation/home*"],
       "js": ["cloudformation.js"]
     }, {
+      "matches": ["https://*.console.aws.amazon.com/s3/*"],
+      "js": ["s3.js"]
+    }, {
       "matches": ["https://*.console.aws.amazon.com/sns/v2/home*"],
       "js": ["sns.js"]
     }, {
