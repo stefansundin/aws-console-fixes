@@ -29,6 +29,38 @@
   min-width: 400px;
 }
 
+/* Launch configuration user data text box. O2G = autoscaling console, AIH = ec2 console, EQ = ec2 launch wizard, IX = launch configuration wizard */
+.O2G, .AIH {
+  margin: 0 !important;
+}
+.N2G textarea, .AIH textarea {
+  width: 600px !important;
+  min-height: 400px;
+  resize: vertical;
+}
+textarea.EQ, textarea.IX {
+  min-height: 200px;
+}
+
+/* EC2 system log */
+.M4C {
+  font-size: 100% !important;
+}
+.DAH {
+  font-family: "Courier New" !important;
+  width: 900px !important;
+  height: 650px !important;
+}
+
+/* "Are you launching a database instance? Try Amazon RDS." in the ec2 launch wizard */
+.rds_campaign_cell {
+  display: none;
+}
+/* "Just need a simple virtual private server? Try Amazon Lightsail for free." in the ec2 dashboard */
+.IE awsui-alert {
+  display: none !important;
+}
+
 /* AWS Forums PM */
 #jivepmform_body {
   resize: both !important;
