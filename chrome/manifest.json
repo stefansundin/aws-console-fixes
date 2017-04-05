@@ -36,6 +36,9 @@
       "matches": ["https://*.console.aws.amazon.com/cloudwatch/home*"],
       "js": ["cloudwatch.js"]
     }, {
+      "matches": ["https://signin.aws.amazon.com/switchrole*"],
+      "js": ["switchrole.js"]
+    }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",
         "https://*.signin.aws.amazon.com/oauth*"
