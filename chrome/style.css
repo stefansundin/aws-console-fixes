@@ -13,7 +13,7 @@
 }
 
 /* ElastiCache Redis/Memcached creation wizard security group box */
-.GKIC3DMLYE, .GKIC3DMEYE {
+.GBCBRI5BLYE, .GBCBRI5BEYE {
   height: 400px !important;
   width: 700px !important;
 }
@@ -43,10 +43,10 @@ textarea.EQ, textarea.IX {
 }
 
 /* EC2 system log */
-.M4C {
+.F5C { /* dialogTopCenter */
   font-size: 100% !important;
 }
-.DAH {
+.JAH { /* dialogMiddleCenter */
   font-family: "Courier New" !important;
   width: 900px !important;
   height: 650px !important;
