@@ -18,7 +18,10 @@
       "matches": ["https://*.es.amazonaws.com/_plugin/kibana/*"],
       "css": ["kibana.css"]
     }, {
-      "matches": ["https://aws.amazon.com/*"],
+      "matches": [
+        "https://aws.amazon.com/*",
+        "https://pages.awscloud.com/*"
+      ],
       "js": ["whitepaper.js"]
     }, {
       "matches": ["https://*.console.aws.amazon.com/cloudformation/home*"],
