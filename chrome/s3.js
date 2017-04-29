@@ -1,4 +1,5 @@
 // add a tooltip with the region code on the region column
+// enable the use of shift-clicking to select multiple objects
 
 var region_map = {
   "US East (N. Virginia)": "us-east-1",
@@ -33,3 +34,62 @@ setInterval(function() {
     td.title = region_map[td.innerText];
   }
 }, 1000);
+
+var last_checkbox = null;
+
+function getParent(e, nodeName) {
+  while (e.nodeName != nodeName) {
+    e = e.parentNode;
+  }
+  return e;
+}
+
+function nextElement(e, above) {
+  if (above) {
+    return e.previousSibling;
+  }
+  return e.nextSibling;
+}
+
+document.addEventListener("click", function(e) {
+  if (e.target.nodeName != "INPUT") {
+    return;
+  }
+  for (var el = e.target.parentNode; el != null; el = el.parentNode) {
+    if (el.nodeName == "THEAD") {
+      return; // ignore checkboxes in headers (the select all checkbox)
+    }
+    if (el.nodeName == "NG-INCLUDE" && el.getAttribute("src") != "'/s3/partials/objects.html'") {
+      return; // ignore checkboxes outside of object list tab
+    }
+  }
+
+  if (e.shiftKey && document.body.contains(last_checkbox)) {
+    var last_tr = getParent(last_checkbox, "TR");
+    var click_tr = getParent(e.target, "TR");
+
+    // look to see if click_tr is above last_tr
+    var above = false;
+    for (var tr = last_tr.previousSibling; tr != null; tr = tr.previousSibling) {
+      if (tr == click_tr) {
+        above = true;
+        break;
+      }
+    }
+
+    // click checkboxes between last_tr and click_tr (excluding click_tr)
+    for (var tr = last_tr; tr != null && tr != click_tr; tr = nextElement(tr,above)) {
+      if (tr.nodeName != "TR") {
+        continue;
+      }
+      var input = tr.getElementsByTagName("input")[0];
+      if (input.checked != e.target.checked) {
+        input.click();
+      }
+    }
+  }
+  last_checkbox = e.target;
+}, {
+  capture: true,
+  passive: true,
+});
