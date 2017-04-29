@@ -3,6 +3,16 @@
   display: none !important;
 }
 
+/* Launch Configuration/ASG/ELB filter box */
+#gwt-debug-searchTextBox, .elb-LAB .gwt-TextBox {
+  min-width: 350px;
+}
+
+/* de-bold navigation tabs to stop distracting UI reflows when clicking them */
+.gwt-TabLayoutPanelTab-selected {
+  font-weight: normal !important;
+}
+
 /* RDS and ElastiCache security group boxes */
 #rds-launch-wizard-security-grps-multi-slct-bx,
 #rds-instances-modify-dlg-security-grp-multi-slct-bx,
