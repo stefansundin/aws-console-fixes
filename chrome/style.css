@@ -39,14 +39,16 @@
   min-width: 400px;
 }
 
-/* Launch configuration user data text box. O2G = autoscaling console, AIH = ec2 console, EQ = ec2 launch wizard, IX = launch configuration wizard */
-.O2G, .AIH {
+/* Launch configuration user data text box. O2G = autoscaling console, GIH = ec2 console, EQ = ec2 launch wizard, IX = launch configuration wizard */
+.O2G, .GIH {
   margin: 0 !important;
 }
-.N2G textarea, .AIH textarea {
+.O2G textarea, .GIH textarea {
   width: 600px !important;
   min-height: 400px;
   resize: vertical;
+  font-family: monospace !important;
+  white-space: pre;
 }
 textarea.EQ, textarea.IX {
   min-height: 200px;
