@@ -30,18 +30,24 @@ var l10n = languages[lang];
 
 setInterval(function() {
   if (window.location.hash.startsWith("#Instances:")) {
-    var keys = document.querySelectorAll("td:first-child div.GSG");
+    var keys = document.querySelectorAll("td:first-child");
     for (var i=0; i < keys.length; i++) {
-      if (keys[i].textContent == "aws:autoscaling:groupName") {
-        var td = getParent(keys[i], "TD");
-        var val = td.nextSibling.getElementsByClassName("GSG")[0];
+      if (keys[i].textContent.trim() == "aws:autoscaling:groupName") {
+        var val = keys[i].nextSibling;
+        while (true) {
+          var divs = val.getElementsByTagName("div");
+          if (divs.length == 0) {
+            break;
+          }
+          val = divs[0];
+        }
         if (val.firstChild.nodeName == "A") return;
 
-        var asg = val.textContent;
+        var value = val.textContent;
         var a = document.createElement("a");
-        a.href = `/ec2/autoscaling/home?region=${params.region}#AutoScalingGroups:filter=${asg};view=details`;
+        a.href = `/ec2/autoscaling/home?region=${params.region}#AutoScalingGroups:filter=${value};view=details`;
         a.style.padding = "0";
-        a.appendChild(document.createTextNode(asg));
+        a.appendChild(document.createTextNode(value));
         val.replaceChild(a, val.firstChild);
         break;
       }
