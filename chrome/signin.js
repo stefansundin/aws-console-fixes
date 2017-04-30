@@ -46,5 +46,12 @@ if (args.redirect_uri) {
 // Redirect REGION.signin.aws.amazon.com to non-region specific domain
 // This is useful if you have saved your username/password in Chrome's autofill, since it won't autofill unless the domain matches exactly
 if (window.location.host.endsWith(".signin.aws.amazon.com")) {
-  window.location.host = "signin.aws.amazon.com";
+  var default_options = {
+    redirect_signin: false
+  };
+  chrome.storage.sync.get(default_options, function(items) {
+    if (items.redirect_signin) {
+      window.location.host = "signin.aws.amazon.com";
+    }
+  });
 }
