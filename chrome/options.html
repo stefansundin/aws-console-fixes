@@ -6,8 +6,12 @@
   <link rel="stylesheet" type="text/css" href="options.css">
 </head>
 <body>
-  <h1>Options</h1>
-  <p>The options are synced to your Chrome profile</p>
+  <h1>
+    Options
+    <small id="extension_version"></small>
+  </h1>
+
+  <p>The options are synced to your Chrome profile (if you're signed in).</p>
   <label><input type="checkbox" id="redirect_signin"> Redirect &lt;region&gt;.signin.aws.amazon.com to signin.aws.amazon.com</label>
   <p>Enable this if you have issues with password managers not wanting to fill in the form because the domain name doesn't match.</p>
 
@@ -15,5 +19,6 @@
   <span id="status"></span>
 
   <p><a href="#" id="reset">Reset options to default</a></p>
+  <p><a href="https://gitlab.com/stefansundin/aws-console-fixes" target="_blank">Source code</a> | <a href="https://gitlab.com/stefansundin/aws-console-fixes/issues" target="_blank">Report a bug</a> | <a href="mailto:incoming+stefansundin/aws-console-fixes@gitlab.com" target="_blank">Report a bug via email</a></p>
 </body>
 </html>
