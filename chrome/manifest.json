@@ -1,6 +1,6 @@
 {
   "name": "AWS Console Fixes",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Fix annoyances in the AWS console.",
   "homepage_url": "https://gitlab.com/stefansundin/aws-console-fixes",
   "author": "Stefan Sundin",
