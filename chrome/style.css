@@ -3,8 +3,8 @@
   display: none !important;
 }
 
-/* Launch Configuration/ASG/ELB filter box */
-#gwt-debug-searchTextBox, .elb-LAB .gwt-TextBox {
+/* Launch Configuration/ASG/ELB/VPC filter box */
+#gwt-debug-searchTextBox, .elb-LAB .gwt-TextBox, #gwt-debug-resourceFilterBox {
   min-width: 350px;
 }
 
