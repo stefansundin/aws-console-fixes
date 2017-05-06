@@ -55,6 +55,9 @@
       "matches": ["https://*.console.aws.amazon.com/cloudwatch/home*"],
       "js": ["cloudwatch.js"]
     }, {
+      "matches": ["https://console.aws.amazon.com/route53/home*"],
+      "js": ["route53.js"]
+    }, {
       "matches": ["https://signin.aws.amazon.com/switchrole*"],
       "js": ["switchrole.js"]
     }, {
