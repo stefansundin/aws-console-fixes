@@ -22,11 +22,11 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://*.console.aws.amazon.com/*",
-        "https://forums.aws.amazon.com/*"
-      ],
+      "matches": ["https://*.console.aws.amazon.com/*"],
       "css": ["style.css"]
+    }, {
+      "matches": ["https://forums.aws.amazon.com/*"],
+      "css": ["forums.css"]
     }, {
       "matches": ["https://*.es.amazonaws.com/_plugin/kibana/*"],
       "css": ["kibana.css"]
@@ -64,6 +64,10 @@
       "matches": ["*://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html*"],
       "js": ["aws_service_limits.js"],
       "run_at": "document_end"
+    }, {
+      "matches": ["*://awspolicygen.s3.amazonaws.com/policygen.html*"],
+      "js": ["policygen.js"],
+      "css": ["policygen.css"]
     }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",

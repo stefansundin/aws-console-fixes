@@ -1,0 +1,6 @@
+/* AWS Forums PM */
+#jivepmform_body {
+  resize: both !important;
+  min-width: 500px;
+  min-height: 300px;
+}

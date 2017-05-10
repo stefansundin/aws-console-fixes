@@ -64,6 +64,11 @@ textarea.EQ, textarea.IX {
   height: 650px !important;
 }
 
+/* EBS popup window in the EC2 console wraps the attachment timestamp by default */
+.gwt-PopupPanel .HFB {
+  min-width: 500px;
+}
+
 /* "Are you launching a database instance? Try Amazon RDS." in the ec2 launch wizard */
 .rds_campaign_cell {
   display: none;
@@ -71,11 +76,4 @@ textarea.EQ, textarea.IX {
 /* "Just need a simple virtual private server? Try Amazon Lightsail for free." in the ec2 dashboard */
 .IE awsui-alert {
   display: none !important;
-}
-
-/* AWS Forums PM */
-#jivepmform_body {
-  resize: both !important;
-  min-width: 500px;
-  min-height: 300px;
 }
