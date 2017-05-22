@@ -65,7 +65,7 @@ textarea.EQ, textarea.IX {
 }
 
 /* EBS popup window in the EC2 console wraps the attachment timestamp by default */
-.gwt-PopupPanel .HFB {
+.gwt-PopupPanel:not(.JVB) .HFB {
   min-width: 500px;
 }
 
