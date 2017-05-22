@@ -9,7 +9,7 @@
 }
 
 /* de-bold navigation tabs to stop distracting UI reflows when clicking them */
-.gwt-TabLayoutPanelTab-selected {
+.gwt-TabLayoutPanelTab-selected, .gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
   font-weight: normal !important;
 }
 
