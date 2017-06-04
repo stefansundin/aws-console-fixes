@@ -39,11 +39,11 @@
   min-width: 400px;
 }
 
-/* Launch configuration user data text box. O2G = autoscaling console, GIH = ec2 console, EQ = ec2 launch wizard, IX = launch configuration wizard */
-.O2G, .GIH {
-  margin: 0 !important;
+/* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js. EQ = ec2 launch wizard, IX = launch configuration wizard */
+.userdata-container {
+  margin-left: 0 !important;
 }
-.O2G textarea, .GIH textarea {
+.userdata-container textarea {
   width: 600px !important;
   min-height: 400px;
   resize: vertical;
@@ -55,10 +55,10 @@ textarea.EQ, textarea.IX {
 }
 
 /* EC2 system log */
-.F5C { /* dialogTopCenter */
+.system-log-title {
   font-size: 100% !important;
 }
-.JAH { /* dialogMiddleCenter */
+pre.system-log-body {
   font-family: "Courier New" !important;
   width: 900px !important;
   height: 650px !important;

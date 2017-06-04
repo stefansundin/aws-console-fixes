@@ -41,7 +41,7 @@ setInterval(function() {
           }
           val = divs[0];
         }
-        if (val.firstChild.nodeName == "A") return;
+        if (val.firstChild.nodeName == "A") break;
 
         var value = val.textContent;
         var a = document.createElement("a");
@@ -106,6 +106,26 @@ setInterval(function() {
             val.appendChild(document.createTextNode(", "));
           }
         });
+      }
+    }
+  }
+
+  if (window.location.hash.startsWith("#Instances:") || window.location.hash.startsWith("#LaunchConfigurations:")) {
+    var titles = document.getElementsByClassName("dialogTop");
+    for (var i=0; i < titles.length; i++) {
+      if (titles[i].classList.contains("aws-console-fixes")) continue;
+      var title = titles[i].innerText.trim();
+      if (title == "View/Change User Data" || title == "User data") {
+        var tbody = titles[i].parentNode;
+        var textarea = tbody.getElementsByTagName("textarea")[0];
+        textarea.parentNode.classList.add("userdata-container");
+        titles[i].classList.add("aws-console-fixes");
+      }
+      else if (title.startsWith("System Log:")) {
+        titles[i].getElementsByTagName("div")[3].classList.add("system-log-title");
+        var tbody = titles[i].parentNode;
+        tbody.getElementsByTagName("pre")[0].classList.add("system-log-body");
+        titles[i].classList.add("aws-console-fixes");
       }
     }
   }
