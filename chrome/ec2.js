@@ -20,10 +20,10 @@ var params = toObject(window.location.search.substr(1).split("&").map((arg) => a
 
 // For some reason I can only select English, French (only in ca-central-1), Japanese, and Chinese in the dropdown...
 var languages = {
-  "English": ["Launch Configuration", "Load Balancers", "Target Groups", "Subnet(s)"],
-  "Français": ["configuration de lancement", "Equilibreurs de charge", "Groupes cible", "Sous-réseau(x) (subnets)"],
-  "日本語": ["起動設定", "ロードバランサー", "ターゲットグループ", "サブネット"],
-  "中文(简体)": ["启动配置", "负载均衡器", "目标组", "子网"],
+  "English": ["Launch Configuration", "Load Balancers", "Target Groups", "Subnet(s)", "Security Groups associated with"],
+  "Français": ["configuration de lancement", "Equilibreurs de charge", "Groupes cible", "Sous-réseau(x) (subnets)", "Groupes de sécurité associés à"],
+  "日本語": ["起動設定", "ロードバランサー", "ターゲットグループ", "サブネット", "と関連付けられたセキュリティグループ"],
+  "中文(简体)": ["启动配置", "负载均衡器", "目标组", "子网", "关联的安全组"],
 };
 var lang = document.getElementById("awsc-language").textContent;
 var l10n = languages[lang];
@@ -50,6 +50,57 @@ setInterval(function() {
         a.appendChild(document.createTextNode(value));
         val.replaceChild(a, val.firstChild);
         break;
+      }
+    }
+
+    var popup = document.getElementsByClassName("popupContent")[0];
+    if (popup) {
+      var el = popup.firstChild;
+      while (el.nodeType != Node.TEXT_NODE) {
+        el = el.firstChild;
+      }
+      var title = el.textContent.trim();
+      if (title.indexOf(l10n[4]) != -1) {
+        var table = popup.getElementsByTagName("table")[0];
+        if (table) {
+          var tr = table.getElementsByTagName("tr");
+          for (var i=1; i < tr.length; i++) {
+            var td = tr[i].getElementsByTagName("td");
+            var val = td[0];
+            var protocol = td[1].textContent.trim();
+            if (!val.classList.contains("aws-console-fixes") && val.textContent.indexOf("-") == -1 && (protocol == "tcp" || protocol == "udp")) {
+              val.classList.add("aws-console-fixes");
+              var v = val.textContent.trim();
+              val.removeChild(val.firstChild);
+              var a = document.createElement("a");
+              a.href = `https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=${v} ${protocol}`;
+              a.style.padding = "0";
+              a.appendChild(document.createTextNode(v));
+              val.appendChild(a);
+            }
+            var val = td[2];
+            if (!val.classList.contains("aws-console-fixes")) {
+              val.classList.add("aws-console-fixes");
+              var value = val.textContent.trim();
+              val.removeChild(val.firstChild);
+              value.split(", ").forEach(function(v, i, arr) {
+                if (v.startsWith("sg-")) {
+                  var a = document.createElement("a");
+                  a.href = `/ec2/v2/home?region=${params.region}#SecurityGroups:groupId=${v};sort=groupName`;
+                  a.style.padding = "0";
+                  a.appendChild(document.createTextNode(v));
+                  val.appendChild(a);
+                }
+                else {
+                  val.appendChild(document.createTextNode(v));
+                }
+                if (i != arr.length-1) {
+                  val.appendChild(document.createTextNode(", "));
+                }
+              });
+            }
+          }
+        }
       }
     }
   }
