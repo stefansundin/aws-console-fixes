@@ -1,3 +1,8 @@
+/* Highlight invalid patterns (e.g. Route 53) */
+input[pattern]:invalid{
+  background-color: yellow;
+}
+
 /* remove the overlay that pops up when your credentials expire */
 .ui-widget-overlay, .I3C, .C3C {
   display: none !important;
@@ -67,6 +72,15 @@ pre.system-log-body {
 /* EBS popup window in the EC2 console wraps the attachment timestamp by default */
 .gwt-PopupPanel:not(.JVB) .HFB {
   min-width: 500px;
+}
+
+/* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDBHE=value div */
+.GEHJJTKDLIE, .GEHJJTKDC2D, .GEHJJTKDM1D, .GEHJJTKDBHE textarea {
+  font-family: monospace !important;
+}
+.GEHJJTKDBHE textarea {
+  resize: auto !important;
+  min-height: 110px !important;
 }
 
 /* "Are you launching a database instance? Try Amazon RDS." in the ec2 launch wizard */
