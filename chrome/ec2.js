@@ -53,6 +53,48 @@ setInterval(function() {
       }
     }
 
+    var ths = document.querySelectorAll("thead th");
+    for (var i=0; i < ths.length; i++) {
+      var th = ths[i];
+      if (th.textContent == "aws:autoscaling:groupName") {
+        var n = null;
+        var parent = th.parentNode;
+        while (parent.querySelectorAll("table").length < 2) {
+          if (n == null && parent.nodeName == "TR") {
+            for (n=0; n < parent.childNodes.length; n++) {
+              if (parent.childNodes[n] == th) {
+                break;
+              }
+            }
+          }
+          parent = parent.parentNode;
+        }
+        var table = parent.querySelectorAll("table")[1];
+        var rows = table.querySelectorAll("tr");
+        for (var j=0; j < rows.length; j++) {
+          var val = rows[j].querySelectorAll("td")[n];
+          while (true) {
+            var divs = val.getElementsByTagName("div");
+            if (divs.length == 0) {
+              break;
+            }
+            val = divs[0];
+          }
+          if (val.firstChild.nodeName == "A") continue;
+
+          var value = val.textContent;
+          if (value == "") continue;
+
+          var a = document.createElement("a");
+          a.href = `/ec2/autoscaling/home?region=${params.region}#AutoScalingGroups:filter=${value};view=details`;
+          a.style.padding = "0";
+          a.appendChild(document.createTextNode(value));
+          val.replaceChild(a, val.firstChild);
+        }
+        break;
+      }
+    }
+
     var popup = document.getElementsByClassName("popupContent")[0];
     if (popup) {
       var el = popup.firstChild;
