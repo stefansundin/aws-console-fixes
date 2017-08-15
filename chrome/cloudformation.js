@@ -106,20 +106,20 @@ setInterval(function() {
         cli += `${stackName.disabled?"update":"create"}-stack`;
       }
       if (profile) {
-        cli += ` --profile ${profile}`;
+        cli += ` --profile '${profile}'`;
       }
-      cli += ` --stack-name ${stackName.value}`;
+      cli += ` --stack-name '${stackName.value}'`;
       if (filename) {
-        cli += ` --template-body file://${filename}`;
+        cli += ` --template-body 'file://${filename}'`;
       }
       else if (templateUrl) {
-        cli += ` --template-url ${templateUrl}`;
+        cli += ` --template-url '${templateUrl}'`;
       }
       else {
         cli += ` --use-previous-template`
       }
       if (changeSet) {
-        cli += ` --change-set-name ${changeSetName.value}`;
+        cli += ` --change-set-name '${changeSetName.value}'`;
         cli += ` --description '${esc(changeSetDescription.value)}'`;
         if (!stackName.disabled) {
           cli += ` --change-set-type CREATE`;
@@ -130,7 +130,7 @@ setInterval(function() {
       for (var i=0; i < params.length; i++) {
         var param = params[i];
         var key = param.title || param.getElementsByTagName("label")[0].textContent;
-        cli += ` \\\n'ParameterKey=${key},`;
+        cli += ` \\\n  'ParameterKey=${key},`;
         var value = "";
 
         var repeat = param.querySelectorAll("span[ng-repeat]");
