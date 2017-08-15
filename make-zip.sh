@@ -5,7 +5,7 @@ if [[ $(git status --porcelain chrome) != "" ]]; then
   exit 1
 fi
 set -x
-V=$(cat chrome/manifest.json | grep '"version"' | grep -o "\d*\.\d*\.\d*")
+V=$(cat chrome/manifest.json | jq -Mr .version)
 rm -f "aws-console-fixes-$V.zip"
 cd chrome
 zip -r "../aws-console-fixes-$V.zip" . -x '*.git*' -x '*.DS_Store' -x '*Thumbs.db'
