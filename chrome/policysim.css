@@ -1,0 +1,31 @@
+.row-fluid {
+  max-width: none !important;
+}
+.container-fluid {
+  padding: 0 !important;
+}
+.pane {
+  border-width: 0 !important;
+  height: 1000px !important;
+}
+#actionPane {
+  border-left-width: 1px !important;
+}
+textarea.policy_text {
+  font-family: monospace !important;
+  white-space: nowrap !important;
+}
+
+.fixed-width-cell150 {
+  width: 225px !important;
+}
+#service_select_menu, #actions_select_menu {
+  max-height: 900px !important;
+  max-width: none !important;
+}
+#service_select_menu {
+  margin-top: 30px !important;
+}
+.action_item_label {
+  max-width: none !important;
+}

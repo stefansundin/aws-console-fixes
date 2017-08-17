@@ -69,6 +69,9 @@
       "js": ["policygen.js"],
       "css": ["policygen.css"]
     }, {
+      "matches": ["https://policysim.aws.amazon.com/home/index.jsp*"],
+      "css": ["policysim.css"]
+    }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",
         "https://*.signin.aws.amazon.com/oauth*"
