@@ -20,7 +20,7 @@ var params = toObject(window.location.search.substr(1).split("&").map((arg) => a
 
 // For some reason I can only select English, French (only in ca-central-1), Japanese, and Chinese in the dropdown...
 var languages = {
-  "English": ["Launch Configuration", "Load Balancers", "Target Groups", "Subnet(s)", "Security Groups associated with"],
+  "English (US)": ["Launch Configuration", "Load Balancers", "Target Groups", "Subnet(s)", "Security Groups associated with"],
   "Français": ["configuration de lancement", "Equilibreurs de charge", "Groupes cible", "Sous-réseau(x) (subnets)", "Groupes de sécurité associés à"],
   "日本語": ["起動設定", "ロードバランサー", "ターゲットグループ", "サブネット", "と関連付けられたセキュリティグループ"],
   "中文(简体)": ["启动配置", "负载均衡器", "目标组", "子网", "关联的安全组"],
@@ -54,10 +54,13 @@ setInterval(function() {
     }
 
     var popup = document.getElementsByClassName("popupContent")[0];
-    if (popup) {
+    if (popup && l10n) {
       var el = popup.firstChild;
-      while (el.nodeType != Node.TEXT_NODE) {
+      while (el && el.nodeType != Node.TEXT_NODE) {
         el = el.firstChild;
+      }
+      if (!el) {
+        return;
       }
       var title = el.textContent.trim();
       if (title.indexOf(l10n[4]) != -1) {
