@@ -29,7 +29,13 @@ var lang = document.getElementById("awsc-language").textContent;
 var l10n = languages[lang];
 
 setInterval(function() {
-  if (window.location.hash.startsWith("#Instances:")) {
+  if (window.location.hash == "") {
+    var alert = document.querySelector("awsui-alert");
+    if (alert && alert.textContent.startsWith("Just need a simple virtual private server?")) {
+      alert.querySelector(".awsui-alert-dismiss-control").click(); // this is saved in a cookie, but it's a per-region cookie :(
+    }
+  }
+  else if (window.location.hash.startsWith("#Instances:")) {
     var keys = document.querySelectorAll("td:first-child");
     for (var i=0; i < keys.length; i++) {
       if (keys[i].textContent.trim() == "aws:autoscaling:groupName") {
