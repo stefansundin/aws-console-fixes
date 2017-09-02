@@ -31,3 +31,14 @@ setInterval(function() {
   sort_dropdown(document.querySelector("#gwt-debug-lambdaFunctionListBox"));
   sort_dropdown(document.querySelector("#gwt-debug-elasticSearchClusterListBox"));
 }, 1000);
+
+
+var timer = setInterval(function() {
+  if (window.location.hash == "") {
+    var alert = document.querySelector("h3");
+    if (alert && alert.textContent.startsWith("Introducing High Resolution Custom Metrics and Alarms and new Dashboards APIs")) {
+      alert.parentNode.previousSibling.click();
+      clearInterval(timer);
+    }
+  }
+}, 200);
