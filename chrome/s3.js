@@ -18,7 +18,33 @@ var region_map = {
   "South America (São Paulo)": "sa-east-1",
 };
 
+function toObject(arr) {
+  var obj = {};
+  arr.forEach(function(e) {
+    obj[e[0]] = decodeURIComponent(e[1]);
+  });
+  return obj;
+}
+
+var args = toObject(window.location.search.substr(1).split("&").map(function(arg){ return arg.split("="); }));
+if (args.search && window.location.pathname != "/s3/home") {
+  delete args.search;
+}
+
 setInterval(function() {
+  if (args.search) {
+    var input = document.querySelector('input.input-field[placeholder="Search for buckets"]');
+    if (input) {
+      input.value = args.search;
+      delete args.search;
+
+      // trigger input event
+      var evt = document.createEvent("HTMLEvents");
+      evt.initEvent("input", false, true);
+      input.dispatchEvent(evt);
+    }
+  }
+
   var table = document.querySelector("table.table.table-condensed");
   if (!table) return;
   var rows = table.getElementsByTagName("tr");
@@ -27,7 +53,11 @@ setInterval(function() {
   }
   for (var i=1; i < rows.length; i++) {
     var tr = rows[i];
-    var td = tr.getElementsByTagName("td")[1];
+    var tds = tr.getElementsByTagName("td");
+    if (tds.length == 0) {
+      continue;
+    }
+    var td = tds[1];
     if (!td || td.title || !td.innerText || !region_map[td.innerText]) {
       continue;
     }
