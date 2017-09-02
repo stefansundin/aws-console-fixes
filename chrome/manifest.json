@@ -61,6 +61,10 @@
       "matches": ["https://signin.aws.amazon.com/switchrole*"],
       "js": ["switchrole.js"]
     }, {
+      "matches": ["https://calculator.s3.amazonaws.com/index.html"],
+      "js": ["calculator.js"],
+      "run_at": "document_end"
+    }, {
       "matches": ["*://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html*"],
       "js": ["aws_service_limits.js"],
       "run_at": "document_end"
