@@ -52,6 +52,12 @@
       "matches": ["https://*.console.aws.amazon.com/ec2/*"],
       "js": ["ec2.js"]
     }, {
+      "matches": ["https://*.console.aws.amazon.com/rds/*"],
+      "js": ["rds.js"]
+    }, {
+      "matches": ["https://*.console.aws.amazon.com/dms/*"],
+      "js": ["dms.js"]
+    }, {
       "matches": ["https://*.console.aws.amazon.com/cloudwatch/home*"],
       "js": ["cloudwatch.js"]
     }, {
