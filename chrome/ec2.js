@@ -25,10 +25,16 @@ var languages = {
   "日本語": ["起動設定", "ロードバランサー", "ターゲットグループ", "サブネット", "と関連付けられたセキュリティグループ"],
   "中文(简体)": ["启动配置", "负载均衡器", "目标组", "子网", "关联的安全组"],
 };
-var lang = document.getElementById("awsc-language").textContent;
-var l10n = languages[lang];
+var l10n = null;
 
 setInterval(function() {
+  if (!l10n) {
+    var lang = document.getElementById("awsc-language");
+    if (lang) {
+      l10n = languages[lang.textContent];
+    }
+  }
+
   if (window.location.hash == "") {
     var alert = document.querySelector("awsui-alert");
     if (alert && alert.textContent.startsWith("Just need a simple virtual private server?")) {
