@@ -75,6 +75,11 @@
       "js": ["aws_service_limits.js"],
       "run_at": "document_end"
     }, {
+      "matches": ["*://docs.aws.amazon.com/*"],
+      "js": ["docs.js"],
+      "css": ["docs.css"],
+      "run_at": "document_end"
+    }, {
       "matches": ["*://awspolicygen.s3.amazonaws.com/policygen.html*"],
       "js": ["policygen.js"],
       "css": ["policygen.css"]

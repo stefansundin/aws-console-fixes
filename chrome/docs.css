@@ -1,0 +1,6 @@
+#main-col-body h2 a.aws-console-fixes {
+  visibility: hidden;
+}
+#main-col-body h2:hover a.aws-console-fixes {
+  visibility: visible;
+}
