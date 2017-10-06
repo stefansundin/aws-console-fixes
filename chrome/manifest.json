@@ -80,6 +80,7 @@
       "css": ["policygen.css"]
     }, {
       "matches": ["https://policysim.aws.amazon.com/home/index.jsp*"],
+      "js": ["policysim.js"],
       "css": ["policysim.css"]
     }, {
       "matches": [
