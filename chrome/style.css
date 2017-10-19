@@ -89,7 +89,12 @@ pre.system-log-body {
 }
 
 /* Display system region name in region drop-down */
-a.region:after {
-  content: " " attr(data-region-id);
+#regionMenuContent .region:after {
+  content: attr(data-region-id);
   color: #ccc;
+  float: right;
+  font-weight: normal;
+}
+#regionMenuContent {
+  min-width: 260px;
 }

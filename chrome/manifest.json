@@ -23,7 +23,8 @@
   "content_scripts": [
     {
       "matches": ["https://*.console.aws.amazon.com/*"],
-      "css": ["style.css"]
+      "css": ["style.css"],
+      "js": ["console.js"]
     }, {
       "matches": ["https://forums.aws.amazon.com/*"],
       "css": ["forums.css"]
