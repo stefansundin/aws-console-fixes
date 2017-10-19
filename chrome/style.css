@@ -87,3 +87,9 @@ pre.system-log-body {
 .rds_campaign_cell {
   display: none;
 }
+
+/* Display system region name in region drop-down */
+a.region:after {
+  content: " " attr(data-region-id);
+  color: #ccc;
+}
