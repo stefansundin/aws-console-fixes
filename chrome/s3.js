@@ -48,7 +48,7 @@ setInterval(function() {
   var table = document.querySelector("table.table.table-condensed");
   if (!table) return;
   var rows = table.getElementsByTagName("tr");
-  if (rows[0].getElementsByTagName("th")[1].innerText.trim() != "Region") {
+  if (rows[0].getElementsByTagName("th")[2].innerText.trim() != "Region") {
     return;
   }
   for (var i=1; i < rows.length; i++) {
@@ -57,7 +57,7 @@ setInterval(function() {
     if (tds.length == 0) {
       continue;
     }
-    var td = tds[1];
+    var td = tds[2];
     if (!td || td.title || !td.innerText || !region_map[td.innerText]) {
       continue;
     }
