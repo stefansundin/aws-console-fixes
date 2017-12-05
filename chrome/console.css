@@ -84,7 +84,8 @@ pre.system-log-body {
 }
 
 /* "Are you launching a database instance? Try Amazon RDS." in the ec2 launch wizard */
-.rds_campaign_cell {
+/* "How would you rate your experience with the CloudWatch management console?" top bar */
+.rds_campaign_cell, #awsc-custsat {
   display: none;
 }
 
