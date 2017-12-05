@@ -25,10 +25,12 @@ var timer = setInterval(function() {
   clearInterval(timer);
 
   add_icon("Amazon API Gateway", "api_gateway");
+  add_icon("Application Discovery", "application_discovery");
   add_icon("Amazon Athena", "athena");
   add_icon("Auto Scaling", "autoscaling");
   add_icon("AWS Batch", "batch");
   add_icon("AWS Certificate Manager", "acm");
+  add_icon("Amazon Chime", "chime");
   add_icon("AWS CloudHSM", "cloudhsm");
   add_icon("AWS CodeBuild", "codebuild");
 
@@ -48,6 +50,7 @@ var timer = setInterval(function() {
 
   add_icon("Amazon Elasticsearch Service", "elasticsearch");
   add_icon("Amazon GameLift", "gamelift");
+  add_icon("AWS Glue", "glue");
   add_icon("AWS Greengrass", "greengrass");
   add_icon("AWS Import Export Disk Service", "import_export");
   add_icon("Amazon Inspector", "inspector");
@@ -62,6 +65,7 @@ var timer = setInterval(function() {
 
   add_icon("Amazon Mechanical Turk", "mturk");
   add_icon("Amazon Mechanical Turk Crowd", "mturk");
+  add_icon("AWS Migration Hub", "migration_hub");
   add_icon("Amazon Mobile Analytics", "mobile_analytics");
   add_icon("AWS Mobile Hub", "mobile_hub");
   add_icon("AWS Organizations", "organizations");
@@ -73,6 +77,8 @@ var timer = setInterval(function() {
   add_icon("AWS Security Token Service", "sts");
   add_icon("AWS Service Catalog", "service_catalog");
   add_icon("AWS Shield", "shield");
+  add_icon("Amazon Simple Systems Manager", "ssm");
+  add_icon("AWS Snowball", "snowball");
   add_icon("AWS Step Functions", "step_functions");
   add_icon("AWS Trusted Advisor", "trusted_advisor");
   add_icon("AWS WAF", "waf");
