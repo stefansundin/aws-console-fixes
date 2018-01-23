@@ -68,7 +68,7 @@
       "matches": ["https://signin.aws.amazon.com/switchrole*"],
       "js": ["switchrole.js"]
     }, {
-      "matches": ["https://calculator.s3.amazonaws.com/index.html"],
+      "matches": ["*://calculator.s3.amazonaws.com/index.html*"],
       "js": ["calculator.js"],
       "run_at": "document_end"
     }, {
