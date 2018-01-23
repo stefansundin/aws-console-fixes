@@ -72,11 +72,11 @@
       "js": ["calculator.js"],
       "run_at": "document_end"
     }, {
-      "matches": ["*://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html*"],
+      "matches": ["https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html*"],
       "js": ["aws_service_limits.js"],
       "run_at": "document_end"
     }, {
-      "matches": ["*://docs.aws.amazon.com/*"],
+      "matches": ["https://docs.aws.amazon.com/*"],
       "js": ["docs.js"],
       "css": ["docs.css"],
       "run_at": "document_end"
