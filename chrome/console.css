@@ -1,5 +1,5 @@
 /* Highlight invalid patterns (e.g. Route 53) */
-input[pattern]:invalid{
+input[pattern]:invalid {
   background-color: yellow;
 }
 
