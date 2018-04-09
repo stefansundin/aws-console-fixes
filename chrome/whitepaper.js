@@ -30,11 +30,12 @@ else {
     var parser = new DOMParser();
     var doc = parser.parseFromString(htmlString, "text/html");
     var retURL = doc.querySelector("input[name=ret]");
-
-    var btn = document.createElement("a");
-    btn.href = retURL.value;
-    btn.className = "button btn-size-normal btn-non-block btn-gold";
-    btn.appendChild(document.createTextNode("Skip form"));
-    form.parentNode.insertBefore(btn, form);
+    if (retURL && retURL.value) {
+      var btn = document.createElement("a");
+      btn.href = retURL.value;
+      btn.className = "button btn-size-normal btn-non-block btn-gold";
+      btn.appendChild(document.createTextNode("Skip form"));
+      form.parentNode.insertBefore(btn, form);
+    }
   }
 }
