@@ -16,6 +16,7 @@ input[pattern]:invalid {
 /* RDS and ElastiCache security group boxes */
 #rds-launch-wizard-security-grps-multi-slct-bx,
 #rds-instances-modify-dlg-security-grp-multi-slct-bx,
+.GOLYYS0BAJ select[multiple] /* aurora cluster */,
 #ecs-modify-cache-cluster-dlg-vpc-sg-slctbx,
 #ecs-modify-rg-sg-slctbx {
   width: 500px !important;
