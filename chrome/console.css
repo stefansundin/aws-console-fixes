@@ -45,7 +45,7 @@ input[pattern]:invalid {
 }
 .userdata-container textarea {
   width: 600px !important;
-  min-height: 400px;
+  min-height: 400px !important;
   resize: vertical;
   font-family: monospace !important;
   white-space: pre;
@@ -58,7 +58,7 @@ textarea.EQ, textarea.IX {
 .system-log-title {
   font-size: 100% !important;
 }
-pre.system-log-body {
+.system-log-modal pre, .system-log-modal #gwt-debug-dialogLoadingSection {
   font-family: "Courier New" !important;
   width: 900px !important;
   height: 650px !important;

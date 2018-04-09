@@ -196,13 +196,19 @@ setInterval(function() {
         var tbody = titles[i].parentNode;
         var textarea = tbody.getElementsByTagName("textarea")[0];
         textarea.parentNode.classList.add("userdata-container");
-        titles[i].classList.add("aws-console-fixes");
+        titles[i].classList.add("aws-console-fixes", "user-data-modal");
       }
       else if (title.startsWith("System Log:")) {
         titles[i].getElementsByTagName("div")[3].classList.add("system-log-title");
         var tbody = titles[i].parentNode;
         tbody.getElementsByTagName("pre")[0].classList.add("system-log-body");
         titles[i].classList.add("aws-console-fixes");
+        for (var awsui=titles[i].parentNode; awsui != document.body; awsui=awsui.parentNode) {
+          if (awsui.classList.contains("awsui")) {
+            awsui.classList.add("system-log-modal");
+            break;
+          }
+        }
       }
     }
   }
