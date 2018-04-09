@@ -70,11 +70,11 @@ textarea.EQ, textarea.IX {
   min-width: 500px;
 }
 
-/* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDBHE=value div */
-.GEHJJTKDLIE, .GEHJJTKDC2D, .GEHJJTKDM1D, .GEHJJTKDBHE textarea {
+/* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDFHE=value div */
+.GEHJJTKDLIE, .GEHJJTKDC2D, .GEHJJTKDM1D, .GEHJJTKDFHE textarea {
   font-family: monospace !important;
 }
-.GEHJJTKDBHE textarea {
+.GEHJJTKDFHE textarea {
   resize: auto !important;
   min-height: 110px !important;
 }
