@@ -2,6 +2,7 @@
 // https://aws.amazon.com/lambda/serverless-architectures-learn-more/
 // https://aws.amazon.com/lambda/serverless-architectures-learn-more/dl/
 // https://pages.awscloud.com/awsmp_networking_solutionoverview.html
+// https://pages.awscloud.com/AWS-ML-in-Action.html
 
 var retURL = document.querySelector("input[name=retURL]");
 if (retURL) {
@@ -22,7 +23,7 @@ if (retURL) {
   }
 }
 else {
-  var content = document.getElementById("aws-page-content");
+  var content = document.getElementById("aws-page-content") || document;
   var noscript = content.getElementsByTagName("noscript")[0];
   var form = content.getElementsByTagName("form")[0];
   if (noscript && form) {
