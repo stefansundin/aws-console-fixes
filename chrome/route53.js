@@ -16,6 +16,6 @@ setInterval(function() {
   if (input != null && input.pattern == "") {
     // Technically, Route 53 supports any character in a subdomain, even space, but how often do you really intend on creating a record with a space?
     // This will not prevent you from submitting the form, but it will trigger CSS to highlight the input.
-    input.pattern = "[a-zA-Z0-9._\\-]+";
+    input.pattern = "[a-zA-Z0-9._\\-*]+";
   }
 }, 1000);
