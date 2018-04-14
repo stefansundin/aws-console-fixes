@@ -124,8 +124,8 @@ setInterval(function() {
     var keys = document.querySelectorAll("td div.MQ");
     for (var i=0; i < keys.length; i++) {
       var val = keys[i].nextSibling;
-      if (val.getElementsByClassName("J4G").length > 0) {
-        val = val.getElementsByClassName("J4G")[0];
+      if (val.getElementsByClassName("K4G").length > 0) {
+        val = val.getElementsByClassName("K4G")[0];
       }
       if (!val || !val.firstChild || val.firstChild.nodeType != Node.TEXT_NODE) continue;
       var key = keys[i].textContent;
@@ -162,7 +162,7 @@ setInterval(function() {
         val.removeChild(val.firstChild);
         value.split(", ").forEach(function(v, i, arr) {
           var a = document.createElement("a");
-          a.href = `/ec2/v2/home?region=${params.region}#TargetGroups:search=${v}`;
+          a.href = `/ec2/v2/home?region=${params.region}#TargetGroups:search=${v};sort=targetGroupName`;
           a.style.padding = "0";
           a.appendChild(document.createTextNode(v));
           val.appendChild(a);
