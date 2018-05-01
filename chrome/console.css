@@ -65,9 +65,9 @@ textarea.EQ, textarea.IX {
   height: 650px !important;
 }
 
-/* EBS popup window in the EC2 console wraps the attachment timestamp by default */
-.gwt-PopupPanel:not(.JVB) .HFB {
-  min-width: 500px;
+/* EBS popup window in the EC2 console wraps the volume id and attachment timestamp */
+#gwt-debug-tabularDetails {
+  white-space: nowrap !important;
 }
 
 /* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDFHE=value div */
