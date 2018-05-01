@@ -70,6 +70,14 @@ textarea.EQ, textarea.IX {
   white-space: nowrap !important;
 }
 
+/* AutoScaling group creation wizard */
+#gwt_debug_as_subnet_box_chzn .chzn-choices,
+#gwt_debug_as_subnet_box_chzn .chzn-drop,
+#gwt_debug_as_availability_zone_box_chzn .chzn-choices,
+#gwt_debug_as_network_box_chzn .chzn-drop {
+  min-width: 600px !important;
+}
+
 /* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDFHE=value div */
 .GEHJJTKDLIE, .GEHJJTKDC2D, .GEHJJTKDM1D, .GEHJJTKDFHE textarea {
   font-family: monospace !important;
