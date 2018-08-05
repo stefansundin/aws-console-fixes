@@ -3,6 +3,8 @@
 // https://aws.amazon.com/lambda/serverless-architectures-learn-more/dl/
 // https://pages.awscloud.com/awsmp_networking_solutionoverview.html
 // https://pages.awscloud.com/AWS-ML-in-Action.html
+// https://aws.amazon.com/campaigns/migrating-to-the-cloud/
+// https://pages.awscloud.com/aware_NAMER_Future-proof-your-business_AWS-IDC1.html
 
 var retURL = document.querySelector("input[name=retURL]");
 if (retURL) {
@@ -13,8 +15,7 @@ if (retURL) {
   if (submit.textContent.indexOf("Download") != -1) {
     btn.className = submit.className;
     btn.appendChild(document.createTextNode(submit.textContent));
-    form.parentNode.appendChild(btn);
-    form.parentNode.removeChild(form);
+    form.parentNode.replaceChild(btn, form);
   }
   else {
     btn.className = "button btn-size-normal btn-non-block btn-gold";
@@ -25,7 +26,7 @@ if (retURL) {
 else {
   var content = document.getElementById("aws-page-content") || document;
   var noscript = content.getElementsByTagName("noscript")[0];
-  var form = content.getElementsByTagName("form")[0];
+  var form = document.getElementById("whitePaperForm") || content.getElementsByTagName("form")[0];
   if (noscript && form) {
     var htmlString = noscript.innerText;
     var parser = new DOMParser();
@@ -36,7 +37,7 @@ else {
       btn.href = retURL.value;
       btn.className = "button btn-size-normal btn-non-block btn-gold";
       btn.appendChild(document.createTextNode("Skip form"));
-      form.parentNode.insertBefore(btn, form);
+      form.insertBefore(btn, form.firstChild);
     }
   }
 }
