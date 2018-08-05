@@ -1,0 +1,9 @@
+/* Hide annoying cookies disclaimer */
+.mo-wp {
+  display: none;
+}
+
+/* Hide annoying "Explore AWS solutions and products" */
+div[data-only-first-visit="true"] {
+  display: none;
+}

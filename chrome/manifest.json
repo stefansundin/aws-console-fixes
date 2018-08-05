@@ -32,6 +32,9 @@
       "matches": ["https://*.es.amazonaws.com/_plugin/kibana/*"],
       "css": ["kibana.css"]
     }, {
+      "matches": ["https://pages.awscloud.com/*"],
+      "css": ["pages.awscloud.css"]
+    }, {
       "matches": [
         "https://aws.amazon.com/*",
         "https://pages.awscloud.com/*"
