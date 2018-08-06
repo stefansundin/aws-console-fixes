@@ -5,7 +5,7 @@
 // Services: EC2, S3, Route53, CloudFront, RDS, DynamoDB, ElastiCache, CloudWatch, SES, SNS, ElasticTranscoder, WorkSpaces, Zocalo (WorkDocs), DirectoryService, Redshift, Glacier, SQS, SWF, EMR, Kinesis, CloudSearch, Snowball, DirectConnect, VPN, SimpleDB, PremiumSupport
 
 var timer = setInterval(function() {
-  var free_tier = document.querySelector('.GLOBAL_FREE_TIER input[type="checkbox"]');
+  var free_tier = document.querySelector('.freeTierPanel input[type="checkbox"]');
   if (free_tier && free_tier.checked) {
     clearInterval(timer);
     free_tier.click();
