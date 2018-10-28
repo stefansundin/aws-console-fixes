@@ -9,7 +9,12 @@ setInterval(function() {
 }, 1000);
 
 function add_icon(title, name) {
-  var i = document.querySelector(`#service_select_menu a[title="${title}"]`).parentElement.querySelector("i.service-icon");
+  var a = document.querySelector(`#service_select_menu a[title="${title}"]`);
+  if (!a) {
+    console.log(`Could not find ${title}`)
+    return;
+  }
+  var i = a.parentElement.querySelector("i.service-icon");
   if (!i.classList.contains("aws")) {
     // skip if an icon has been added to this service since this code was written
     console.log(`Skipping adding icon to ${title}`, i);
@@ -27,7 +32,7 @@ var timer = setInterval(function() {
   add_icon("Amazon API Gateway", "api_gateway");
   add_icon("Application Discovery", "application_discovery");
   add_icon("Amazon Athena", "athena");
-  add_icon("Auto Scaling", "autoscaling");
+  add_icon("EC2 Auto Scaling", "autoscaling");
   add_icon("AWS Batch", "batch");
   add_icon("AWS Certificate Manager", "acm");
   add_icon("Amazon Chime", "chime");
@@ -77,7 +82,7 @@ var timer = setInterval(function() {
   add_icon("AWS Security Token Service", "sts");
   add_icon("AWS Service Catalog", "service_catalog");
   add_icon("AWS Shield", "shield");
-  add_icon("Amazon Simple Systems Manager", "ssm");
+  add_icon("AWS Systems Manager", "ssm");
   add_icon("AWS Snowball", "snowball");
   add_icon("AWS Step Functions", "step_functions");
   add_icon("AWS Trusted Advisor", "trusted_advisor");
