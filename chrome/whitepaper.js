@@ -5,6 +5,12 @@
 // https://pages.awscloud.com/AWS-ML-in-Action.html
 // https://aws.amazon.com/campaigns/migrating-to-the-cloud/
 // https://pages.awscloud.com/aware_NAMER_Future-proof-your-business_AWS-IDC1.html
+// https://pages.awscloud.com/Accelerating-Product-Development-with-HPC-on-AWS_0913-CMP_OD.html
+
+var msg = document.querySelector("#msg");
+if (msg) {
+  msg.style.display = "block";
+}
 
 var retURL = document.querySelector("input[name=retURL]");
 if (retURL) {
