@@ -1,3 +1,12 @@
 .billLabel {
   opacity: 1 !important;
 }
+
+/* increase the width of the services so that none of them wrap to two lines */
+.tabPanel .tabs {
+  width: 150px !important;
+}
+/* align the Free Usage Tier checkbox with the tabs */
+.root .globalPanel {
+  margin-left: 150px !important;
+}
