@@ -1,0 +1,8 @@
+.blocking-cta {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.block-cta, .blocking-div.prevent-interaction {
+  display: none !important;
+}

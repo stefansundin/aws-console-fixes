@@ -35,6 +35,9 @@
       "matches": ["https://pages.awscloud.com/*"],
       "css": ["pages.awscloud.css"]
     }, {
+      "matches": ["https://resources.awscloud.com/*"],
+      "css": ["aws-innovate.css"]
+    }, {
       "matches": [
         "https://aws.amazon.com/*",
         "https://pages.awscloud.com/*"
