@@ -32,7 +32,7 @@ var timer = setInterval(function() {
   add_icon("Amazon API Gateway", "api_gateway");
   add_icon("Application Discovery", "application_discovery");
   add_icon("Amazon Athena", "athena");
-  add_icon("EC2 Auto Scaling", "autoscaling");
+  add_icon("Amazon EC2 Auto Scaling", "autoscaling");
   add_icon("AWS Batch", "batch");
   add_icon("AWS Certificate Manager", "acm");
   add_icon("Amazon Chime", "chime");
@@ -50,7 +50,7 @@ var timer = setInterval(function() {
   add_icon("AWS Database Migration Service", "dms");
   add_icon("AWS Device Farm", "device_farm");
   add_icon("Amazon EC2 Container Registry", "ecr");
-  add_icon("Amazon EC2 Container Service", "ecs");
+  add_icon("Amazon Elastic Container Service", "ecs");
   add_icon("Amazon Elastic File System", "efs");
 
   add_icon("Amazon Elasticsearch Service", "elasticsearch");
@@ -92,7 +92,7 @@ var timer = setInterval(function() {
   add_icon("Amazon WorkMail", "workmail");
   add_icon("Amazon WorkSpaces", "workspaces");
   add_icon("Amazon WorkSpaces Application Manager", "workspaces");
-  add_icon("AWS XRay", "xray");
+  add_icon("AWS X-Ray", "xray");
 
   // The following icons already exists, but are not used for subservices
   add_icon("Amazon CloudWatch Events", "cloudwatch");
