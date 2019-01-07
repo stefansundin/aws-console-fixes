@@ -2,6 +2,10 @@
 // 1. checks the CAPABILITY_IAM checkbox for you
 // 2. adds a textarea with the awscli command you can use to create/update the template along with the parameters
 
+// Don't do anything if the new console is enabled
+// This file will be removed when the new console becomes the default
+if (document.body && !document.body.classList.contains("awsui-mezzanine-overrides")) {
+
 // supply a profile here to use it in the awscli command:
 var profile = null;
 // var profile = "admin";
@@ -18,7 +22,7 @@ function esc(str) {
 
 function esc_value(str) {
   str = esc(str);
-  if (str.indexOf(",") !== -1) {
+  if (str.includes(",")) {
     str = `"${str}"`;
   }
   return str;
@@ -130,13 +134,18 @@ setInterval(function() {
       for (var i=0; i < params.length; i++) {
         var param = params[i];
         var key = param.title || param.getElementsByTagName("label")[0].textContent;
-        cli += ` \\\n  'ParameterKey=${key},`;
         var value = "";
 
         var repeat = param.querySelectorAll("span[ng-repeat]");
-        var dropdown_single = param.getElementsByClassName("ui-select-match-text")[0]; // AWS::EC2::KeyPair::KeyName and  AWS::Route53::HostedZone::Id
+        var dropdown_single = param.getElementsByClassName("ui-select-match-text")[0]; // AWS::EC2::KeyPair::KeyName and AWS::Route53::HostedZone::Id
         var select = param.getElementsByTagName("select")[0];
         var input = param.getElementsByTagName("input")[0];
+
+        if (input && input.disabled) {
+          // "Use existing value" checkbox is checked
+          continue;
+        }
+
         if (repeat.length > 0) {
           var values = [];
           for (var j=0; j < repeat.length; j++) {
@@ -163,13 +172,21 @@ setInterval(function() {
           value = input.value;
         }
         // else debugger;
-        cli += `ParameterValue=${esc_value(value)}'`;
+        cli += ` \\\n  'ParameterKey=${key},ParameterValue=${esc_value(value)}'`;
       }
 
-      cli = `# Always review this command before you run it! (or you are a fool)\n\n${cli}\n`;
-      if (cli != textarea.value) {
-        textarea.value = cli;
+      var value = `
+# Always review this command before you run it!!
+# Note: This feature in aws-console-fixes will go away when the new CloudFormation
+# console becomes the default, since I am not using CloudFormation anymore.
+
+${cli}
+`.trimLeft();
+      if (value != textarea.value) {
+        textarea.value = value;
       }
     }
   }
 }, 300);
+
+}
