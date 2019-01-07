@@ -82,6 +82,9 @@
       "js": ["calculator.js"],
       "run_at": "document_end"
     }, {
+      "matches": ["https://calculator.aws/*"],
+      "css": ["calculator.aws.css"]
+    }, {
       "matches": ["https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html*"],
       "js": ["aws_service_limits.js"],
       "run_at": "document_end"

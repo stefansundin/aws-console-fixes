@@ -1,0 +1,9 @@
+/* Fix double scrollbars.. come on AWS engineers, this is embarrasing */
+.awsui-app-layout {
+  height: auto !important;
+}
+
+/* We use cookies to provide and improve our services. By using our site, you consent to cookies. */
+.mo-sitePriv {
+  display: none !important;
+}
