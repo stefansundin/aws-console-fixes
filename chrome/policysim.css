@@ -16,15 +16,16 @@ textarea.policy_text {
   white-space: nowrap !important;
 }
 
-.fixed-width-cell150 {
-  width: 225px !important;
-}
 #service_select_menu, #actions_select_menu {
-  max-height: 900px !important;
-  max-width: none !important;
+  max-height: 500px !important;
 }
 #service_select_menu {
   margin-top: 30px !important;
+}
+#service_select_menu td a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 175px;
 }
 .action_item_label {
   max-width: none !important;
