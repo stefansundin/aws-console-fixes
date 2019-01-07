@@ -35,6 +35,7 @@ var timer = setInterval(function() {
   add_icon("Amazon EC2 Auto Scaling", "autoscaling");
   add_icon("AWS Batch", "batch");
   add_icon("AWS Certificate Manager", "acm");
+  add_icon("AWS Certificate Manager Private Certificate Authority", "acm");
   add_icon("Amazon Chime", "chime");
   add_icon("AWS CloudHSM", "cloudhsm");
   add_icon("AWS CodeBuild", "codebuild");
@@ -42,15 +43,18 @@ var timer = setInterval(function() {
   add_icon("AWS CodeCommit", "codecommit");
   add_icon("AWS CodeDeploy", "codedeploy");
   add_icon("AWS CodePipeline", "codepipeline");
+  add_icon("AWS CodeStar", "codestar");
   add_icon("Amazon Cognito Identity", "cognito");
   add_icon("Amazon Cognito Sync", "cognito");
   add_icon("Amazon Cognito User Pools", "cognito");
   add_icon("AWS Config", "config");
+  add_icon("Amazon Connect", "connect");
   add_icon("Data Pipeline", "datapipeline");
   add_icon("AWS Database Migration Service", "dms");
   add_icon("AWS Device Farm", "device_farm");
   add_icon("Amazon EC2 Container Registry", "ecr");
   add_icon("Amazon Elastic Container Service", "ecs");
+  add_icon("Amazon Elastic Container Service for Kubernetes", "eks");
   add_icon("Amazon Elastic File System", "efs");
 
   add_icon("Amazon Elasticsearch Service", "elasticsearch");
@@ -63,10 +67,12 @@ var timer = setInterval(function() {
   add_icon("AWS Key Management Service", "kms");
   add_icon("Amazon Kinesis Analytics", "kinesis_analytics");
   add_icon("Amazon Kinesis Firehose", "kinesis_firehose");
+  add_icon("Amazon Kinesis Video Streams", "kinesis_streams");
   add_icon("AWS Lambda", "lambda");
   add_icon("Amazon Lex", "lex");
   add_icon("Amazon Lightsail", "lightsail");
   add_icon("Amazon Machine Learning", "machine_learning");
+  add_icon("Amazon Macie", "macie");
 
   add_icon("Amazon Mechanical Turk", "mturk");
   add_icon("Amazon Mechanical Turk Crowd", "mturk");
@@ -75,7 +81,9 @@ var timer = setInterval(function() {
   add_icon("AWS Mobile Hub", "mobile_hub");
   add_icon("AWS Organizations", "organizations");
   add_icon("Amazon Pinpoint", "pinpoint");
+  add_icon("Amazon Pinpoint SMS and Voice Service", "pinpoint");
   add_icon("Amazon Polly", "polly");
+  add_icon("Amazon QuickSight", "quicksight");
   add_icon("Amazon Rekognition", "rekognition");
   add_icon("Amazon Route53 Domains", "route53domains");
 
