@@ -10,3 +10,7 @@
 .root .globalPanel {
   margin-left: 150px !important;
 }
+
+.tooltip {
+  position: fixed !important;
+}
