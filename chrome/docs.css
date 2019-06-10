@@ -1,3 +1,9 @@
+/* We use cookies to provide and improve our services. By using our site, you consent to cookies. */
+/* Ads in the docs, what the hell... */
+#cookie-notice, #marketing-target {
+  display: none !important;
+}
+
 #main-col-body h2 a.aws-console-fixes {
   visibility: hidden;
 }
