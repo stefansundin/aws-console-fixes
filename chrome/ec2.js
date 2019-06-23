@@ -18,13 +18,17 @@ function toObject(arr, f=decodeURIComponent) {
 
 var params = toObject(window.location.search.substr(1).split("&").map((arg) => arg.split("=")));
 
-// For some reason I can only select English, French, Japanese, Korean and Chinese in the dropdown...
+// Translations are really inconsistent and spotty throughout the console
 var languages = {
-  "English (US)": ["Launch Configuration", "Launch Template", "Load Balancers", "Target Groups", "Subnet(s)", "Security Groups associated with"],
-  "Français": ["configuration de lancement", "Modèle de lancement", "Equilibreurs de charge", "Groupes cible", "Sous-réseau(x) (subnets)", "Groupes de sécurité associés à"],
-  "日本語": ["起動設定", "起動テンプレート", "ロードバランサー", "ターゲットグループ", "サブネット", "と関連付けられたセキュリティグループ"],
-  "한국어": ["시작 구성", "시작 템플릿", "로드 밸런서", "대상 그룹", "서브넷", "과(와) 연결된 보안 그룹"],
-  "中文(简体)": ["启动配置", "启动模板", "负载均衡器", "目标组", "子网", "关联的安全组"],
+  "English (US)": ["Launch Configuration", "Launch Template", "Classic Load Balancers", "Target Groups", "Subnet(s)", "Security Groups associated with"],
+  "Deutsch": ["Startkonfiguration", "XXX", "Classic Load Balancer", "Zielgruppen", "Subnetz(e)", "Security Groups associated with"],
+  "Español": ["Configuración de lanzamiento", "Plantilla de lanzamiento", "Balanceadores de carga clásicos", "Grupos de destino", "Subredes", "Security Groups associated with"],
+  "Français": ["configuration de lancement", "Modèle de lancement", "Equlibreur(s) de charge standard", "Groupe(s) cible", "Sous-réseaux", "Groupes de sécurité associés à"],
+  "日本語": ["起動設定", "起動テンプレート", "Classic ロードバランサー", "ターゲットグループ", "サブネット", "と関連付けられたセキュリティグループ"],
+  "Italiano": ["Configurazione di avvio", "Modello di avvio", "Classic Load Balancer", "Gruppi target", "Sottorete(i)", "Security Groups associated with"],
+  "한국어": ["시작 구성", "시작 템플릿", "클래식 로드 밸런서", "대상 그룹", "서브넷", "과(와) 연결된 보안 그룹"],
+  "中文(简体)": ["启动配置", "启动模板", "Classic 负载均衡器", "目标组", "子网", "关联的安全组"],
+  "中文(繁體)": ["启动配置", "启动模板", "Classic 负载均衡器", "目标组", "子网", "关联的安全组"],
 };
 var l10n = null;
 
@@ -121,15 +125,13 @@ setInterval(function() {
     }
   }
   else if (window.location.hash.startsWith("#AutoScalingGroups:") && l10n) {
-    var keys = document.querySelectorAll("td div.MQ");
+    var keys = document.querySelectorAll("td div.ADB");
     for (var i=0; i < keys.length; i++) {
-      var val = keys[i].nextSibling;
-      if (val.getElementsByClassName("K4G").length > 0) {
-        val = val.getElementsByClassName("K4G")[0];
-      }
+      if (!keys[i].nextElementSibling) continue;
+      var val = keys[i].nextElementSibling.getElementsByClassName("gwt-Label")[0];
       if (!val || !val.firstChild || val.firstChild.nodeType != Node.TEXT_NODE) continue;
-      var key = keys[i].textContent;
-      var value = val.textContent;
+      var key = keys[i].textContent.trim();
+      var value = val.textContent.trim();
 
       if (key == l10n[0]) {
         var a = document.createElement("a");
