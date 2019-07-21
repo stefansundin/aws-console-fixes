@@ -1,0 +1,7 @@
+/* RDS cloudwatch metric dropdown */
+#cw-igraph-lstbx {
+  min-width: 175px;
+}
+#cw-igraph-lstbx .awsui-select-dropdown-open {
+  min-width: 370px;
+}
