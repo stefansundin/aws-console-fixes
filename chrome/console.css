@@ -13,31 +13,9 @@ input[pattern]:invalid {
   font-weight: normal !important;
 }
 
-/* RDS and ElastiCache security group boxes */
-#rds-launch-wizard-security-grps-multi-slct-bx,
-#rds-instances-modify-dlg-security-grp-multi-slct-bx,
-.GOLYYS0BAJ select[multiple] /* aurora cluster */,
-#ecs-modify-cache-cluster-dlg-vpc-sg-slctbx,
-#ecs-modify-rg-sg-slctbx {
-  width: 500px !important;
-  height: 300px !important;
-}
-
-/* ElastiCache Redis/Memcached creation wizard security group box */
-.GBCBRI5BLYE, .GBCBRI5BEYE {
-  height: 400px !important;
-  width: 700px !important;
-}
-
 /* CodeDeploy target dropdown */
 .autocomplete-values-instance {
   width: 600px !important;
-}
-
-/* IAM policy dropdown */
-.actionsOptions {
-  min-height: 400px;
-  min-width: 400px;
 }
 
 /* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js. EQ = ec2 launch wizard, IX = launch configuration wizard */

@@ -53,9 +53,6 @@
       "matches": ["https://*.console.aws.amazon.com/s3/*"],
       "js": ["s3.js"]
     }, {
-      "matches": ["https://*.console.aws.amazon.com/iam/home*"],
-      "js": ["iam.js"]
-    }, {
       "matches": ["https://*.console.aws.amazon.com/ec2/*"],
       "js": ["ec2.js"]
     }, {
