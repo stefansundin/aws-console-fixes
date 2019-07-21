@@ -3,52 +3,9 @@ input[pattern]:invalid {
   background-color: yellow;
 }
 
-/* Launch Configuration/ASG/ELB/VPC filter box */
-#gwt-debug-searchTextBox, .elb-LAB .gwt-TextBox, #gwt-debug-resourceFilterBox {
-  min-width: 350px;
-}
-
 /* de-bold navigation tabs to stop distracting UI reflows when clicking them */
 .gwt-TabLayoutPanelTab-selected, .gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
   font-weight: normal !important;
-}
-
-/* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js. EQ = ec2 launch wizard, IX = launch configuration wizard */
-.userdata-container {
-  margin-left: 0 !important;
-}
-.userdata-container textarea {
-  width: 600px !important;
-  min-height: 400px !important;
-  resize: vertical;
-  font-family: monospace !important;
-  white-space: pre;
-}
-textarea.EQ, textarea.IX {
-  min-height: 200px;
-}
-
-/* EC2 system log */
-.system-log-title {
-  font-size: 100% !important;
-}
-.system-log-modal pre, .system-log-modal #gwt-debug-dialogLoadingSection {
-  font-family: "Courier New" !important;
-  width: 900px !important;
-  height: 650px !important;
-}
-
-/* EBS popup window in the EC2 console wraps the volume id and attachment timestamp */
-#gwt-debug-tabularDetails {
-  white-space: nowrap !important;
-}
-
-/* AutoScaling group creation wizard */
-#gwt_debug_as_subnet_box_chzn .chzn-choices,
-#gwt_debug_as_subnet_box_chzn .chzn-drop,
-#gwt_debug_as_availability_zone_box_chzn .chzn-choices,
-#gwt_debug_as_network_box_chzn .chzn-drop {
-  min-width: 600px !important;
 }
 
 /* Route 53. GEHJJTKDLIE=subdomain div, GEHJJTKDC2D=domain div, GEHJJTKDM1D=subdomain input, GEHJJTKDFHE=value div */

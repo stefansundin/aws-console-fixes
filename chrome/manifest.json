@@ -54,6 +54,7 @@
       "js": ["s3.js"]
     }, {
       "matches": ["https://*.console.aws.amazon.com/ec2/*"],
+      "css": ["ec2.css"],
       "js": ["ec2.js"]
     }, {
       "matches": ["https://*.console.aws.amazon.com/rds/*"],
