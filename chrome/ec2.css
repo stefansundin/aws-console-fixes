@@ -1,9 +1,9 @@
-/* Launch Configuration/ASG/ELB/VPC filter box */
-#gwt-debug-searchTextBox, .elb-LAB .gwt-TextBox, #gwt-debug-resourceFilterBox {
+/* Launch Configuration/Auto Scaling Groups filter box */
+#gwt-debug-searchTextBox, #gwt-debug-resourceFilterBox {
   min-width: 350px;
 }
 
-/* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js. EQ = ec2 launch wizard, IX = launch configuration wizard */
+/* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js */
 .userdata-container {
   margin-left: 0 !important;
 }
@@ -13,9 +13,6 @@
   resize: vertical;
   font-family: monospace !important;
   white-space: pre;
-}
-textarea.EQ, textarea.IX {
-  min-height: 200px;
 }
 
 /* EC2 system log */
@@ -28,8 +25,8 @@ textarea.EQ, textarea.IX {
   height: 650px !important;
 }
 
-/* EBS popup window in the EC2 console wraps the volume id and attachment timestamp */
-#gwt-debug-tabularDetails {
+/* EBS popup window in the EC2 console wraps the attachment timestamp */
+#gwt-debug-instancesDetailsPopup #gwt-debug-tabularDetails {
   white-space: nowrap !important;
 }
 
