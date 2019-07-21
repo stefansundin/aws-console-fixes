@@ -13,11 +13,6 @@ input[pattern]:invalid {
   font-weight: normal !important;
 }
 
-/* CodeDeploy target dropdown */
-.autocomplete-values-instance {
-  width: 600px !important;
-}
-
 /* Launch configuration user data text box. "userdata-container", "system-log-title", and "system-log-body" is dynamically added by ec2.js. EQ = ec2 launch wizard, IX = launch configuration wizard */
 .userdata-container {
   margin-left: 0 !important;
