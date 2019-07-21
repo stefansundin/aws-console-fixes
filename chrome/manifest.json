@@ -86,17 +86,17 @@
       "run_at": "document_end"
     }, {
       "matches": ["https://docs.aws.amazon.com/*"],
-      "js": ["docs.js"],
       "css": ["docs.css"],
+      "js": ["docs.js"],
       "run_at": "document_end"
     }, {
       "matches": ["*://awspolicygen.s3.amazonaws.com/policygen.html*"],
-      "js": ["policygen.js"],
-      "css": ["policygen.css"]
+      "css": ["policygen.css"],
+      "js": ["policygen.js"]
     }, {
       "matches": ["https://policysim.aws.amazon.com/home/index.jsp*"],
-      "js": ["policysim.js"],
-      "css": ["policysim.css"]
+      "css": ["policysim.css"],
+      "js": ["policysim.js"]
     }, {
       "matches": [
         "https://www.amazon.com/ap/signin*",

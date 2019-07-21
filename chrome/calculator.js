@@ -18,7 +18,7 @@ if (!window.location.hash.includes("key=")) {
   }, 200);
 }
 
-// We have to let this timer around since changing the region will repopulate the list.
+// We have to leave this timer around since changing the region will repopulate the list.
 // Curiously enough, the DOM elements are saved somewhere since when going back to the region again, the prefixes are still removed, so perhaps this can be done better somehow.
 var timer2 = setInterval(function() {
   var services = document.querySelectorAll('.servicesPanel .tab');
