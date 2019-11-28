@@ -34,6 +34,6 @@ input[pattern]:invalid {
   font-weight: normal;
 }
 /* In November 2019 they added their own region codes, but they look worse than our region codes, so hide them for now */
-#regionMenuContent .region .region-code {
+#regionMenuContent .region:not(.unavailable-region) .region-code {
   display: none !important;
 }
