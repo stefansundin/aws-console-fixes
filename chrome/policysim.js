@@ -44,6 +44,7 @@ var timer = setInterval(function() {
   add_icon("AWS CodeDeploy", "codedeploy");
   add_icon("AWS CodePipeline", "codepipeline");
   add_icon("AWS CodeStar", "codestar");
+  add_icon("AWS CodeStar Notifications", "codestar");
   add_icon("Amazon Cognito Identity", "cognito");
   add_icon("Amazon Cognito Sync", "cognito");
   add_icon("Amazon Cognito User Pools", "cognito");
@@ -52,7 +53,7 @@ var timer = setInterval(function() {
   add_icon("Data Pipeline", "datapipeline");
   add_icon("AWS Database Migration Service", "dms");
   add_icon("AWS Device Farm", "device_farm");
-  add_icon("Amazon EC2 Container Registry", "ecr");
+  add_icon("Amazon Elastic Container Registry", "ecr");
   add_icon("Amazon Elastic Container Service", "ecs");
   add_icon("Amazon Elastic Container Service for Kubernetes", "eks");
   add_icon("Amazon Elastic File System", "efs");
@@ -60,12 +61,13 @@ var timer = setInterval(function() {
   add_icon("Amazon Elasticsearch Service", "elasticsearch");
   add_icon("Amazon GameLift", "gamelift");
   add_icon("AWS Glue", "glue");
-  add_icon("AWS Greengrass", "greengrass");
   add_icon("AWS Import Export Disk Service", "import_export");
   add_icon("Amazon Inspector", "inspector");
   add_icon("AWS IoT", "iot");
+  add_icon("AWS IoT Greengrass", "iot_greengrass");
   add_icon("AWS Key Management Service", "kms");
   add_icon("Amazon Kinesis Analytics", "kinesis_analytics");
+  add_icon("Amazon Kinesis Analytics V2", "kinesis_analytics");
   add_icon("Amazon Kinesis Firehose", "kinesis_firehose");
   add_icon("Amazon Kinesis Video Streams", "kinesis_streams");
   add_icon("AWS Lambda", "lambda");
@@ -75,7 +77,6 @@ var timer = setInterval(function() {
   add_icon("Amazon Macie", "macie");
 
   add_icon("Amazon Mechanical Turk", "mturk");
-  add_icon("Amazon Mechanical Turk Crowd", "mturk");
   add_icon("AWS Migration Hub", "migration_hub");
   add_icon("Amazon Mobile Analytics", "mobile_analytics");
   add_icon("AWS Mobile Hub", "mobile_hub");
@@ -103,8 +104,9 @@ var timer = setInterval(function() {
   add_icon("AWS X-Ray", "xray");
 
   // The following icons already exists, but are not used for subservices
-  add_icon("Amazon CloudWatch Events", "cloudwatch");
+  add_icon("CloudWatch Application Insights", "cloudwatch");
   add_icon("Amazon CloudWatch Logs", "cloudwatch");
+  add_icon("Amazon CloudWatch Synthetics", "cloudwatch");
   add_icon("Amazon DynamoDB Accelerator (DAX)", "dynamodb");
   add_icon("AWS OpsWorks Configuration Management", "opsworks");
 }, 200);
