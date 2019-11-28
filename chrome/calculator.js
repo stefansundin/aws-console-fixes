@@ -24,7 +24,10 @@ var timer2 = setInterval(function() {
   var services = document.querySelectorAll('.servicesPanel .tab');
   for (var i=0; i < services.length; i++) {
     var service = services[i];
-    if (service.innerText.startsWith("Amazon ")) {
+    if (service.innerText == "Amazon Elastic Load Balancing") {
+      service.innerText = "ELB";
+    }
+    else if (service.innerText.startsWith("Amazon ")) {
       service.innerText = service.innerText.substr("Amazon ".length);
     }
     else if (service.innerText.startsWith("AWS ")) {
