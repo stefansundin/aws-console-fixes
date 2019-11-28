@@ -8,30 +8,34 @@
 // https://pages.awscloud.com/Accelerating-Product-Development-with-HPC-on-AWS_0913-CMP_OD.html
 // https://pages.awscloud.com/NAMER-field-STR-Windows-EOS-Modernize-Applications-eBook-2019-learn.html
 // https://pages.awscloud.com/NAMER-field-STR-Deploying-SQL-on-AWS-2019-learn.html
+// https://aws.amazon.com/partners/featured/security/shared-responsibility-model/
+// https://pages.awscloud.com/NAMER-acq-PWP-palo-alto-networks-May-2019-reg-page.html
 
-var msg = document.querySelector("#msg");
-if (msg) {
-  msg.style.display = "block";
-}
+(function() {
+  var msg = document.querySelector("#msg");
+  if (msg) {
+    msg.style.display = "block";
+  }
 
-var retURL = document.querySelector("input[name=retURL]");
-if (retURL) {
-  var btn = document.createElement("a");
-  btn.href = retURL.value;
-  var form = retURL.form;
-  var submit = form.querySelector("[type=submit]");
-  if (submit.textContent.indexOf("Download") != -1) {
-    btn.className = submit.className;
-    btn.appendChild(document.createTextNode(submit.textContent));
-    form.parentNode.replaceChild(btn, form);
+  var retURL = document.querySelector("input[name=retURL]");
+  if (retURL) {
+    var btn = document.createElement("a");
+    btn.href = retURL.value;
+    var form = retURL.form;
+    var submit = form.querySelector("[type=submit]");
+    if (submit.textContent.indexOf("Download") != -1) {
+      btn.className = submit.className;
+      btn.appendChild(document.createTextNode(submit.textContent));
+      form.parentNode.replaceChild(btn, form);
+    }
+    else {
+      btn.className = "button btn-size-normal btn-non-block btn-gold";
+      btn.appendChild(document.createTextNode("Skip form"));
+      form.parentNode.insertBefore(btn, form);
+    }
+    return;
   }
-  else {
-    btn.className = "button btn-size-normal btn-non-block btn-gold";
-    btn.appendChild(document.createTextNode("Skip form"));
-    form.parentNode.insertBefore(btn, form);
-  }
-}
-else {
+
   var content = document.getElementById("aws-page-content") || document;
   var noscript = content.getElementsByTagName("noscript")[0];
   var form = document.getElementById("whitePaperForm") || content.getElementsByTagName("form")[0];
@@ -46,25 +50,39 @@ else {
       btn.className = "button btn-size-normal btn-non-block btn-gold";
       btn.appendChild(document.createTextNode("Skip form"));
       form.insertBefore(btn, form.firstChild);
+      return;
     }
   }
-  else {
-    var regBtn = document.getElementById("reg-button");
-    if (regBtn) {
-      var scripts = document.getElementsByTagName("script");
-      for (var i = 0; i < scripts.length; i++) {
-        var ret = /location\.href\W*=\W*['"]([^'"]+)['"]/.exec(scripts[i].innerText);
-        if (ret != null) {
-          var btn = document.createElement("a");
-          btn.href = ret[1];
-          btn.className = "button btn-size-normal btn-non-block btn-gold";
-          btn.style.display = "block";
-          btn.style.margin = "1em";
-          btn.appendChild(document.createTextNode(regBtn.innerText));
-          regBtn.parentNode.insertBefore(btn, regBtn);
-          break;
-        }
+
+  var regBtn = document.getElementById("reg-button") || document.querySelector(".mktoButton");
+  var scripts = document.getElementsByTagName("script");
+  if (regBtn) {
+    for (var i = 0; i < scripts.length; i++) {
+      var ret = /location\.href\W*=\W*['"]([^'"]+)['"]/.exec(scripts[i].innerText);
+      if (ret != null) {
+        var btn = document.createElement("a");
+        btn.href = ret[1];
+        btn.className = "button btn-size-normal btn-non-block btn-gold";
+        btn.style.display = "block";
+        btn.style.margin = "1em";
+        btn.appendChild(document.createTextNode(regBtn.innerText));
+        regBtn.parentNode.insertBefore(btn, regBtn);
+        return;
+      }
+    }
+    for (var i = 0; i < scripts.length; i++) {
+      var ret = /getYouTubeID\(['"]#youtu\.be\/([^"']+)['"]\)/.exec(scripts[i].innerText);
+      if (ret != null) {
+        var btn = document.createElement("a");
+        btn.href = `https://www.youtube.com/watch?v=${ret[1]}`;
+        btn.target = "_blank";
+        btn.className = "button btn-size-normal btn-non-block btn-gold";
+        btn.style.display = "block";
+        btn.style.margin = "1em";
+        btn.appendChild(document.createTextNode("Watch Video"));
+        form.insertBefore(btn, form.firstChild);
+        return;
       }
     }
   }
-}
+})();
