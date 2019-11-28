@@ -9,7 +9,7 @@ if (select != null) {
   for (var i=0; i < options.length; i++) {
     var option = options[i];
     var text = option.textContent;
-    if (text == "Manage - Amazon API Gateway") {
+    if (text == "Manage Amazon API Gateway") {
       option.textContent = "API Gateway - Manage";
     }
     else if (text.substr(0,4) == "AWS ") {
