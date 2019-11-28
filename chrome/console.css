@@ -24,12 +24,16 @@ input[pattern]:invalid {
 }
 
 /* Display system region name in region drop-down */
+#regionMenuContent {
+  min-width: 260px;
+}
 #regionMenuContent .region:after {
   content: attr(data-region-id);
   color: #ccc;
   float: right;
   font-weight: normal;
 }
-#regionMenuContent {
-  min-width: 260px;
+/* In November 2019 they added their own region codes, but they look worse than our region codes, so hide them for now */
+#regionMenuContent .region .region-code {
+  display: none !important;
 }
