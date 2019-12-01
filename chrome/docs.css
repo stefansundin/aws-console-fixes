@@ -1,6 +1,6 @@
 /* We use cookies to provide and improve our services. By using our site, you consent to cookies. */
 /* Ads in the docs, what the hell... */
-#cookie-notice, #marketing-target {
+#cookie-notice, .mo-wp, #marketing-target {
   display: none !important;
 }
 
