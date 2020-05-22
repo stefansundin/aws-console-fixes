@@ -14,13 +14,16 @@ if (meta_region && current_region) {
 
 // this element is not present when logged in to the root account
 var username_div = document.querySelector("#awsc-login-display-name-user");
-if (username_div && document.querySelector("#awsc-login-display-name-label-user").textContent == "IAM User:") {
-  var username = username_div.textContent;
-  var username_link = document.createElement("a");
-  username_link.id = "awsc-login-display-name-user";
-  username_link.classList.add("awsc-username-display-name");
-  username_link.title = username;
-  username_link.href = `https://console.aws.amazon.com/iam/home#/users/${username}`;
-  username_link.textContent = username;
-  username_div.replaceWith(username_link);
+if (username_div) {
+  const label_text = document.querySelector("#awsc-login-display-name-label-user").textContent;
+  if (label_text == "IAM User:" || label_text == "Logged in as:") {
+    var username = username_div.textContent;
+    var username_link = document.createElement("a");
+    username_link.id = "awsc-login-display-name-user";
+    username_link.classList.add("awsc-username-display-name");
+    username_link.title = username;
+    username_link.href = `https://console.aws.amazon.com/iam/home#/users/${username}`;
+    username_link.textContent = username;
+    username_div.replaceWith(username_link);
+  }
 }
