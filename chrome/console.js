@@ -27,6 +27,7 @@ if (username_div) {
 }
 
 // Global shortcuts
+// This may need improvements for non-English keyboard layouts
 document.body.addEventListener("keydown", e => {
   // Press ` to open the Services dropdown and focus the search field. You can press the Escape key to close it when the search field is focused. Pressing ` again when the search field is not focused will close the dropdown.
   const nav = document.getElementById("nav-servicesMenu");
@@ -46,15 +47,55 @@ document.body.addEventListener("keydown", e => {
     return;
   }
   if (e.key == "`") {
-    const hidden = (dropdown.style.display == "none");
+    const visible = (dropdown.style.display === "block");
     nav.click();
-    if (hidden) {
-      input.focus();
-    }
-    else {
+    if (visible) {
       input.blur();
     }
+    else {
+      input.focus();
+    }
     e.preventDefault();
+    return;
+  }
+
+  // Press 1-9 and 0 (0 is 10) to focus your console shortcuts. Does not automatically navigate so you have to press the Enter key afterwards.
+  let i = parseInt(e.key, 10);
+  if (!isNaN(i)) {
+    if (i == 0) {
+      i = 10;
+    }
+    const shortcutBar = document.getElementById("nav-shortcutBar");
+    if (!shortcutBar) return;
+    const a = shortcutBar.getElementsByTagName("a")[i-1];
+    if (!a) return;
+    a.focus();
+    return;
+  }
+
+  // Press - to open the user dropdown
+  // Press = to open the region dropdown
+  if (e.key == "-" || e.key == "=") {
+    let menu, dropdown;
+    if (e.key == "-") {
+      menu = document.getElementById("nav-usernameMenu");
+      dropdown = document.getElementById("usernameMenuContent");
+    }
+    else if (e.key == "=") {
+      menu = document.getElementById("nav-regionMenu");
+      dropdown = document.getElementById("regionMenuContent");
+    }
+    if (!menu || !dropdown) return;
+    const visible = (dropdown.style.display === "block");
+    menu.click();
+    if (!visible) {
+      const a = dropdown.getElementsByTagName("a")[0];
+      if (a) {
+        setTimeout(function() {
+          a.focus();
+        }, 10);
+      }
+    }
     return;
   }
 });
