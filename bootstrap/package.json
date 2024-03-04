@@ -13,6 +13,7 @@
   "scripts": {
     "css": "sass --style compressed bootstrap.scss > ./dist/bootstrap.min.css",
     "js": "rollup -c",
+    "prebuild": "mkdir -p dist",
     "build": "npm run css && npm run js",
     "postbuild": "cp -rf dist/* ../chrome/bootstrap/"
   }
