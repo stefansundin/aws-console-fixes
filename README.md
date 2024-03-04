@@ -9,3 +9,10 @@ npm run build
 ```
 
 This will generate and copy files to `chrome/bootstrap/`.
+
+## Build
+
+```shell
+npm install
+npm run build
+```
