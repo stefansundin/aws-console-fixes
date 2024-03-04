@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "AWS Console Fixes",
+  "version": "2.0.0",
+  "description": "Fix annoyances in the AWS Management Console.",
+  "homepage_url": "https://github.com/stefansundin/aws-console-fixes",
+  "author": "Stefan Sundin",
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "permissions": [
+    "scripting",
+    "cookies",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.console.aws.amazon.com/*",
+    "https://*.signin.aws.amazon.com/signin*",
+    "https://*.signin.aws.amazon.com/oauth*",
+    "https://docs.aws.amazon.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "utils.js",
+        "defaultOptions.js"
+      ],
+      "matches": [
+        "https://*.console.aws.amazon.com/*"
+      ]
+    }
+  ],
+  "minimum_chrome_version": "102"
+}

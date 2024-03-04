@@ -7,3 +7,5 @@ cd bootstrap
 npm install
 npm run build
 ```
+
+This will generate and copy files to `chrome/bootstrap/`.

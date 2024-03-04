@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Options</title>
+  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="options.css">
+  <script src="options.js" type="module"></script>
+</head>
+
+<body class="p-3">
+
+  <form id="options">
+
+    <div class="form-group">
+      <label for="storageArea" class="form-label">Options storage</label>
+      <select class="form-select form-select-sm" name="storageArea">
+        <option value="sync">Synchronize options to Chrome profile</option>
+        <option value="local">Keep options local to this computer</option>
+        <option value="session">Temporary options for this session only</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-2 col-sm-3">
+      <label for="theme" class="form-label">Theme</label>
+      <select class="form-select form-select-sm" name="theme">
+        <option value="auto">Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="syncTheme">
+        Automatically sync extension theme to AWS Management Console
+      </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-html="true" data-bs-title="Use keys 1-9 and 0 to focus navbar favorites.<br/>Use - to open region dropdown.<br/>Use = to open user dropdown.<br/>Use ` to open Services menu.">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="Navbar">
+        Inject script that adds keyboard shortcuts to the navbar
+      </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="DismissAlerts">
+        Add option to permanently dismiss alerts
+      </label><br/>
+      <span id="dismissedAlertsCount">X alerts have</span> been permanently dismissed (<a role="button" class="" id="resetDismissedAlerts">reset</a>)
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideNewAdverts">
+        Hide <span class="font-amazon-new">New</span> adverts (usually shown in the sidebar)
+      </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideSignInMarketing">
+        Hide marketing image on sign in page
+      </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideCustomerSatisfactionNotification">
+        Hide customer satisfaction survey notification
+      </label>
+    </div>
+
+    <div class="form-check mt-2">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideAmazonQ">
+        Hide Amazon Q
+      </label>
+    </div>
+
+  </form>
+
+  <div class="mt-4">
+    <button class="btn btn-primary" id="save">Save settings</button>
+    <a class="ms-4" href="#" id="reset">Reset</a>
+  </div>
+
+  <details id="debugDetails">
+    <summary class="mt-4">Debug information</summary>
+    <textarea class="mt-1 font-monospace" id="debug" spellcheck="false" readonly></textarea>
+  </details>
+</body>
+
+</html>

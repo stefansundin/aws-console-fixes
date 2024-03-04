@@ -1,0 +1,9 @@
+/* https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Copilot.html */
+/* localStorage key FEATURE_TOUR_POPOVER controls whether or not the annoying popover opens on page load */
+
+/* <div class="popover-0-1-34 awsui-visual-refresh" role="dialog" aria-label="Introducing Amazon Q" */
+div[data-analytics-widget-id="@amzn/conversational-experience"],
+div[aria-label="Introducing Amazon Q"]
+{
+  display: none !important;
+}

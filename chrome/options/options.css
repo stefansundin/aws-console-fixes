@@ -1,0 +1,27 @@
+body {
+  width: 700px;
+}
+
+#save {
+  min-width: 125px;
+}
+
+#debug {
+  width: 100%;
+  height: 600px;
+}
+
+.font-amazon-new {
+  /* font-family: "Amazon Ember", "Helvetica Neue", Roboto, Arial, sans-serif; */
+  color: rgb(68, 185, 214);
+  font-weight: 700;
+  border-bottom: 1px dashed rgb(68, 185, 214);
+}
+
+.custom-tooltip {
+  --bs-tooltip-max-width: auto;
+  --bs-tooltip-opacity: 1;
+}
+.custom-tooltip .tooltip-inner {
+  text-align: start;
+}
