@@ -1,0 +1,9 @@
+// https://getbootstrap.com/docs/5.3/customize/options/
+
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-transitions: false;
+$enable-rfs: false;
+$enable-smooth-scroll: false;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
