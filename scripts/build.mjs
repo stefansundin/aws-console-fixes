@@ -33,9 +33,42 @@ async function loadManifest(path) {
   return manifest;
 }
 
-const manifest = await loadManifest('chrome/manifest.json');
-const outputPath = `dist/aws-console-fixes-${manifest.version}.zip`;
-await fs.rm(outputPath, { force: true });
-cd('chrome');
-await $`zip -r ../${outputPath} . -x '*.git*' -x '*.DS_Store' -x '*Thumbs.db' -x '*.map' -x '*bootstrap.esm.bundle.js'`;
-cd('..');
+const zipArgs = [
+  '-x',
+  '*.git*',
+  '-x',
+  '*.DS_Store',
+  '-x',
+  '*Thumbs.db',
+  '-x',
+  '*.map',
+  '-x',
+  '*bootstrap.esm.bundle.js',
+  '-x',
+  '*.md',
+];
+
+// Build for Chrome
+{
+  const manifest = await loadManifest('chrome/manifest.json');
+  const outputPath = `dist/aws-console-fixes-${manifest.version}.zip`;
+  await fs.rm(outputPath, { force: true });
+  cd('chrome');
+  await $`zip -r ../${outputPath} . ${zipArgs}`;
+  cd('..');
+}
+
+// Build for Firefox
+{
+  const manifest = await loadManifest('firefox/manifest.json');
+  // Copy files from chrome/
+  await $`cp -r chrome/{bootstrap,img,options,scripts,*.html,*.js} firefox`;
+  const outputPath = `dist/aws-console-fixes-${manifest.version}.xpi`;
+  await fs.rm(outputPath, { force: true });
+  cd('firefox');
+  await $`zip -r ../${outputPath} . ${zipArgs}`;
+  cd('..');
+}
+
+// Print a diff between the Chrome and Firefox manifest files
+await $`diff --color=always chrome/manifest.json firefox/manifest.json || exit 0`;

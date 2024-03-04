@@ -1,10 +1,13 @@
 import * as bootstrap from '../bootstrap/bootstrap.esm.bundle.min.js';
 import defaultOptions, { optionsVersion } from '../defaultOptions.js';
+import { availableContentScripts } from '../scripts/index.js';
 import {
   getStorage,
   getStorageAreaName,
   isCheckbox,
   isChecked,
+  isChrome,
+  isFirefox,
 } from '../utils.js';
 
 /**
@@ -64,6 +67,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('debugDetails')
     );
     debugDetails.open = true;
+  }
+
+  if (isChrome) {
+    document.body.classList.add('chrome');
+  } else if (isFirefox) {
+    document.body.classList.add('firefox');
   }
 
   const storageAreaName = await getStorageAreaName();
@@ -149,6 +158,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         },
       }),
     );
+
+    // Firefox: request the host permissions necessary
+    const enabledContentScripts = newOptions.enabledContentScripts.filter(
+      (id) => id in availableContentScripts,
+    );
+    const contentScripts = enabledContentScripts.map(
+      (id) => availableContentScripts[id],
+    );
+    const origins = new Set(
+      contentScripts.flatMap((script) => script.matches ?? []),
+    );
+    if (options.syncTheme) {
+      origins.add('https://console.aws.amazon.com/');
+      origins.add('https://docs.aws.amazon.com/');
+      origins.add('https://s3.console.aws.amazon.com/*');
+    }
+    if (origins.size > 0) {
+      await chrome.permissions.request({ origins: Array.from(origins) });
+    }
 
     if (newStorageAreaName === 'local') {
       await chrome.storage.session.clear();

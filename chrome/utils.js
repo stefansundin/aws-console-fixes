@@ -5,6 +5,9 @@ import defaultOptions, { optionsVersion } from './defaultOptions.js';
  * @typedef {import('./types.js').Options} Options
  */
 
+export const isChrome = navigator.userAgent.includes('Chrome/');
+export const isFirefox = navigator.userAgent.includes('Firefox/');
+
 /**
  * @returns {Promise<StorageAreaName>}
  */

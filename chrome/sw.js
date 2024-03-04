@@ -48,11 +48,14 @@ chrome.runtime.onMessage.addListener(({ type, name }, sender, sendResponse) => {
   }
 });
 
-// Make it possible for content scripts to access chrome.storage.session:
-chrome.storage.session
-  .setAccessLevel({
-    accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS',
-  })
-  .catch(console.error);
+// Not available in Firefox:
+if (chrome.storage.session.setAccessLevel) {
+  // Make it possible for content scripts to access chrome.storage.session:
+  chrome.storage.session
+    .setAccessLevel({
+      accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS',
+    })
+    .catch(console.error);
+}
 
 updateOptions();
