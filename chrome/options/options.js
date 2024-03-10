@@ -73,6 +73,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.add('chrome');
   } else if (isFirefox) {
     document.body.classList.add('firefox');
+    const syncOption = /** @type HTMLOptionElement */ (
+      document
+        .getElementsByName('storageArea')[0]
+        .querySelector('option[value="sync"]')
+    );
+    syncOption.textContent = /** @type string */ (
+      syncOption.textContent
+    ).replace('Chrome profile', 'Mozilla account');
   }
   if (!chrome.storage.session.setAccessLevel) {
     document
