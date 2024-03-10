@@ -1,16 +1,18 @@
 import * as bootstrap from '../bootstrap/bootstrap.esm.bundle.min.js';
 import defaultOptions, { optionsVersion } from '../defaultOptions.js';
-import { availableContentScripts } from '../scripts/index.js';
 import {
+  getRequiredPermissions,
   getStorage,
   getStorageAreaName,
   isCheckbox,
   isChecked,
   isChrome,
   isFirefox,
+  isRequiredPermissionsGranted,
 } from '../utils.js';
 
 /**
+ * @typedef {import('../types.js').Options} Options
  * @typedef {import('../types.js').ContentScriptName} ContentScriptName
  * @typedef {import('../types.js').StorageAreaName} StorageAreaName
  * @typedef {import('../types.js').Theme} Theme
@@ -27,10 +29,24 @@ import {
  */
 
 /**
- * @typedef {Object} SaveData
+ * @typedef {Object} InitialSaveData
  * @property {StorageAreaName | undefined} newStorageAreaName
  * @property {NewOptions} newOptions
  */
+
+/**
+ * @typedef {Object} SaveData
+ * @property {StorageAreaName} newStorageAreaName
+ * @property {Options} newOptions
+ */
+
+async function checkPermissions() {
+  const granted = await isRequiredPermissionsGranted();
+  const insufficientPermissionsAlert = document.getElementById(
+    'insufficientPermissionsAlert',
+  );
+  insufficientPermissionsAlert?.classList.toggle('d-none', granted);
+}
 
 /** @returns {EffectiveTheme} */
 function getSystemTheme() {
@@ -144,60 +160,43 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function saveOptions() {
-    const { newStorageAreaName, newOptions } = formElements.reduce(
-      (acc, e) => {
-        if (e.name === 'storageArea') {
-          const el = /** @type HTMLSelectElement */ (e);
-          acc.newStorageAreaName = /** @type StorageAreaName */ (el.value);
-        } else if (e.name === 'theme') {
-          acc.newOptions.theme = /** @type Theme */ (e.value);
-          if (acc.newOptions.theme === 'auto') {
-            acc.newOptions.effectiveTheme = getSystemTheme();
+    const { newStorageAreaName, newOptions } = /** @type SaveData */ (
+      formElements.reduce(
+        (acc, e) => {
+          if (e.name === 'storageArea') {
+            const el = /** @type HTMLSelectElement */ (e);
+            acc.newStorageAreaName = /** @type StorageAreaName */ (el.value);
+          } else if (e.name === 'theme') {
+            acc.newOptions.theme = /** @type Theme */ (e.value);
+            if (acc.newOptions.theme === 'auto') {
+              acc.newOptions.effectiveTheme = getSystemTheme();
+            }
+          } else if (e.name === 'contentScript[]' && isChecked(e)) {
+            acc.newOptions.enabledContentScripts.push(
+              /** @type ContentScriptName */ (e.value),
+            );
+          } else if (e.name === 'syncTheme' && isCheckbox(e)) {
+            acc.newOptions.syncTheme = e.checked;
           }
-        } else if (e.name === 'contentScript[]' && isChecked(e)) {
-          acc.newOptions.enabledContentScripts.push(
-            /** @type ContentScriptName */ (e.value),
-          );
-        } else if (e.name === 'syncTheme' && isCheckbox(e)) {
-          acc.newOptions.syncTheme = e.checked;
-        }
-        return acc;
-      },
-      /** @type SaveData */ ({
-        newStorageAreaName: undefined,
-        newOptions: {
-          theme: undefined,
-          effectiveTheme: undefined,
-          syncTheme: undefined,
-          enabledContentScripts: [],
+          return acc;
         },
-      }),
+        /** @type InitialSaveData */ ({
+          newStorageAreaName: undefined,
+          newOptions: {
+            theme: undefined,
+            effectiveTheme: undefined,
+            syncTheme: undefined,
+            enabledContentScripts: [],
+          },
+        }),
+      )
     );
 
     // Request the permissions necessary
     // Unlike Chrome, Firefox does not automatically grant host_permissions
-    const enabledContentScripts = newOptions.enabledContentScripts.filter(
-      (id) => id in availableContentScripts,
-    );
-    const contentScripts = enabledContentScripts.map(
-      (id) => availableContentScripts[id],
-    );
-    const permissions = new Set();
-    const origins = new Set(
-      contentScripts.flatMap((script) => script.matches ?? []),
-    );
-    if (newOptions.syncTheme) {
-      permissions.add('cookies');
-      origins.add('https://console.aws.amazon.com/');
-      origins.add('https://docs.aws.amazon.com/');
-      origins.add('https://s3.console.aws.amazon.com/*');
-    }
-    if (permissions.size > 0 || origins.size > 0) {
-      await chrome.permissions.request({
-        permissions: Array.from(permissions),
-        origins: Array.from(origins),
-      });
-    }
+    // Because Firefox is peculiar, this has to be done first and without any awaits before it, to avoid triggering "Error: permissions.request may only be called from a user input handler"
+    const requiredPermissions = getRequiredPermissions(newOptions);
+    await chrome.permissions.request(requiredPermissions);
 
     if (newStorageAreaName === 'local') {
       await chrome.storage.session.clear();
@@ -205,8 +204,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       await chrome.storage.session.clear();
       await chrome.storage.local.clear();
     }
-    const newStorage =
-      chrome.storage[/** @type StorageAreaName */ (newStorageAreaName)];
+    const newStorage = chrome.storage[newStorageAreaName];
 
     if (newStorageAreaName !== storageAreaName) {
       // Start by copying all options, which includes content script-specific options
@@ -220,6 +218,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await chrome.runtime.sendMessage({ type: 'updateOptions' });
 
     await updateDebug();
+    await checkPermissions();
   }
 
   const saveButton = /** @type HTMLButtonElement */ (
@@ -285,4 +284,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   for (const tooltipElement of tooltipElements) {
     new bootstrap.Tooltip(tooltipElement);
   }
+
+  // Check permissions
+  await checkPermissions();
+  chrome.permissions.onAdded.addListener(() => checkPermissions());
+  chrome.permissions.onRemoved.addListener(() => checkPermissions());
 });

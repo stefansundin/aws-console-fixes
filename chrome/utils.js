@@ -1,4 +1,5 @@
 import defaultOptions, { optionsVersion } from './defaultOptions.js';
+import { availableContentScripts } from './scripts/index.js';
 
 /**
  * @typedef {import('./types.js').StorageAreaName} StorageAreaName
@@ -42,6 +43,43 @@ export async function getOptions() {
     void chrome.runtime.requestUpdateCheck();
   }
   return options;
+}
+
+/**
+ * @param {Options} options
+ * @returns {chrome.permissions.Permissions}
+ */
+export function getRequiredPermissions(options) {
+  const enabledContentScripts = options.enabledContentScripts.filter(
+    (id) => id in availableContentScripts,
+  );
+  const contentScripts = enabledContentScripts.map(
+    (id) => availableContentScripts[id],
+  );
+  const permissions = new Set();
+  const origins = new Set(
+    contentScripts.flatMap((script) => script.matches ?? []),
+  );
+  if (options.syncTheme) {
+    permissions.add('cookies');
+    origins.add('https://console.aws.amazon.com/');
+    origins.add('https://docs.aws.amazon.com/');
+    origins.add('https://s3.console.aws.amazon.com/*');
+  }
+  return {
+    permissions: Array.from(permissions),
+    origins: Array.from(origins),
+  };
+}
+
+/**
+ * @returns {Promise<boolean>}
+ */
+export async function isRequiredPermissionsGranted() {
+  const options = await getOptions();
+  const requiredPermissions = getRequiredPermissions(options);
+  const granted = await chrome.permissions.contains(requiredPermissions);
+  return granted;
 }
 
 /**

@@ -35,7 +35,8 @@
     {
       "resources": [
         "utils.js",
-        "defaultOptions.js"
+        "defaultOptions.js",
+        "scripts/index.js"
       ],
       "matches": [
         "https://*.console.aws.amazon.com/*",

@@ -17,6 +17,7 @@ npm install -g web-ext
 adb devices
 adb shell cmd package list packages | grep org.mozilla
 
+npm run build
 cd firefox
 web-ext run -t firefox-android --adb-device XXX --firefox-apk org.mozilla.firefox
 ```
