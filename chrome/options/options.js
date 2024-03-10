@@ -74,6 +74,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   } else if (isFirefox) {
     document.body.classList.add('firefox');
   }
+  if (!chrome.storage.session.setAccessLevel) {
+    document
+      .getElementsByName('storageArea')[0]
+      .querySelector('option[value="session"]')
+      ?.remove();
+  }
 
   const storageAreaName = await getStorageAreaName();
   const storage = chrome.storage[storageAreaName];

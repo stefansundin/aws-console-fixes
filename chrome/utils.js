@@ -12,7 +12,8 @@ export const isFirefox = navigator.userAgent.includes('Firefox/');
  * @returns {Promise<StorageAreaName>}
  */
 export async function getStorageAreaName() {
-  return (await chrome.storage.session.get({ options: null })).options !== null
+  return chrome.storage.session &&
+    (await chrome.storage.session.get({ options: null })).options !== null
     ? 'session'
     : (await chrome.storage.local.get({ options: null })).options !== null
     ? 'local'
