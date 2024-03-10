@@ -33,9 +33,6 @@ async function updateOptions() {
   // Do misc things
   if (options.syncTheme) {
     syncTheme(options.theme, options.effectiveTheme);
-    await chrome.scripting.registerContentScripts([
-      availableContentScripts.S3SyncTheme,
-    ]);
   }
 }
 

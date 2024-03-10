@@ -171,6 +171,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             );
           } else if (e.name === 'syncTheme' && isCheckbox(e)) {
             acc.newOptions.syncTheme = e.checked;
+            if (e.checked) {
+              acc.newOptions.enabledContentScripts.push('S3SyncTheme');
+            }
           }
           return acc;
         },
