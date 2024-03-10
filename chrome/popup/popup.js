@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const theme = options.theme === 'auto' ? getSystemTheme() : options.theme;
     document.documentElement.setAttribute('data-bs-theme', theme);
+
+    const fixPermissionsButton = /** @type HTMLButtonElement */ (
+      document.getElementById('fixPermissions')
+    );
+    fixPermissionsButton.addEventListener('click', () => {
+      const requiredPermissions = getRequiredPermissions(options);
+      chrome.permissions.request(requiredPermissions);
+      window.close();
+    });
   }
 
   const openOptionsButton = /** @type HTMLButtonElement */ (
@@ -41,16 +50,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const toggleScriptsButton = /** @type HTMLButtonElement */ (
     document.getElementById('toggleScripts')
   );
-
-  const fixPermissionsButton = /** @type HTMLButtonElement */ (
-    document.getElementById('fixPermissions')
-  );
-  fixPermissionsButton.addEventListener('click', async () => {
-    const options = await getOptions();
-    const requiredPermissions = getRequiredPermissions(options);
-    chrome.permissions.request(requiredPermissions);
-    window.close();
-  });
 
   async function refreshState() {
     const options = await getOptions();
