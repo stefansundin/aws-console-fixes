@@ -10,6 +10,21 @@ import { getDateInFuture } from '../utils.js';
  * @param {EffectiveTheme} [effectiveTheme]
  */
 export async function syncTheme(theme, effectiveTheme) {
+  if (
+    !(await chrome.permissions.contains({
+      permissions: ['cookies'],
+      origins: [
+        'https://console.aws.amazon.com/',
+        'https://docs.aws.amazon.com/',
+      ],
+    }))
+  ) {
+    console.warn(
+      'Unable to synchronize theme to the AWS Management Console. Permissions have not been granted.',
+    );
+    return;
+  }
+
   const newCookieExpirationDate = getDateInFuture(180).getTime() / 1000;
   const refreshCookieExpirationDate = getDateInFuture(50);
 

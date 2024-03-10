@@ -19,8 +19,10 @@
   },
   "permissions": [
     "scripting",
-    "cookies",
     "storage"
+  ],
+  "optional_permissions": [
+    "cookies"
   ],
   "host_permissions": [
     "https://*.console.aws.amazon.com/*",

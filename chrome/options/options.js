@@ -53,6 +53,7 @@ async function updateDebug() {
       },
       registeredContentScripts:
         await chrome.scripting.getRegisteredContentScripts(),
+      permissions: await chrome.permissions.getAll(),
     },
     null,
     '  ',
@@ -173,23 +174,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       }),
     );
 
-    // Firefox: request the host permissions necessary
+    // Request the permissions necessary
+    // Unlike Chrome, Firefox does not automatically grant host_permissions
     const enabledContentScripts = newOptions.enabledContentScripts.filter(
       (id) => id in availableContentScripts,
     );
     const contentScripts = enabledContentScripts.map(
       (id) => availableContentScripts[id],
     );
+    const permissions = new Set();
     const origins = new Set(
       contentScripts.flatMap((script) => script.matches ?? []),
     );
-    if (options.syncTheme) {
+    if (newOptions.syncTheme) {
+      permissions.add('cookies');
       origins.add('https://console.aws.amazon.com/');
       origins.add('https://docs.aws.amazon.com/');
       origins.add('https://s3.console.aws.amazon.com/*');
     }
-    if (origins.size > 0) {
-      await chrome.permissions.request({ origins: Array.from(origins) });
+    if (permissions.size > 0 || origins.size > 0) {
+      await chrome.permissions.request({
+        permissions: Array.from(permissions),
+        origins: Array.from(origins),
+      });
     }
 
     if (newStorageAreaName === 'local') {

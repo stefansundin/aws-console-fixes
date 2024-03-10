@@ -1,6 +1,6 @@
 ## Firefox specific stuff
 
-- `host_permissions` are optional so we have to be sure to request them.
+- `host_permissions` are not granted automatically so we have to be sure to request them.
 - `chrome.storage.session.setAccessLevel` is not available so limiting options to the current session is disabled.
 
 BUGS:
