@@ -62,7 +62,7 @@ const zipArgs = [
 {
   const manifest = await loadManifest('firefox/manifest.json');
   // Copy files from chrome/
-  await $`cp -r chrome/{bootstrap,img,options,scripts,*.js} firefox`;
+  await $`cp -r chrome/{bootstrap,img,options,popup,scripts,*.js} firefox`;
   const outputPath = `dist/aws-console-fixes-${manifest.version}.xpi`;
   await fs.rm(outputPath, { force: true });
   cd('firefox');

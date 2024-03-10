@@ -2,6 +2,7 @@
 
 - `host_permissions` are not granted automatically so we have to be sure to request them.
 - `chrome.storage.session.setAccessLevel` is not available so limiting options to the current session is disabled.
+- Clicking links in the popup does not automatically close the popup, so call `window.close()` when appropriate.
 
 BUGS:
 - content scripts are not registered on startup!!!

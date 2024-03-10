@@ -4,6 +4,7 @@ import {
   getRequiredPermissions,
   getStorage,
   getStorageAreaName,
+  getSystemTheme,
   isCheckbox,
   isChecked,
   isChrome,
@@ -46,13 +47,6 @@ async function checkPermissions() {
     'insufficientPermissionsAlert',
   );
   insufficientPermissionsAlert?.classList.toggle('d-none', granted);
-}
-
-/** @returns {EffectiveTheme} */
-function getSystemTheme() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
 }
 
 async function updateDebug() {

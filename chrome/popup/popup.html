@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Console Fixes</title>
+  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" type="module"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary px-3">
+    AWS Console Fixes
+  </nav>
+
+  <div class="p-3">
+
+    <p id="currentState">Error</p>
+
+    <div class="mb-4">
+      <button class="btn btn-primary" id="openOptions">Open options</button>
+    </div>
+
+    <div class="alert alert-warning d-none" role="alert" id="insufficientPermissionsAlert">
+      <p>Insufficient permissions have been granted for the current settings.</p>
+      <button class="btn btn-success" id="fixPermissions">Grant permissions</button>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

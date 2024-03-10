@@ -4,6 +4,7 @@ import { availableContentScripts } from './scripts/index.js';
 /**
  * @typedef {import('./types.js').StorageAreaName} StorageAreaName
  * @typedef {import('./types.js').Options} Options
+ * @typedef {import('./types.js').EffectiveTheme} EffectiveTheme
  */
 
 export const isChrome = navigator.userAgent.includes('Chrome/');
@@ -43,6 +44,13 @@ export async function getOptions() {
     void chrome.runtime.requestUpdateCheck();
   }
   return options;
+}
+
+/** @returns {EffectiveTheme} */
+export function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
 }
 
 /**

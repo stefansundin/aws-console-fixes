@@ -17,6 +17,14 @@
   "options_ui": {
     "page": "options/options.html"
   },
+  "action": {
+    "default_icon": {
+      "19": "img/icon-19.png",
+      "38": "img/icon-38.png"
+    },
+    "default_title": "AWS Console Fixes",
+    "default_popup": "popup/popup.html"
+  },
   "permissions": [
     "scripting",
     "storage"
