@@ -29,7 +29,8 @@
     "https://health.aws.amazon.com/*",
     "https://*.signin.aws.amazon.com/signin*",
     "https://*.signin.aws.amazon.com/oauth*",
-    "https://docs.aws.amazon.com/*"
+    "https://docs.aws.amazon.com/*",
+    "https://aws.amazon.com/*"
   ],
   "web_accessible_resources": [
     {

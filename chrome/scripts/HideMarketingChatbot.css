@@ -1,0 +1,5 @@
+/* Annoying chatbot that shows up in the bottom right corner on various marketing pages, like https://aws.amazon.com/s3/pricing/ */
+/* "Hi, I can connect you with an AWS representative or answer questions you have on AWS." */
+#mrc-sunrise-chat {
+  display: none !important;
+}
