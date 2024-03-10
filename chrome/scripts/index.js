@@ -22,7 +22,10 @@ export const availableContentScripts = {
   DismissAlerts: {
     id: 'DismissAlerts',
     js: ['scripts/DismissAlerts.js'],
-    matches: ['https://*.console.aws.amazon.com/*'],
+    matches: [
+      'https://*.console.aws.amazon.com/*',
+      'https://health.aws.amazon.com/*',
+    ],
     runAt: 'document_end',
   },
 
