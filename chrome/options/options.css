@@ -6,6 +6,10 @@ body.chrome {
   min-width: 125px;
 }
 
+details p {
+  margin-bottom: 0.5em;
+}
+
 #debug {
   width: 100%;
   height: 600px;

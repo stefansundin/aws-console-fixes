@@ -274,6 +274,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.reload();
   });
 
+  const aboutDetails = /** @type HTMLDetailsElement */ (
+    document.getElementById('aboutDetails')
+  );
+  aboutDetails.addEventListener('toggle', (e) => {
+    if (aboutDetails.open) {
+      aboutDetails.scrollIntoView({
+        block: 'end',
+        behavior: 'smooth',
+      });
+    }
+  });
+
   // Setup bootstrap stuff
   const tooltipElements = /** @type NodeListOf<HTMLElement> */ (
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
