@@ -101,4 +101,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   refreshState();
+
+  if (isFirefox) {
+    for (const link of document.getElementsByTagName('a')) {
+      if (link.target === '_blank') {
+        link.addEventListener('click', () => {
+          setTimeout(() => {
+            window.close();
+          }, 10);
+        });
+      }
+    }
+  }
 });
