@@ -1,3 +1,12 @@
+# About
+
+This browser extension fixes various annoyances in the AWS Management Console.
+
+It consists of a collection of scripts that can be enabled and configured by the user. By default the extension does nothing, all of the functionality has to be opted in.
+
+
+# Development
+
 ## Bootstrap
 
 To build the custom Bootstrap files you need to have Node.js installed and run:

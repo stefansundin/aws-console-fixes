@@ -284,6 +284,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Check permissions
   await checkPermissions();
-  chrome.permissions.onAdded.addListener(() => checkPermissions());
-  chrome.permissions.onRemoved.addListener(() => checkPermissions());
+  chrome.permissions.onAdded.addListener(() => {
+    checkPermissions();
+    updateDebug();
+  });
+  chrome.permissions.onRemoved.addListener(() => {
+    checkPermissions();
+    updateDebug();
+  });
 });

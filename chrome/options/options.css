@@ -13,8 +13,15 @@ body.chrome {
 
 .font-amazon-new {
   /* font-family: "Amazon Ember", "Helvetica Neue", Roboto, Arial, sans-serif; */
-  color: rgb(68, 185, 214);
   font-weight: 700;
+  font-size: small;
+}
+[data-bs-theme="light"] .font-amazon-new {
+  color: rgb(0, 115, 187);
+  border-bottom: 1px dashed rgb(0, 115, 187);
+}
+[data-bs-theme="dark"] .font-amazon-new {
+  color: rgb(68, 185, 214);
   border-bottom: 1px dashed rgb(68, 185, 214);
 }
 

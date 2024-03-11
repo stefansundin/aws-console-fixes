@@ -6,6 +6,10 @@ body {
   width: 400px;
 }
 
+[data-bs-theme="light"] nav {
+  border-bottom: 1px solid darkgray;
+}
+
 nav a {
   text-decoration: none;
   color: var(--bs-body-color);
