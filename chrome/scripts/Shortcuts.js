@@ -39,17 +39,19 @@ async function main() {
       return;
     }
 
-    // Press ` to open the services dropdown
+    // Press ` to toggle CloudShell
+    if (e.key === '`') {
+      const cloudShellButton = /** @type HTMLButtonElement | null */ (
+        document.getElementById('tools-experience-ingress')
+      );
+      cloudShellButton?.click();
+      return;
+    }
+
     // Press - to open the region dropdown
     // Press = to open the user dropdown
     const selector =
-      e.key === '`'
-        ? 'services'
-        : e.key === '-'
-        ? 'regions'
-        : e.key === '='
-        ? 'account'
-        : undefined;
+      e.key === '-' ? 'regions' : e.key === '=' ? 'account' : undefined;
     if (selector) {
       const menu = document.querySelector(
         `button[aria-controls="menu--${selector}"]`,
