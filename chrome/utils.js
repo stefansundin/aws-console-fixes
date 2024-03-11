@@ -41,7 +41,8 @@ export async function getOptions() {
   });
   if (version > optionsVersion) {
     // Version number in storage is higher than what the installed version supports, probably because of synced settings
-    void chrome.runtime.requestUpdateCheck();
+    // Not implemented in Firefox
+    void chrome.runtime.requestUpdateCheck?.();
   }
   return options;
 }
