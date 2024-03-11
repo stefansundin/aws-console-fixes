@@ -93,7 +93,7 @@ if (chrome.storage.session.setAccessLevel) {
     .catch(console.error);
 }
 
-updateOptions();
+updateOptions().then(() => updateActionButton());
 
 chrome.permissions.onAdded.addListener(() => updateActionButton());
 chrome.permissions.onRemoved.addListener(() => updateActionButton());
