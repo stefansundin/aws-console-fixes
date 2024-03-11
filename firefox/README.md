@@ -4,9 +4,6 @@
 - `chrome.storage.session.setAccessLevel` is not available so limiting options to the current session is disabled.
 - Clicking links in the popup does not automatically close the popup, so call `window.close()` when appropriate.
 
-BUGS:
-- content scripts are not registered on startup!!!
-
 ## Testing
 
 To test the extension on Firefox on Android:
