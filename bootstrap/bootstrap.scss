@@ -6,4 +6,7 @@ $enable-transitions: false;
 $enable-rfs: false;
 $enable-smooth-scroll: false;
 
+$tooltip-opacity: 1;
+$tooltip-max-width: 500px;;
+
 @import 'node_modules/bootstrap/scss/bootstrap';

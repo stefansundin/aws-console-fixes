@@ -47,8 +47,9 @@
     <div class="form-check mt-2">
       <label class="form-check-label"
         data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
         data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
+        data-bs-fallback-placements='["bottom"]'
         data-bs-html="true"
         data-bs-title="Use keys 1-9 and 0 to focus navbar favorites.<br/>Use - to open region dropdown.<br/>Use = to open user dropdown.<br/>Use ` to open CloudShell."
       >
@@ -58,7 +59,14 @@
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/DismissAlerts.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="DismissAlerts">
         Add option to permanently dismiss alerts
       </label><br/>
@@ -66,35 +74,70 @@
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/HideNewAdverts.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideNewAdverts">
         Hide <span class="font-amazon-new">New</span> adverts (usually shown in the sidebar)
       </label>
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/HideSignInMarketing.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideSignInMarketing">
         Hide marketing image on sign in page
       </label>
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/HideCustomerSatisfactionNotification.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideCustomerSatisfactionNotification">
         Hide customer satisfaction survey notification
       </label>
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/HideMarketingChatbot.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideMarketingChatbot">
         Hide chatbot on marketing pages
       </label>
     </div>
 
     <div class="form-check mt-2">
-      <label class="form-check-label">
+      <label class="form-check-label"
+        data-bs-toggle="tooltip"
+        data-bs-trigger="hover"
+        data-bs-placement="top"
+        data-bs-fallback-placements='["bottom"]'
+        data-bs-html="true"
+        data-bs-title="<img src='../img/scripts/HideAmazonQ.png'>"
+      >
         <input class="form-check-input" type="checkbox" name="contentScript[]" value="HideAmazonQ">
         Hide Amazon Q
       </label>
@@ -111,6 +154,16 @@
     <summary class="mt-4">Debug information</summary>
     <textarea class="mt-1 font-monospace" id="debug" spellcheck="false" readonly></textarea>
   </details>
+
+  <div class="d-none">
+    <!-- Eagerly load images that are shown in tooltips so that the tooltip positioning works correctly -->
+    <img src='../img/scripts/DismissAlerts.png'>
+    <img src='../img/scripts/HideNewAdverts.png'>
+    <img src='../img/scripts/HideSignInMarketing.png'>
+    <img src='../img/scripts/HideCustomerSatisfactionNotification.png'>
+    <img src='../img/scripts/HideMarketingChatbot.png'>
+    <img src='../img/scripts/HideAmazonQ.png'>
+  </div>
 
 </body>
 

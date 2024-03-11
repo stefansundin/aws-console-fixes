@@ -18,10 +18,9 @@ body.chrome {
   border-bottom: 1px dashed rgb(68, 185, 214);
 }
 
-.custom-tooltip {
-  --bs-tooltip-max-width: auto;
-  --bs-tooltip-opacity: 1;
-}
-.custom-tooltip .tooltip-inner {
+.tooltip-inner {
   text-align: start;
+}
+.tooltip-inner img {
+  max-width: 100%;
 }
