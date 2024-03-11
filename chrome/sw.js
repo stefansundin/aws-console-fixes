@@ -6,16 +6,31 @@ import { availableContentScripts } from './scripts/index.js';
 import { syncTheme } from './scripts/syncTheme.js';
 import { getOptions, isRequiredPermissionsGranted } from './utils.js';
 
-async function checkPermissions() {
+async function updateActionButton() {
+  const options = await getOptions();
   const registeredContentScripts =
     await chrome.scripting.getRegisteredContentScripts();
-  if (registeredContentScripts.length === 0) {
-    chrome.action.setBadgeText({ text: '' });
-    return;
+
+  const iconSuffix =
+    options.enabledContentScripts.length > 0 &&
+    registeredContentScripts.length === 0
+      ? '-gray'
+      : '';
+
+  let text = '';
+  if (registeredContentScripts.length > 0) {
+    const granted = await isRequiredPermissionsGranted();
+    if (!granted) {
+      text = '!';
+    }
   }
 
-  const granted = await isRequiredPermissionsGranted();
-  const text = granted ? '' : '!';
+  chrome.action.setIcon({
+    path: {
+      19: `img/icon-19${iconSuffix}.png`,
+      38: `img/icon-38${iconSuffix}.png`,
+    },
+  });
   chrome.action.setBadgeText({ text });
 }
 
@@ -57,13 +72,13 @@ chrome.runtime.onMessage.addListener(({ type, name }, sender, sendResponse) => {
     updateOptions()
       .then(() => sendResponse(true))
       .catch(() => sendResponse(false))
-      .finally(() => checkPermissions());
+      .finally(() => updateActionButton());
     return true;
   } else if (type === 'unregisterContentScripts') {
     unregisterContentScripts()
       .then(() => sendResponse(true))
       .catch(() => sendResponse(false))
-      .finally(() => checkPermissions());
+      .finally(() => updateActionButton());
     return true;
   }
 });
@@ -80,5 +95,5 @@ if (chrome.storage.session.setAccessLevel) {
 
 updateOptions();
 
-chrome.permissions.onAdded.addListener(() => checkPermissions());
-chrome.permissions.onRemoved.addListener(() => checkPermissions());
+chrome.permissions.onAdded.addListener(() => updateActionButton());
+chrome.permissions.onRemoved.addListener(() => updateActionButton());
