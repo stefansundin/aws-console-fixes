@@ -24,14 +24,14 @@ async function main() {
       );
       if (!favoritesBar) {
         console.debug(
-          `[aws-console-fixes] Navbar: Could not find the favorites bar DOM element.`,
+          `[aws-console-fixes] Shortcuts: Could not find the favorites bar DOM element.`,
         );
         return;
       }
       const a = favoritesBar.getElementsByTagName('a')[i - 1];
       if (!a) {
         console.debug(
-          `[aws-console-fixes] Navbar: Could not find element ${i} in the favorites bar.`,
+          `[aws-console-fixes] Shortcuts: Could not find element ${i} in the favorites bar.`,
         );
         return;
       }
@@ -56,7 +56,7 @@ async function main() {
       );
       if (!isHTMLElement(menu)) {
         console.debug(
-          `[aws-console-fixes] Navbar: menu is not an HTML element?`,
+          `[aws-console-fixes] Shortcuts: menu is not an HTML element?`,
           menu,
         );
         return;
@@ -64,7 +64,7 @@ async function main() {
       const dropdown = menu.nextElementSibling;
       if (!isHTMLElement(dropdown)) {
         console.debug(
-          `[aws-console-fixes] Navbar: dropdown is not an HTML element?`,
+          `[aws-console-fixes] Shortcuts: dropdown is not an HTML element?`,
           dropdown,
         );
         return;

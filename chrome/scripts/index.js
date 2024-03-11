@@ -11,10 +11,10 @@ export const availableContentScripts = {
     runAt: 'document_start',
   },
 
-  Navbar: {
-    id: 'Navbar',
-    js: ['scripts/Navbar.js'],
-    css: ['scripts/Navbar.css'],
+  Shortcuts: {
+    id: 'Shortcuts',
+    js: ['scripts/Shortcuts.js'],
+    css: ['scripts/Shortcuts.css'],
     matches: ['https://*.console.aws.amazon.com/*'],
     runAt: 'document_end',
   },
