@@ -1,3 +1,7 @@
+html {
+  scrollbar-width: none;
+}
+
 body {
   width: 400px;
 }
