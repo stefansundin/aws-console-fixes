@@ -4,10 +4,22 @@
 
 import { availableContentScripts } from './scripts/index.js';
 import { syncTheme } from './scripts/syncTheme.js';
-import { getOptions } from './utils.js';
+import { getOptions, isRequiredPermissionsGranted } from './utils.js';
 
-async function updateOptions() {
-  // Unregister all content scripts
+async function checkPermissions() {
+  const registeredContentScripts =
+    await chrome.scripting.getRegisteredContentScripts();
+  if (registeredContentScripts.length === 0) {
+    chrome.action.setBadgeText({ text: '' });
+    return;
+  }
+
+  const granted = await isRequiredPermissionsGranted();
+  const text = granted ? '' : '!';
+  chrome.action.setBadgeText({ text });
+}
+
+async function unregisterContentScripts() {
   const registeredContentScripts =
     await chrome.scripting.getRegisteredContentScripts();
   if (registeredContentScripts.length > 0) {
@@ -15,6 +27,10 @@ async function updateOptions() {
       ids: registeredContentScripts.map((s) => s.id),
     });
   }
+}
+
+async function updateOptions() {
+  await unregisterContentScripts();
 
   const options = await getOptions();
 
@@ -40,7 +56,14 @@ chrome.runtime.onMessage.addListener(({ type, name }, sender, sendResponse) => {
   if (type === 'updateOptions') {
     updateOptions()
       .then(() => sendResponse(true))
-      .catch(() => sendResponse(false));
+      .catch(() => sendResponse(false))
+      .finally(() => checkPermissions());
+    return true;
+  } else if (type === 'unregisterContentScripts') {
+    unregisterContentScripts()
+      .then(() => sendResponse(true))
+      .catch(() => sendResponse(false))
+      .finally(() => checkPermissions());
     return true;
   }
 });
@@ -56,3 +79,6 @@ if (chrome.storage.session.setAccessLevel) {
 }
 
 updateOptions();
+
+chrome.permissions.onAdded.addListener(() => checkPermissions());
+chrome.permissions.onRemoved.addListener(() => checkPermissions());

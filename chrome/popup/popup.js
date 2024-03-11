@@ -90,9 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (registeredContentScripts.length === 0) {
         await chrome.runtime.sendMessage({ type: 'updateOptions' });
       } else {
-        await chrome.scripting.unregisterContentScripts({
-          ids: registeredContentScripts.map((s) => s.id),
-        });
+        await chrome.runtime.sendMessage({ type: 'unregisterContentScripts' });
       }
       refreshState();
     } finally {
