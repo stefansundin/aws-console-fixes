@@ -94,10 +94,22 @@ async function main() {
     }
   }
 
-  const documents = getPageDocuments();
-  for (const doc of documents) {
-    doc.body.addEventListener('keydown', onKeyDown);
+  function addKeyDownListener() {
+    const documents = getPageDocuments();
+    for (const doc of documents) {
+      if (!doc.body.dataset.xAwsConsoleFixesShortcutsListener) {
+        doc.body.dataset.xAwsConsoleFixesShortcutsListener = 'true';
+        doc.body.addEventListener('keydown', onKeyDown);
+      }
+    }
   }
+
+  const observer = new MutationObserver((mutations) => {
+    addKeyDownListener();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  addKeyDownListener();
 }
 
 main();
