@@ -1,10 +1,16 @@
+// Global shortcuts
+// This may need improvements for non-English keyboard layouts
+
 async function main() {
   /** @type {import('../utils.js')} */
-  const { isHTMLElement } = await import(chrome.runtime.getURL('utils.js'));
+  const { getPageDocuments, isHTMLElement } = await import(
+    chrome.runtime.getURL('utils.js')
+  );
 
-  // Global shortcuts
-  // This may need improvements for non-English keyboard layouts
-  document.body.addEventListener('keydown', (e) => {
+  /**
+   * @param {KeyboardEvent} e
+   */
+  function onKeyDown(e) {
     console.debug(`[aws-console-fixes] Navbar keydown: ${e.key}`);
 
     const target = /** @type Element */ (e.target);
@@ -86,7 +92,12 @@ async function main() {
       }
       return;
     }
-  });
+  }
+
+  const documents = getPageDocuments();
+  for (const doc of documents) {
+    doc.body.addEventListener('keydown', onKeyDown);
+  }
 }
 
 main();
