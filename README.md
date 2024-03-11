@@ -4,6 +4,11 @@ This browser extension fixes various annoyances in the AWS Management Console.
 
 It consists of a collection of scripts that can be enabled and configured by the user. By default the extension does nothing, all of the functionality has to be opted in.
 
+## Install
+
+- Chrome: https://chromewebstore.google.com/detail/aws-console-fixes/janggcknahfmmgkdgcjipkahhpfkhmcd
+- Firefox: https://addons.mozilla.org/en-US/firefox/addon/aws-management-console-fixes/
+
 
 # Development
 
