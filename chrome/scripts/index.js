@@ -56,7 +56,7 @@ export const availableContentScripts = {
   HideMarketingChatbot: {
     id: 'HideMarketingChatbot',
     css: ['scripts/HideMarketingChatbot.css'],
-    matches: ['https://aws.amazon.com/*'],
+    matches: ['https://aws.amazon.com/*', 'https://calculator.aws/*'],
     runAt: 'document_start',
   },
 
