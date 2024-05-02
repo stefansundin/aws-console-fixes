@@ -1,0 +1,66 @@
+/*
+TODO: A loading image appears when reloading the page, and the gif has a white background, so it doesn't look good in dark mode.
+<img class="loading-image" alt="Loading..." src="/static/image/loading.gif"/>
+https://us-west-2.signin.aws.amazon.com/static/image/loading.gif
+*/
+
+body, .awsui {
+  background-color: rgb(22, 25, 31) !important;
+  color: rgb(213, 219, 219) !important;
+}
+
+a {
+  color: white !important;
+}
+
+.aws-signin-text-bold,
+.aws-signin-text-small,
+.aws-signin-iam-login-header-box,
+.aws-signin-iam-multi-mfa-header-text,
+.aws-signin-iam-multi-mfa-message-text-1,
+.aws-signin-iam-multi-mfa-message-text-bold,
+.aws-signin-iam-multi-mfa-message-text,
+.textinput label {
+  color: rgb(213, 219, 219) !important;
+}
+
+.aws-signin-radio-selection {
+  background-color: #111 !important;
+}
+
+.aws-signin-radio-border:not(.aws-signin-radio-selection):not(:hover) {
+  border-color: rgb(135, 149, 150) !important;
+}
+
+input.aws-signin-textfield,
+.textinput input {
+  background-color: rgb(26, 32, 41) !important;
+  color: inherit !important;
+}
+
+input.aws-signin-textfield:not(:focus),
+.textinput input:not(:focus) {
+  border-color: rgb(135, 149, 150) !important;
+}
+
+.signin-break-wrapper {
+  background: rgb(22, 25, 31) none repeat scroll 0 0 !important;
+}
+
+.awsui .awsui-button.awsui-button-variant-normal,
+.awsui .aws-signin-button.aws-signin-button-variant-normal {
+  color: black !important;
+}
+
+a#logo_link {
+  color: transparent !important;
+}
+
+.half-opacity {
+  opacity: 0.1 !important;
+}
+
+#logo_container>h1.background-left,
+#container>h1.background {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjIuMCIgdmlld0JveD0iMCAwIDI5IDE3Ij48cGF0aCBmaWxsPSIjRkZGIiBkPSJNOC4zOCA2LjE3YTIuNiAyLjYgMCAwIDAgLjExLjgzcS4xMi4zNDkuMy42N2EuNC40IDAgMCAxIC4wNy4yMS4zNi4zNiAwIDAgMS0uMTguMjhsLS41OS4zOWEuNDMuNDMgMCAwIDEtLjI0LjA4LjM4LjM4IDAgMCAxLS4yOC0uMTMgMi40IDIuNCAwIDAgMS0uMzQtLjQzYy0uMDktLjE2LS4xOC0uMzQtLjI4LS41NWEzLjQ0IDMuNDQgMCAwIDEtMi43NCAxLjI5IDIuNTQgMi41NCAwIDAgMS0xLjg2LS42NyAyLjM2IDIuMzYgMCAwIDEtLjY4LTEuNzkgMi40MyAyLjQzIDAgMCAxIC44NC0xLjkyIDMuNDMgMy40MyAwIDAgMSAyLjI5LS43MiA3IDcgMCAwIDEgMSAuMDdjLjM1LjA1LjcuMTIgMS4wNy4yVjMuM2EyLjA2IDIuMDYgMCAwIDAtLjQ0LTEuNDkgMi4xMiAyLjEyIDAgMCAwLTEuNTItLjQzIDQuNCA0LjQgMCAwIDAtMSAuMTIgNyA3IDAgMCAwLTEgLjMybC0uMzMuMTJoLS4xNGMtLjE0IDAtLjItLjEtLjItLjI5di0uNDZBLjYuNiAwIDAgMSAyLjMuODdhLjguOCAwIDAgMSAuMjctLjJBNiA2IDAgMCAxIDMuNzQuMjUgNS43IDUuNyAwIDAgMSA1LjE5LjA3YTMuMzcgMy4zNyAwIDAgMSAyLjQ0Ljc2IDMgMyAwIDAgMSAuNzcgMi4yOXpNNC42IDcuNTlhMyAzIDAgMCAwIDEtLjE3IDIgMiAwIDAgMCAuODgtLjYgMS4zNiAxLjM2IDAgMCAwIC4zMi0uNTkgMy4yIDMuMiAwIDAgMCAuMDktLjgxVjVBOCA4IDAgMCAwIDYgNC44N2gtLjg4YTIuMTMgMi4xMyAwIDAgMC0xLjM4LjM3IDEuMyAxLjMgMCAwIDAtLjQ2IDEuMDggMS4zIDEuMyAwIDAgMCAuMzQgMWMuMjc4LjIxNi42My4zMTMuOTguMjdtNy40OSAxYS41Ni41NiAwIDAgMS0uMzYtLjA5LjczLjczIDAgMCAxLS4yLS4zN0w5LjM1LjkzYTEuNCAxLjQgMCAwIDEtLjA4LS4zOGMwLS4xNS4wNy0uMjMuMjItLjIzaC45MmEuNTYuNTYgMCAwIDEgLjM2LjA5Ljc0Ljc0IDAgMCAxIC4xOS4zN0wxMi41MyA3IDE0IC43OWEuNi42IDAgMCAxIC4xOC0uMzcuNi42IDAgMCAxIC4zNy0uMDloLjc1YS42Mi42MiAwIDAgMSAuMzguMDkuNzQuNzQgMCAwIDEgLjE4LjM3TDE3LjMxIDcgMTguOTIuNzZhLjc0Ljc0IDAgMCAxIC4xOS0uMzcuNTYuNTYgMCAwIDEgLjM2LS4wOWguODdhLjIxLjIxIDAgMCAxIC4yMy4yMyAxIDEgMCAwIDEgMCAuMTVzMCAuMTMtLjA2LjIzbC0yLjI2IDcuMmEuNzQuNzQgMCAwIDEtLjE5LjM3LjYuNiAwIDAgMS0uMzYuMDloLS44YS41My41MyAwIDAgMS0uMzctLjEuNjQuNjQgMCAwIDEtLjE4LS4zN2wtMS40NS02LTEuNDQgNmEuNjQuNjQgMCAwIDEtLjE4LjM3LjU1LjU1IDAgMCAxLS4zNy4xem0xMiAuMjRhNi4zIDYuMyAwIDAgMS0xLjQ0LS4xNiA0LjIgNC4yIDAgMCAxLTEuMDctLjM3LjcuNyAwIDAgMS0uMjktLjI2LjcuNyAwIDAgMS0uMDYtLjI3VjcuM2MwLS4xOS4wNy0uMjkuMjEtLjI5YS42LjYgMCAwIDEgLjE4IDBsLjIzLjFxLjQ4Mi4yMTUgMSAuMzIuNTQ5LjEyIDEuMTEuMTJhMi40NyAyLjQ3IDAgMCAwIDEuMzYtLjMxIDEgMSAwIDAgMCAuNDgtLjg4Ljg4Ljg4IDAgMCAwLS4yNS0uNjUgMi4zIDIuMyAwIDAgMC0uOTQtLjQ5bC0xLjM1LS40M2EyLjgzIDIuODMgMCAwIDEtMS40OS0uOTQgMi4yNCAyLjI0IDAgMCAxLS40Ny0xLjM2IDIgMiAwIDAgMSAuMjUtMWMuMTY3LS4zLjM5NS0uNTYzLjY3LS43N2EzIDMgMCAwIDEgMS0uNDhBNC4xIDQuMSAwIDAgMSAyNC40LjA4YTQuNCA0LjQgMCAwIDEgLjYyIDBsLjYxLjEuNTMuMTUuMzkuMTZxLjE1OS4wOTQuMjguMjNhLjU3LjU3IDAgMCAxIC4wOC4zMXYuNDRxMCAuMy0uMjEuM2EuOS45IDAgMCAxLS4zNi0uMTIgNC4zNSA0LjM1IDAgMCAwLTEuOC0uMzYgMi41IDIuNSAwIDAgMC0xLjI0LjI2LjkyLjkyIDAgMCAwLS40NC44NGMwIC4yNDkuMS40ODguMjguNjYuMjk1LjIzNi42MzUuNDEgMSAuNTFsMS4zMi40MmEyLjkgMi45IDAgMCAxIDEuNDQuOSAyLjEgMi4xIDAgMCAxIC40MyAxLjMxIDIuNCAyLjQgMCAwIDEtLjI0IDEuMDggMi4zNCAyLjM0IDAgMCAxLS42OC44MiAzIDMgMCAwIDEtMSAuNTMgNC42IDQuNiAwIDAgMS0xLjM1LjIyeiIvPjxwYXRoIGZpbGw9IiNGODk5MUQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI1LjgyIDEzLjQzYTIwLjA3IDIwLjA3IDAgMCAxLTExLjM1IDMuNDdBMjAuNTQgMjAuNTQgMCAwIDEgLjYxIDExLjYyYy0uMjktLjI2IDAtLjYyLjMyLS40MmEyNy44IDI3LjggMCAwIDAgMTMuODYgMy42OCAyNy41IDI3LjUgMCAwIDAgMTAuNTgtMi4xNmMuNTItLjIyLjk2LjM0LjQ1LjcxIi8+PHBhdGggZmlsbD0iI0Y4OTkxRCIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMjcuMSAxMmMtLjQtLjUxLTIuNi0uMjQtMy41OS0uMTItLjMgMC0uMzQtLjIzLS4wNy0uNDIgMS43NS0xLjIzIDQuNjMtLjg4IDUtLjQ2cy0uMDkgMy4zLTEuNzQgNC42OGMtLjI1LjIxLS40OS4wOS0uMzgtLjE4LjM0LS45NSAxLjE3LTMuMDIuNzgtMy41Ii8+PC9zdmc+') !important;
+}

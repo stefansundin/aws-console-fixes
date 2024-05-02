@@ -46,6 +46,16 @@ export const availableContentScripts = {
     runAt: 'document_start',
   },
 
+  SignInDarkMode: {
+    id: 'SignInDarkMode',
+    css: ['scripts/SignInDarkMode.css'],
+    matches: [
+      'https://*.signin.aws.amazon.com/signin*',
+      'https://*.signin.aws.amazon.com/oauth*',
+    ],
+    runAt: 'document_start',
+  },
+
   HideCustomerSatisfactionNotification: {
     id: 'HideCustomerSatisfactionNotification',
     css: ['scripts/HideCustomerSatisfactionNotification.css'],
