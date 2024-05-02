@@ -4,6 +4,8 @@ import 'zx/globals';
 
 import fs from 'node:fs/promises';
 
+$.verbose = true;
+
 try {
   await fs.stat('chrome/bootstrap/bootstrap.min.css');
 } catch (err) {
