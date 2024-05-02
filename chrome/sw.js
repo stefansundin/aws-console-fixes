@@ -1,7 +1,3 @@
-/**
- * @typedef {import('./types.js').ContentScriptName} ContentScriptName
- */
-
 import { availableContentScripts } from './scripts/index.js';
 import { syncTheme } from './scripts/syncTheme.js';
 import { getOptions, isRequiredPermissionsGranted } from './utils.js';

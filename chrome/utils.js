@@ -2,9 +2,7 @@ import defaultOptions, { optionsVersion } from './defaultOptions.js';
 import { availableContentScripts } from './scripts/index.js';
 
 /**
- * @typedef {import('./types.js').StorageAreaName} StorageAreaName
- * @typedef {import('./types.js').Options} Options
- * @typedef {import('./types.js').EffectiveTheme} EffectiveTheme
+ * @import { StorageAreaName, Options, EffectiveTheme } from './types.js'
  */
 
 export const isChrome = navigator.userAgent.includes('Chrome/');

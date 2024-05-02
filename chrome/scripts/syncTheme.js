@@ -1,8 +1,7 @@
 import { getDateInFuture } from '../utils.js';
 
 /**
- * @typedef {import('../types.js').Theme} Theme
- * @typedef {import('../types.js').EffectiveTheme} EffectiveTheme
+ * @import { Theme, EffectiveTheme } from '../types.js'
  */
 
 /**

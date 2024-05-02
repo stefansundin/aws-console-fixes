@@ -13,11 +13,7 @@ import {
 } from '../utils.js';
 
 /**
- * @typedef {import('../types.js').Options} Options
- * @typedef {import('../types.js').ContentScriptName} ContentScriptName
- * @typedef {import('../types.js').StorageAreaName} StorageAreaName
- * @typedef {import('../types.js').Theme} Theme
- * @typedef {import('../types.js').EffectiveTheme} EffectiveTheme
+ * @import { Options, ContentScriptName, StorageAreaName, Theme, EffectiveTheme } from '../types.js'
  * @typedef {HTMLButtonElement | HTMLInputElement | HTMLOutputElement | HTMLSelectElement | HTMLTextAreaElement} FormControlElement
  */
 

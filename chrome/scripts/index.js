@@ -1,5 +1,5 @@
 /**
- * @typedef {import('../types.js').ContentScriptName} ContentScriptName
+ * @import { ContentScriptName } from '../types.js'
  */
 
 /** @type Record<ContentScriptName, chrome.scripting.RegisteredContentScript> */
