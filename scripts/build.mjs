@@ -1,4 +1,4 @@
-#!/usr/bin/env zx
+#!/usr/bin/env ./node_modules/.bin/zx
 
 import 'zx/globals';
 
