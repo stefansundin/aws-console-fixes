@@ -7,6 +7,7 @@ import { availableContentScripts } from './scripts/index.js';
 
 export const isChrome = navigator.userAgent.includes('Chrome/');
 export const isFirefox = navigator.userAgent.includes('Firefox/');
+export const isAndroid = navigator.userAgent.includes('Android');
 
 /**
  * @returns {Promise<StorageAreaName>}

@@ -2,6 +2,7 @@ import {
   getOptions,
   getRequiredPermissions,
   getSystemTheme,
+  isAndroid,
   isChrome,
   isFirefox,
   isRequiredPermissionsGranted,
@@ -12,6 +13,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.add('chrome');
   } else if (isFirefox) {
     document.body.classList.add('firefox');
+  }
+  if (isAndroid) {
+    document.body.classList.add('w-100');
   }
 
   {
