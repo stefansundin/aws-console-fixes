@@ -19,7 +19,7 @@ async function main() {
       getPageDocuments().flatMap((doc) =>
         Array.from(
           doc.querySelectorAll(
-            'div[data-analytics-flashbar="info"], div.awsui-flash-type-info, div.awsui-alert-type-info',
+            'div[data-analytics-flashbar="info"], div[data-analytics-alert="info"], div.awsui-flash-type-info, div.awsui-alert-type-info',
           ),
         ),
       )
