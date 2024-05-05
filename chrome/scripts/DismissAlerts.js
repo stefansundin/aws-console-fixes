@@ -8,15 +8,23 @@ async function main() {
   const { dismissedAlerts } = await storage.get({ dismissedAlerts: [] });
   console.log('[aws-console-fixes]', { dismissedAlerts });
 
-  function checkForAlerts() {
-    console.log(
-      '[aws-console-fixes] DismissAlerts checkForAlerts',
-      document.location.href,
-      document.body,
-    );
+  function check() {
+    console.log('[aws-console-fixes] DismissAlerts check');
+
+    const documents = getPageDocuments();
+
+    for (const body of documents.map((doc) => doc.body).filter(Boolean)) {
+      if (!body.dataset.xAwsConsoleFixesDismissAlerts) {
+        body.dataset.xAwsConsoleFixesDismissAlerts = 'true';
+        const observer = new MutationObserver((mutations) => {
+          check();
+        });
+        observer.observe(body, { childList: true, subtree: true });
+      }
+    }
 
     const elements = /** @type HTMLDivElement[] */ (
-      getPageDocuments().flatMap((doc) =>
+      documents.flatMap((doc) =>
         Array.from(
           doc.querySelectorAll(
             'div[data-analytics-flashbar="info"], div[data-analytics-alert="info"], div.awsui-flash-type-info, div.awsui-alert-type-info',
@@ -85,12 +93,7 @@ async function main() {
     }
   }
 
-  const observer = new MutationObserver((mutations) => {
-    checkForAlerts();
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
-
-  checkForAlerts();
+  check();
 }
 
 main();

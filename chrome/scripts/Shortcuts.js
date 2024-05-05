@@ -96,18 +96,17 @@ async function main() {
 
   function addKeyDownListener() {
     const documents = getPageDocuments();
-    for (const doc of documents) {
-      if (!doc.body.dataset.xAwsConsoleFixesShortcutsListener) {
-        doc.body.dataset.xAwsConsoleFixesShortcutsListener = 'true';
-        doc.body.addEventListener('keydown', onKeyDown);
+    for (const body of documents.map((doc) => doc.body).filter(Boolean)) {
+      if (!body.dataset.xAwsConsoleFixesShortcuts) {
+        body.dataset.xAwsConsoleFixesShortcuts = 'true';
+        body.addEventListener('keydown', onKeyDown);
+        const observer = new MutationObserver((mutations) => {
+          addKeyDownListener();
+        });
+        observer.observe(body, { childList: true, subtree: true });
       }
     }
   }
-
-  const observer = new MutationObserver((mutations) => {
-    addKeyDownListener();
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
 
   addKeyDownListener();
 }
