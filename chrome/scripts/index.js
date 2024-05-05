@@ -80,4 +80,11 @@ export const availableContentScripts = {
     ],
     runAt: 'document_end',
   },
+
+  SwitchRoleAccountID: {
+    id: 'SwitchRoleAccountID',
+    js: ['scripts/SwitchRoleAccountID.js'],
+    matches: ['https://*.signin.aws.amazon.com/switchrole*'],
+    runAt: 'document_end',
+  },
 };

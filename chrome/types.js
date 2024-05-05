@@ -1,5 +1,5 @@
 /**
- * @typedef {'Shortcuts' | 'DismissAlerts' | 'HideNewAdverts' | 'HideSignInMarketing' | 'SignInDarkMode' | 'HideCustomerSatisfactionNotification' | 'HideMarketingChatbot' | 'HideAmazonQ' | 'S3SyncTheme'} ContentScriptName
+ * @typedef {'Shortcuts' | 'DismissAlerts' | 'HideNewAdverts' | 'HideSignInMarketing' | 'SignInDarkMode' | 'HideCustomerSatisfactionNotification' | 'HideMarketingChatbot' | 'HideAmazonQ' | 'SwitchRoleAccountID' | 'S3SyncTheme'} ContentScriptName
  * @typedef {'session' | 'local' | 'sync'} StorageAreaName
  * @typedef {'light' | 'dark'} EffectiveTheme
  * @typedef {EffectiveTheme | 'auto'} Theme
