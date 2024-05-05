@@ -11,12 +11,12 @@ async function main() {
    * @param {KeyboardEvent} e
    */
   function onKeyDown(e) {
-    console.debug(`[aws-console-fixes] Navbar keydown: ${e.key}`);
-
     const target = /** @type Element */ (e.target);
     if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
       return;
     }
+
+    console.debug(`[aws-console-fixes] Shortcuts keydown: ${e.key}`);
 
     // Press 1-9 and 0 (0 is 10) to focus your favorite shortcuts.
     // Does not automatically navigate so you have to press the Enter key afterwards.
