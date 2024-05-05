@@ -68,15 +68,19 @@ async function main() {
           '[aws-console-fixes] DismissAlerts button click:',
           e.target,
         );
-        if (confirm('[aws-console-fixes] Dismiss this alert permanently?')) {
-          // Make sure we operate on fresh data:
-          storage
-            .get({ dismissedAlerts: [] })
-            .then(async ({ dismissedAlerts }) => {
-              dismissedAlerts.push(text);
-              await storage.set({ dismissedAlerts });
-            });
+        if (!confirm('[aws-console-fixes] Dismiss this alert permanently?')) {
+          return;
         }
+        // Make sure we operate on fresh data:
+        storage
+          .get({ dismissedAlerts: [] })
+          .then(async ({ dismissedAlerts }) => {
+            if (dismissedAlerts.includes(text)) {
+              return;
+            }
+            dismissedAlerts.push(text);
+            await storage.set({ dismissedAlerts });
+          });
       });
     }
   }
