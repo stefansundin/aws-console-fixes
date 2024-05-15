@@ -117,7 +117,7 @@ export function getPageDocuments() {
 }
 
 /**
- * @param {Element|null|undefined} el
+ * @param {Element|Node|null|undefined} el
  * @returns {el is HTMLElement}
  */
 export function isHTMLElement(el) {

@@ -31,6 +31,7 @@ details p {
 
 .tooltip-inner {
   text-align: start;
+  --bs-tooltip-max-width: 700px;
 }
 .tooltip-inner img {
   max-width: 100%;

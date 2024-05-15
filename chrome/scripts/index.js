@@ -19,6 +19,13 @@ export const availableContentScripts = {
     runAt: 'document_end',
   },
 
+  NavbarFavoritesShorterNames: {
+    id: 'NavbarFavoritesShorterNames',
+    js: ['scripts/NavbarFavoritesShorterNames.js'],
+    matches: ['https://*.console.aws.amazon.com/*'],
+    runAt: 'document_end',
+  },
+
   DismissAlerts: {
     id: 'DismissAlerts',
     js: ['scripts/DismissAlerts.js'],
