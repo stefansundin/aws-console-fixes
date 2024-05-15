@@ -6,10 +6,10 @@ async function main() {
 
   const storage = await getStorage();
   const { dismissedAlerts } = await storage.get({ dismissedAlerts: [] });
-  console.log('[aws-console-fixes]', { dismissedAlerts });
+  console.debug('[aws-console-fixes]', { dismissedAlerts });
 
   function check() {
-    console.log('[aws-console-fixes] DismissAlerts check');
+    console.debug('[aws-console-fixes] DismissAlerts check');
 
     const documents = getPageDocuments();
 

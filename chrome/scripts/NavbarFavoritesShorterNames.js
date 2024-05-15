@@ -38,7 +38,6 @@ async function main() {
         continue;
       }
       const spanElement = node.getElementsByTagName('span')[0];
-      console.log('spanElement', spanElement);
       if (
         spanElement.childNodes.length !== 1 ||
         spanElement.childNodes[0].nodeType !== Node.TEXT_NODE

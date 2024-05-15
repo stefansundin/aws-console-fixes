@@ -81,12 +81,9 @@ async function main() {
       menu.click();
       if (!visible) {
         const a = dropdown.querySelector('a, button');
-        // console.log('a', a);
-        // console.log('dropdown', dropdown);
         if (a) {
           setTimeout(function () {
             dropdown.focus();
-            // a.focus();
           }, 10);
         }
       }
