@@ -1,0 +1,13 @@
+.m-headline {
+  max-height: none !important;
+}
+
+.m-card-main {
+  max-height: 100% !important;
+  margin-bottom: 80px !important;
+}
+
+audio {
+  width: 100% !important;
+  max-width: unset !important;
+}

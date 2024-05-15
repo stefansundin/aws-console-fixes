@@ -94,4 +94,12 @@ export const availableContentScripts = {
     matches: ['https://*.signin.aws.amazon.com/switchrole*'],
     runAt: 'document_end',
   },
+
+  AwsPodcast: {
+    id: 'AwsPodcast',
+    js: ['scripts/AwsPodcast.js'],
+    css: ['scripts/AwsPodcast.css'],
+    matches: ['https://aws.amazon.com/podcasts/aws-podcast/*'],
+    runAt: 'document_end',
+  },
 };
