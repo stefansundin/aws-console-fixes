@@ -15,16 +15,37 @@ async function main() {
       }
     }
 
-    const elements = /** @type HTMLButtonElement[] */ (
-      documents.flatMap((doc) =>
-        Array.from(doc.querySelectorAll('button[aria-haspopup="dialog"]')),
-      )
-    );
+    {
+      const elements = /** @type HTMLElement[] */ (
+        documents.flatMap((doc) =>
+          Array.from(
+            doc.querySelectorAll('button[aria-haspopup="dialog"],awsui-badge'),
+          ),
+        )
+      );
 
-    for (const el of elements) {
-      // TODO: check non-english languages
-      if (el.innerText?.trim().toLowerCase() === 'new') {
-        el.remove();
+      for (const el of elements) {
+        // TODO: check non-english languages
+        if (el.innerText?.trim().toLowerCase() === 'new') {
+          el.remove();
+        }
+      }
+    }
+
+    {
+      // These <span>s appear in the WAFv2 console and do not have any good CSS selectors on them :(
+      const elements = /** @type HTMLElement[] */ (
+        documents.flatMap((doc) => Array.from(doc.getElementsByTagName('span')))
+      );
+
+      for (const el of elements) {
+        // TODO: check non-english languages
+        if (
+          el.className.includes('awsui_badge') &&
+          el.innerText?.trim().toLowerCase() === 'new'
+        ) {
+          el.remove();
+        }
       }
     }
   }

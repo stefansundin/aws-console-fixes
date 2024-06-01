@@ -10,6 +10,7 @@ const textReplacements = {
   'AWS Health Dashboard': 'Health',
   'AWS Private Certificate Authority': 'Private CA',
   'Billing and Cost Management': 'Billing',
+  'Certificate Manager': 'ACM',
   'Console Home': 'Home',
   'Database Migration Service': 'DMS',
   'Elastic Beanstalk': 'Beanstalk',
