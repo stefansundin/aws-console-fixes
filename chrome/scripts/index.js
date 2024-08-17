@@ -99,7 +99,7 @@ export const availableContentScripts = {
     id: 'AwsPodcast',
     js: ['scripts/AwsPodcast.js'],
     css: ['scripts/AwsPodcast.css'],
-    matches: ['https://aws.amazon.com/podcasts/aws-podcast/*'],
+    matches: ['https://aws.amazon.com/podcasts/*'],
     runAt: 'document_end',
   },
 };
