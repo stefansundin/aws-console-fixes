@@ -1,6 +1,6 @@
 // Note: Besides the replacements defined here, the code also removes and "Amazon" or "AWS" prefixes.
 
-/** @type Record<string, string> */
+/** @type {Record<string, string>} */
 const textReplacements = {
   'Amazon Managed Blockchain': 'Blockchain',
   'Amazon MemoryDB for Redis': 'MemoryDB',
@@ -26,7 +26,7 @@ async function main() {
   /** @type {import('../utils.js')} */
   const { isHTMLElement } = await import(chrome.runtime.getURL('utils.js'));
 
-  /** @type HTMLOListElement | null | undefined */
+  /** @type {HTMLOListElement | null | undefined} */
   let favoritesBar;
 
   function check() {
@@ -75,7 +75,7 @@ async function main() {
   }
 
   function checkForFavoritesBar() {
-    favoritesBar = /** @type HTMLOListElement | null */ (
+    favoritesBar = /** @type {HTMLOListElement | null} */ (
       document.querySelector(
         'ol[data-rbd-droppable-id="global-nav-favorites-bar-list-edit-mode"]',
       )

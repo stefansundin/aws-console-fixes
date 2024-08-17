@@ -2,7 +2,7 @@
  * @import { ContentScriptName } from '../types.js'
  */
 
-/** @type Record<ContentScriptName, chrome.scripting.RegisteredContentScript> */
+/** @type {Record<ContentScriptName, chrome.scripting.RegisteredContentScript>} */
 export const availableContentScripts = {
   S3SyncTheme: {
     id: 'S3SyncTheme',

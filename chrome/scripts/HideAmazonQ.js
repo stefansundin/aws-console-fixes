@@ -15,7 +15,7 @@ async function main() {
       }
     }
 
-    const buttons = /** @type HTMLButtonElement[] */ (
+    const buttons = /** @type {HTMLButtonElement[]} */ (
       documents.flatMap((doc) =>
         Array.from(
           doc.querySelectorAll('button[data-analytics="askViewModal"]'),

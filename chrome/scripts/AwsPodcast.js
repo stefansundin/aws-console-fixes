@@ -42,7 +42,7 @@ async function main() {
         continue;
       }
 
-      /** @type Text[] */
+      /** @type {Text[]} */
       const textNodes = [];
       // Some shownotes have multiple <p></p> elements and even <br> elements, so we need to use a tree walker to just get all the text nodes
       // https://aws.amazon.com/podcasts/aws-podcast/666_aws_news_updates_may_6_2024/
@@ -92,7 +92,7 @@ async function main() {
 
           textNode = textNode.splitText(match.index);
           textNode = textNode.splitText(match[0].length);
-          const middleNode = /** @type Text */ (textNode.previousSibling);
+          const middleNode = /** @type {Text} */ (textNode.previousSibling);
           middleNode.parentNode?.replaceChild(link, middleNode);
         }
       }

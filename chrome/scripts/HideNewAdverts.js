@@ -16,7 +16,7 @@ async function main() {
     }
 
     {
-      const elements = /** @type HTMLElement[] */ (
+      const elements = /** @type {HTMLElement[]} */ (
         documents.flatMap((doc) =>
           Array.from(
             doc.querySelectorAll('button[aria-haspopup="dialog"],awsui-badge'),
@@ -34,7 +34,7 @@ async function main() {
 
     {
       // These <span>s appear in the WAFv2 console and do not have any good CSS selectors on them :(
-      const elements = /** @type HTMLElement[] */ (
+      const elements = /** @type {HTMLElement[]} */ (
         documents.flatMap((doc) => Array.from(doc.getElementsByTagName('span')))
       );
 

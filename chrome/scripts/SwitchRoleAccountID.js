@@ -1,7 +1,7 @@
 // Fill in the current account ID if the input field is empty (i.e. the URL didn't use the "account=" query parameter)
 
 setTimeout(() => {
-  const accountIdInput = /** @type HTMLInputElement | null */ (
+  const accountIdInput = /** @type {HTMLInputElement | null} */ (
     document.getElementById('accountId')
   );
   if (!accountIdInput || accountIdInput.value !== '') {

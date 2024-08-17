@@ -46,7 +46,7 @@ async function checkPermissions() {
 }
 
 async function updateDebug() {
-  const textarea = /** @type HTMLTextAreaElement */ (
+  const textarea = /** @type {HTMLTextAreaElement} */ (
     document.getElementById('debug')
   );
   textarea.value = JSON.stringify(
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await updateDebug();
   const extensionInfo = await chrome.management.getSelf();
   if (extensionInfo.installType === 'development') {
-    const debugDetails = /** @type HTMLDetailsElement */ (
+    const debugDetails = /** @type {HTMLDetailsElement} */ (
       document.getElementById('debugDetails')
     );
     debugDetails.open = true;
@@ -80,12 +80,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.add('chrome');
   } else if (isFirefox) {
     document.body.classList.add('firefox');
-    const syncOption = /** @type HTMLOptionElement */ (
+    const syncOption = /** @type {HTMLOptionElement} */ (
       document
         .getElementsByName('storageArea')[0]
         .querySelector('option[value="sync"]')
     );
-    syncOption.textContent = /** @type string */ (
+    syncOption.textContent = /** @type {string} */ (
       syncOption.textContent
     ).replace('Chrome profile', 'Mozilla account');
   }
@@ -121,11 +121,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const theme = options.theme === 'auto' ? getSystemTheme() : options.theme;
   document.documentElement.setAttribute('data-bs-theme', theme);
 
-  const optionsForm = /** @type HTMLFormElement */ (
+  const optionsForm = /** @type {HTMLFormElement} */ (
     document.getElementById('options')
   );
 
-  const formElements = /** @type FormControlElement[] */ (
+  const formElements = /** @type {FormControlElement[]} */ (
     Array.from(optionsForm.elements)
   );
 
@@ -135,35 +135,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (e.name === 'theme') {
       e.value = options.theme;
       e.addEventListener('input', (e) => {
-        const target = /** @type HTMLSelectElement */ (e.target);
+        const target = /** @type {HTMLSelectElement} */ (e.target);
         themeTemp = target.value;
         const theme = target.value === 'auto' ? getSystemTheme() : target.value;
         document.documentElement.setAttribute('data-bs-theme', theme);
       });
     } else if (e.name === 'syncTheme') {
-      const el = /** @type HTMLInputElement */ (e);
+      const el = /** @type {HTMLInputElement} */ (e);
       el.checked = options.syncTheme;
     } else if (e.name === 'contentScript[]') {
-      const el = /** @type HTMLInputElement */ (e);
+      const el = /** @type {HTMLInputElement} */ (e);
       el.checked = options.enabledContentScripts.includes(el.value);
     }
   }
 
   async function saveOptions() {
-    const { newStorageAreaName, newOptions } = /** @type SaveData */ (
+    const { newStorageAreaName, newOptions } = /** @type {SaveData} */ (
       formElements.reduce(
         (acc, e) => {
           if (e.name === 'storageArea') {
-            const el = /** @type HTMLSelectElement */ (e);
-            acc.newStorageAreaName = /** @type StorageAreaName */ (el.value);
+            const el = /** @type {HTMLSelectElement} */ (e);
+            acc.newStorageAreaName = /** @type {StorageAreaName} */ (el.value);
           } else if (e.name === 'theme') {
-            acc.newOptions.theme = /** @type Theme */ (e.value);
+            acc.newOptions.theme = /** @type {Theme} */ (e.value);
             if (acc.newOptions.theme === 'auto') {
               acc.newOptions.effectiveTheme = getSystemTheme();
             }
           } else if (e.name === 'contentScript[]' && isChecked(e)) {
             acc.newOptions.enabledContentScripts.push(
-              /** @type ContentScriptName */ (e.value),
+              /** @type {ContentScriptName} */ (e.value),
             );
           } else if (e.name === 'syncTheme' && isCheckbox(e)) {
             acc.newOptions.syncTheme = e.checked;
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
           return acc;
         },
-        /** @type InitialSaveData */ ({
+        /** @type {InitialSaveData} */ ({
           newStorageAreaName: undefined,
           newOptions: {
             theme: undefined,
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await checkPermissions();
   }
 
-  const saveButton = /** @type HTMLButtonElement */ (
+  const saveButton = /** @type {HTMLButtonElement} */ (
     document.getElementById('save')
   );
   saveButton.addEventListener('click', async () => {
@@ -238,14 +238,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  const dismissedAlertsCount = /** @type HTMLSpanElement */ (
+  const dismissedAlertsCount = /** @type {HTMLSpanElement} */ (
     document.getElementById('dismissedAlertsCount')
   );
   dismissedAlertsCount.innerText =
     `${dismissedAlerts.length} ` +
     (dismissedAlerts.length === 1 ? 'alert has' : 'alerts have');
 
-  /** @type HTMLAnchorElement */ (
+  /** @type {HTMLAnchorElement} */ (
     document.getElementById('resetDismissedAlerts')
   ).addEventListener('click', async () => {
     const storage = await getStorage();
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     dismissedAlertsCount.innerText = '0 alerts have';
   });
 
-  /** @type HTMLAnchorElement */ (
+  /** @type {HTMLAnchorElement} */ (
     document.getElementById('reset')
   ).addEventListener('click', async () => {
     await chrome.storage.session.clear();
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.reload();
   });
 
-  const aboutDetails = /** @type HTMLDetailsElement */ (
+  const aboutDetails = /** @type {HTMLDetailsElement} */ (
     document.getElementById('aboutDetails')
   );
   aboutDetails.addEventListener('toggle', (e) => {
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // Setup bootstrap stuff
-  const tooltipElements = /** @type NodeListOf<HTMLElement> */ (
+  const tooltipElements = /** @type {NodeListOf<HTMLElement>} */ (
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
   for (const tooltipElement of tooltipElements) {

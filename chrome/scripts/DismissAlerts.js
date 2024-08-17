@@ -23,7 +23,7 @@ async function main() {
       }
     }
 
-    const elements = /** @type HTMLDivElement[] */ (
+    const elements = /** @type {HTMLDivElement[]} */ (
       documents.flatMap((doc) =>
         Array.from(
           doc.querySelectorAll(

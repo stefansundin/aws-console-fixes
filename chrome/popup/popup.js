@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const theme = options.theme === 'auto' ? getSystemTheme() : options.theme;
     document.documentElement.setAttribute('data-bs-theme', theme);
 
-    const fixPermissionsButton = /** @type HTMLButtonElement */ (
+    const fixPermissionsButton = /** @type {HTMLButtonElement} */ (
       document.getElementById('fixPermissions')
     );
     fixPermissionsButton.addEventListener('click', () => {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  const openOptionsButton = /** @type HTMLButtonElement */ (
+  const openOptionsButton = /** @type {HTMLButtonElement} */ (
     document.getElementById('openOptions')
   );
   openOptionsButton.addEventListener('click', () => {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.close();
   });
 
-  const toggleScriptsButton = /** @type HTMLButtonElement */ (
+  const toggleScriptsButton = /** @type {HTMLButtonElement} */ (
     document.getElementById('toggleScripts')
   );
 
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const registeredContentScripts =
       await chrome.scripting.getRegisteredContentScripts();
 
-    const currentStateParagraph = /** @type HTMLParagraphElement */ (
+    const currentStateParagraph = /** @type {HTMLParagraphElement} */ (
       document.getElementById('currentState')
     );
     currentStateParagraph.textContent = `${registeredContentScripts.length} scripts are registered.`;
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         : 'Temporarily disable all scripts';
 
     const granted = await isRequiredPermissionsGranted();
-    const insufficientPermissionsAlert = /** @type HTMLDivElement */ (
+    const insufficientPermissionsAlert = /** @type {HTMLDivElement} */ (
       document.getElementById('insufficientPermissionsAlert')
     );
     insufficientPermissionsAlert.classList.toggle(

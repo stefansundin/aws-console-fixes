@@ -105,7 +105,7 @@ export function getDateInFuture(days) {
  * @returns {Document[]}
  */
 export function getPageDocuments() {
-  const documents = /** @type Document[] */ (
+  const documents = /** @type {Document[]} */ (
     [
       document,
       ...Array.from(document.getElementsByTagName('iframe')).map(

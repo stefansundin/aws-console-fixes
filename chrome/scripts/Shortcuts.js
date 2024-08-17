@@ -11,7 +11,7 @@ async function main() {
    * @param {KeyboardEvent} e
    */
   function onKeyDown(e) {
-    const target = /** @type Element */ (e.target);
+    const target = /** @type {Element} */ (e.target);
     if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
       return;
     }
@@ -47,7 +47,7 @@ async function main() {
 
     // Press ` to toggle CloudShell
     if (e.key === '`') {
-      const cloudShellButton = /** @type HTMLButtonElement | null */ (
+      const cloudShellButton = /** @type {HTMLButtonElement | null} */ (
         document.getElementById('tools-experience-ingress')
       );
       cloudShellButton?.click();
