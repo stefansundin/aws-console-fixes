@@ -9,7 +9,7 @@ setTimeout(() => {
   }
 
   const awsUserInfoCookieResult =
-    /(?:(?:^|.*;\s*)aws-userInfo\s*\=\s*([^;]*).*$)|^.*$/.exec(document.cookie);
+    /(?:(?:^|.*;\s*)aws-userInfo\s*=\s*([^;]*).*$)|^.*$/.exec(document.cookie);
   if (!awsUserInfoCookieResult) {
     return;
   }
