@@ -58,6 +58,18 @@ async function main() {
       } else if (text.startsWith('AWS ')) {
         textNode.textContent = text.substring('AWS '.length);
       }
+
+      // TEMP FIX: The AWS console messed up the pointer style on the navbar buttons in August 2024 and it is still broken a few weeks later, so let's fix it here for now.
+      // P.S. AWS: that's now how !important works. :-)
+      spanElement.style.cursor = 'pointer';
+      const divElement = spanElement.parentElement;
+      if (divElement instanceof HTMLDivElement) {
+        divElement.style.cursor = 'pointer';
+        const imgElement = divElement.querySelector('img,svg');
+        if (isHTMLElement(imgElement)) {
+          imgElement.style.cursor = 'pointer';
+        }
+      }
     }
 
     // If the favorites bar was long before the text replacements then a scroll arrow button was added, and performing the text replacements doesn't make the arrow go away, so send a resize event to make the AWS code react to the new width
