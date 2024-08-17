@@ -35,10 +35,7 @@ async function main() {
 
       const audioElement =
         descriptionElement.parentElement?.getElementsByTagName('audio')[0];
-      if (
-        !audioElement ||
-        descriptionElement.getElementsByTagName('a').length > 0
-      ) {
+      if (!audioElement) {
         continue;
       }
 
@@ -54,6 +51,7 @@ async function main() {
         const node = treeWalker.currentNode;
         if (
           isTextNode(node) &&
+          node.parentElement?.tagName !== 'A' &&
           node.textContent &&
           node.textContent.trim().length > 0
         ) {
@@ -78,6 +76,7 @@ async function main() {
           link.textContent = match[0];
           if (match[0].startsWith('http')) {
             link.href = match[0];
+            link.rel = 'noopener noreferrer';
             link.target = '_blank';
           } else {
             const [minutesStr, secondsStr] = match[0].split(':');
