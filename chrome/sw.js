@@ -89,7 +89,19 @@ if (chrome.storage.session.setAccessLevel) {
     .catch(console.error);
 }
 
-updateOptions().then(() => updateActionButton());
+if (typeof window !== 'undefined') {
+  // Firefox
+  updateOptions().then(() => updateActionButton());
+} else {
+  // Chrome
+  const _self = /** @type {ServiceWorkerGlobalScope} */ (
+    /** @type {unknown} */ (self)
+  );
+  _self.addEventListener('install', async (event) => {
+    await updateOptions();
+    await updateActionButton();
+  });
+}
 
 chrome.permissions.onAdded.addListener(() => updateActionButton());
 chrome.permissions.onRemoved.addListener(() => updateActionButton());
