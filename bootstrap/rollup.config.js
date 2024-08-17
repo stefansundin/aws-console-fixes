@@ -12,7 +12,14 @@ export default [
       esModule: true,
       sourcemap: true,
     },
-    plugins: [nodeResolve(), terser()],
+    plugins: [
+      nodeResolve(),
+      terser({
+        format: {
+          preamble: '/* eslint-disable */ // @ts-nocheck',
+        },
+      }),
+    ],
   },
   {
     input: './bootstrap.js',
@@ -22,6 +29,7 @@ export default [
       generatedCode: 'es2015',
       esModule: true,
       sourcemap: true,
+      banner: '/* eslint-disable */ // @ts-nocheck',
     },
     plugins: [nodeResolve()],
   },

@@ -7,8 +7,8 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.17.2",
-    "sass": "^1.76.0"
+    "rollup": "^4.20.0",
+    "sass": "^1.77.8"
   },
   "scripts": {
     "css": "sass --style compressed bootstrap.scss > ./dist/bootstrap.min.css",
