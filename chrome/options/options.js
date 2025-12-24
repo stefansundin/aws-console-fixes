@@ -8,12 +8,14 @@ import {
   isCheckbox,
   isChecked,
   isChrome,
+  isTheme,
+  isContentScriptName,
   isFirefox,
   isRequiredPermissionsGranted,
 } from '../utils.js';
 
 /**
- * @import { Options, ContentScriptName, StorageAreaName, Theme, EffectiveTheme } from '../types.js'
+ * @import { Options, ContentScriptName, StorageAreaName, Theme, EffectiveTheme, StorageData } from '../types.js'
  * @typedef {HTMLButtonElement | HTMLInputElement | HTMLOutputElement | HTMLSelectElement | HTMLTextAreaElement} FormControlElement
  */
 
@@ -99,6 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const storageAreaName = await getStorageAreaName();
   const storage = chrome.storage[storageAreaName];
 
+  /** @type {StorageData} */
   const { options, dismissedAlerts } = await storage.get({
     options: defaultOptions,
     dismissedAlerts: [],
@@ -136,7 +139,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       e.value = options.theme;
       e.addEventListener('input', (e) => {
         const target = /** @type {HTMLSelectElement} */ (e.target);
-        themeTemp = target.value;
+        if (isTheme(target.value)) {
+          themeTemp = target.value;
+        }
         const theme = target.value === 'auto' ? getSystemTheme() : target.value;
         document.documentElement.setAttribute('data-bs-theme', theme);
       });
@@ -145,7 +150,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       el.checked = options.syncTheme;
     } else if (e.name === 'contentScript[]') {
       const el = /** @type {HTMLInputElement} */ (e);
-      el.checked = options.enabledContentScripts.includes(el.value);
+      if (isContentScriptName(el.value)) {
+        el.checked = options.enabledContentScripts.includes(el.value);
+      }
     }
   }
 
@@ -158,18 +165,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             acc.newStorageAreaName = /** @type {StorageAreaName} */ (el.value);
           } else if (e.name === 'theme') {
             acc.newOptions.theme = /** @type {Theme} */ (e.value);
-            if (acc.newOptions.theme === 'auto') {
-              acc.newOptions.effectiveTheme = getSystemTheme();
-            }
+            acc.newOptions.effectiveTheme = (acc.newOptions.theme === 'auto') ? getSystemTheme() : acc.newOptions.theme;
           } else if (e.name === 'contentScript[]' && isChecked(e)) {
             acc.newOptions.enabledContentScripts.push(
               /** @type {ContentScriptName} */ (e.value),
             );
           } else if (e.name === 'syncTheme' && isCheckbox(e)) {
             acc.newOptions.syncTheme = e.checked;
-            if (e.checked) {
-              acc.newOptions.enabledContentScripts.push('S3SyncTheme');
-            }
+            // if (e.checked) {
+            //   acc.newOptions.enabledContentScripts.push('S3SyncTheme');
+            // }
           }
           return acc;
         },
@@ -201,6 +206,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (newStorageAreaName !== storageAreaName) {
       // Start by copying all options, which includes content script-specific options
+      /** @type {StorageData} */
       const allOptions = await storage.get(null);
       await newStorage.set(allOptions);
     }

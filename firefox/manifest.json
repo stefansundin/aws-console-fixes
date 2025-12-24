@@ -41,7 +41,8 @@
     "https://*.signin.aws.amazon.com/switchrole*",
     "https://docs.aws.amazon.com/*",
     "https://aws.amazon.com/*",
-    "https://calculator.aws/*"
+    "https://calculator.aws/*",
+    "https://signin.aws.amazon.com/saml"
   ],
   "web_accessible_resources": [
     {
@@ -53,7 +54,8 @@
       "matches": [
         "https://*.console.aws.amazon.com/*",
         "https://docs.aws.amazon.com/*",
-        "https://health.aws.amazon.com/*"
+        "https://health.aws.amazon.com/*",
+        "https://signin.aws.amazon.com/*"
       ]
     }
   ],

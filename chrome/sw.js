@@ -49,7 +49,7 @@ async function updateOptions() {
   const enabledContentScripts = options.enabledContentScripts.filter(
     (id) => id in availableContentScripts,
   );
-  const contentScripts = enabledContentScripts.map(
+  const contentScripts = enabledContentScripts.flatMap(
     (id) => availableContentScripts[id],
   );
 

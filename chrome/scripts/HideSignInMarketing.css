@@ -1,3 +1,5 @@
-#marketingimagelink {
+/* This hides the div that's the parent of marketing_image_container to hide extra padding that would otherwise still appear */
+
+div:has(> div[data-testid="marketing_image_container"]) {
   display: none !important;
 }

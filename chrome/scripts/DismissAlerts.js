@@ -5,6 +5,7 @@ async function main() {
   );
 
   const storage = await getStorage();
+  /** @type {StorageData} */
   const { dismissedAlerts } = await storage.get({ dismissedAlerts: [] });
   console.debug('[aws-console-fixes]', { dismissedAlerts });
 
@@ -80,13 +81,13 @@ async function main() {
           return;
         }
         // Make sure we operate on fresh data:
-        storage
-          .get({ dismissedAlerts: [] })
+        /** @type {Promise<Partial<StorageData>>} */ (storage
+          .get({ dismissedAlerts: [] }))
           .then(async ({ dismissedAlerts }) => {
-            if (dismissedAlerts.includes(text)) {
+            if (dismissedAlerts?.includes(text)) {
               return;
             }
-            dismissedAlerts.push(text);
+            dismissedAlerts?.push(text);
             await storage.set({ dismissedAlerts });
           });
       });

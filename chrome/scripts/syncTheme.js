@@ -1,10 +1,6 @@
 import { getDateInFuture } from '../utils.js';
 
 /**
- * @import { Theme, EffectiveTheme } from '../types.js'
- */
-
-/**
  * @param {Theme} theme
  * @param {EffectiveTheme} [effectiveTheme]
  */
@@ -13,7 +9,7 @@ export async function syncTheme(theme, effectiveTheme) {
     !(await chrome.permissions.contains({
       permissions: ['cookies'],
       origins: [
-        'https://console.aws.amazon.com/',
+        // 'https://console.aws.amazon.com/',
         'https://docs.aws.amazon.com/',
       ],
     }))
@@ -24,43 +20,71 @@ export async function syncTheme(theme, effectiveTheme) {
     return;
   }
 
-  const newCookieExpirationDate = getDateInFuture(180).getTime() / 1000;
-  const refreshCookieExpirationDate = getDateInFuture(50);
+  const newCookieExpirationDate = Math.floor(getDateInFuture(180).getTime() / 1000);
+  // const refreshCookieExpirationDate = getDateInFuture(50);
 
   // AWS Management Console
-  {
-    // Normally AWS sets the expiration date to 10 days in the future (sometimes it uses a session cookie too???)
-    // The possible values are: default, light, dark
-    // This code sets the expiration date to 180 days in the future, and updates the cookie if it is due to expire in the next 50 days
 
-    const value = theme === 'auto' ? 'default' : theme;
-    const cookie = await chrome.cookies.get({
-      name: 'awsc-color-theme',
-      url: 'https://console.aws.amazon.com/',
-    });
-    console.debug('syncTheme: awsc-color-theme', cookie);
+  // Broken!
+  // The cookie is automatically overwritten by settingsByScope.userAccount.colorTheme.value from a network request:
+  // https://us-west-2.ccs.console.api.aws/GetCallerSettings
+  // Then the cookie value is written by JavaScript in awsc-head.js:
+  // document.cookie = 'awsc-color-theme=dark;path=/;domain=.amazon.com;secure'
+  // Going to just mark this part of the script as broken for the time being.
 
-    if (
-      !cookie ||
-      value !== cookie.value ||
-      cookie.expirationDate === undefined ||
-      new Date(cookie.expirationDate * 1000) < refreshCookieExpirationDate
-    ) {
-      console.debug(
-        'syncTheme: updated cookie',
-        await chrome.cookies.set({
-          url: 'https://console.aws.amazon.com/',
-          domain: '.amazon.com',
-          expirationDate: newCookieExpirationDate,
-          httpOnly: false,
-          secure: false,
-          name: 'awsc-color-theme',
-          path: '/',
-          value,
-        }),
-      );
-    }
-  }
+  // {
+  //   // Normally AWS sets the expiration date to 10 days in the future (sometimes it uses a session cookie too???)
+  //   // The possible values are: default, light, dark
+  //   // This code sets the expiration date to 180 days in the future, and updates the cookie if it is due to expire in the next 50 days
+
+  //   const value = theme === 'auto' ? 'default' : theme;
+  //   const cookie = await chrome.cookies.get({
+  //     name: 'awsc-color-theme',
+  //     url: 'https://console.aws.amazon.com/',
+  //   });
+  //   console.debug('syncTheme: awsc-color-theme', cookie);
+
+  //   if (
+  //     !cookie ||
+  //     value !== cookie.value ||
+  //     cookie.expirationDate === undefined ||
+  //     new Date(cookie.expirationDate * 1000) < refreshCookieExpirationDate
+  //   ) {
+  //     console.debug(
+  //       'syncTheme: updated cookie',
+  //       await chrome.cookies.set({
+  //         url: 'https://global.console.aws.amazon.com/',
+  //         domain: '.amazon.com',
+  //         expirationDate: newCookieExpirationDate,
+  //         httpOnly: false,
+  //         secure: true,
+  //         name: 'awsc-color-theme',
+  //         path: '/',
+  //         value,
+  //       }),
+  //       // await chrome.cookies.set({
+  //       //   url: 'https://console.aws.amazon.com/',
+  //       //   domain: '.amazon.com',
+  //       //   expirationDate: newCookieExpirationDate,
+  //       //   httpOnly: false,
+  //       //   secure: true,
+  //       //   name: 'awsc-color-theme',
+  //       //   path: '/',
+  //       //   value,
+  //       // }),
+  //       // // session cookie:
+  //       // await chrome.cookies.set({
+  //       //   url: 'https://console.aws.amazon.com/',
+  //       //   domain: '.amazon.com',
+  //       //   httpOnly: false,
+  //       //   secure: true,
+  //       //   name: 'awsc-color-theme',
+  //       //   path: '/',
+  //       //   value,
+  //       // }),
+  //     );
+  //   }
+  // }
 
   // Updates the theme on docs.aws.amazon.com:
   if (effectiveTheme) {
@@ -71,68 +95,31 @@ export async function syncTheme(theme, effectiveTheme) {
       effectiveTheme === 'dark'
         ? 'awsui-polaris-dark-mode'
         : 'awsdocs-theme-light';
+    const textThemePreference = theme === 'auto' ? 'system' : theme;
     const codeTheme = effectiveTheme;
 
-    const cookie = await chrome.cookies.get({
-      name: 'aws-docs-settings',
-      url: 'https://docs.aws.amazon.com/',
-    });
-    console.debug('syncTheme: aws-docs-settings', cookie);
+    // Cookie is a base64 encoded JSON blob, decoded example:
+    // {"textTheme":"awsui-polaris-dark-mode","textThemePreference":"system","codeTheme":"light"}
+    // const cookie = await chrome.cookies.get({
+    //   name: 'dark-mode-settings',
+    //   url: 'https://docs.aws.amazon.com/',
+    // });
+    // console.debug('syncTheme: dark-mode-settings', cookie);
 
-    let updateCookie = false;
-    let awsDocsSettings = { textTheme, codeTheme };
+    const darkModeSettings = { textTheme, textThemePreference, codeTheme };
 
-    if (cookie) {
-      // Decode existing cookie value
-      awsDocsSettings = JSON.parse(atob(cookie.value));
-      console.debug(
-        'syncTheme: awsDocsSettings',
-        JSON.stringify(awsDocsSettings),
-      );
-      if (
-        (awsDocsSettings.textTheme &&
-          !['awsdocs-theme-light', 'awsui-polaris-dark-mode'].includes(
-            awsDocsSettings.textTheme,
-          )) ||
-        (awsDocsSettings.codeTheme &&
-          !['light', 'dark'].includes(awsDocsSettings.codeTheme))
-      ) {
-        updateCookie = false;
-      } else if (
-        awsDocsSettings.textTheme !== textTheme ||
-        awsDocsSettings.codeTheme !== codeTheme
-      ) {
-        updateCookie = true;
-        awsDocsSettings.textTheme = textTheme;
-        awsDocsSettings.codeTheme = codeTheme;
-      } else if (
-        cookie.expirationDate === undefined ||
-        new Date(cookie.expirationDate * 1000) < refreshCookieExpirationDate
-      ) {
-        updateCookie = true;
-      }
-      console.debug(
-        'syncTheme: awsDocsSettings',
-        JSON.stringify(awsDocsSettings),
-      );
-    } else {
-      updateCookie = true;
-    }
-
-    if (updateCookie) {
-      console.debug(
-        'syncTheme: updated cookie',
-        // This is a host-only cookie, which means that the domain property has to be omitted!
-        await chrome.cookies.set({
-          url: 'https://docs.aws.amazon.com/',
-          expirationDate: newCookieExpirationDate,
-          httpOnly: false,
-          secure: false,
-          name: 'aws-docs-settings',
-          path: '/',
-          value: btoa(JSON.stringify(awsDocsSettings)),
-        }),
-      );
-    }
+    console.debug(
+      'syncTheme: updated cookie',
+      // This is a host-only cookie, which means that the domain property has to be omitted!
+      await chrome.cookies.set({
+        url: 'https://docs.aws.amazon.com/',
+        expirationDate: newCookieExpirationDate,
+        httpOnly: false,
+        secure: false,
+        name: 'dark-mode-settings',
+        path: '/',
+        value: btoa(JSON.stringify(darkModeSettings)),
+      }),
+    );
   }
 }

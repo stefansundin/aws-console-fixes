@@ -1,3 +1,6 @@
+// This script is broken as the S3 CORS editor no longer seems to load or write to localStorage when updating the theme.
+// This script is disabled for now, and may be completely removed in the future.
+
 async function main() {
   /** @type {import('../utils.js')} */
   const { getOptions } = await import(chrome.runtime.getURL('utils.js'));

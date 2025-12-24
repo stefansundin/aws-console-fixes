@@ -80,10 +80,10 @@ async function main() {
       const visible = dropdown.style.display === 'block';
       menu.click();
       if (!visible) {
-        const a = dropdown.querySelector('a, button');
+        const a = dropdown.querySelector('a');
         if (a) {
           setTimeout(function () {
-            dropdown.focus();
+            a.focus();
           }, 10);
         }
       }

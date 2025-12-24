@@ -2,7 +2,7 @@ import defaultOptions, { optionsVersion } from './defaultOptions.js';
 import { availableContentScripts } from './scripts/index.js';
 
 /**
- * @import { StorageAreaName, Options, EffectiveTheme } from './types.js'
+ * @import { StorageAreaName, Options, EffectiveTheme, StorageData, Theme, ContentScriptName } from './types.js'
  */
 
 export const isChrome = navigator.userAgent.includes('Chrome/');
@@ -34,6 +34,7 @@ export async function getStorage() {
  */
 export async function getOptions() {
   const storage = await getStorage();
+  /** @type {StorageData} */
   const { version, options } = await storage.get({
     version: optionsVersion,
     options: defaultOptions,
@@ -66,13 +67,13 @@ export function getRequiredPermissions(options) {
   );
   const permissions = new Set();
   const origins = new Set(
-    contentScripts.flatMap((script) => script.matches ?? []),
+    contentScripts.flat().flatMap((script) => script.matches ?? []),
   );
   if (options.syncTheme) {
     permissions.add('cookies');
-    origins.add('https://console.aws.amazon.com/');
+    // origins.add('https://console.aws.amazon.com/');
     origins.add('https://docs.aws.amazon.com/');
-    origins.add('https://s3.console.aws.amazon.com/*');
+    // origins.add('https://s3.console.aws.amazon.com/*');
   }
   return {
     permissions: Array.from(permissions),
@@ -154,4 +155,20 @@ export function isCheckbox(el) {
  */
 export function isChecked(el) {
   return isCheckbox(el) && el.checked;
+}
+
+/**
+ * @param {string} s
+ * @returns {s is Theme}
+ */
+export function isTheme(s) {
+  return ['light', 'dark', 'auto'].includes(s);
+}
+
+/**
+ * @param {string} s
+ * @returns {s is ContentScriptName}
+ */
+export function isContentScriptName(s) {
+  return ['Shortcuts', 'NavbarFavoritesShorterNames', 'DismissAlerts', 'HideNewAdverts', 'HideSignInMarketing', 'SignInDarkMode', 'HideCustomerSatisfactionNotification', 'HideMarketingChatbot', 'HideAmazonQ', 'SwitchRoleAccountID', 'RememberSAMLRole', 'AwsPodcast'].includes(s);
 }

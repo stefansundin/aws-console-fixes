@@ -6,7 +6,7 @@ const textReplacements = {
   'Amazon MemoryDB for Redis': 'MemoryDB',
   'Amazon OpenSearch Service': 'OpenSearch',
   'Amazon Simple Email Service': 'SES',
-  'Amazon Simple Notification Service': 'SNS',
+  'Simple Notification Service': 'SNS',
   'AWS Health Dashboard': 'Health',
   'AWS Private Certificate Authority': 'Private CA',
   'Billing and Cost Management': 'Billing',
@@ -57,18 +57,6 @@ async function main() {
         textNode.textContent = text.substring('Amazon '.length);
       } else if (text.startsWith('AWS ')) {
         textNode.textContent = text.substring('AWS '.length);
-      }
-
-      // TEMP FIX: The AWS console messed up the pointer style on the navbar buttons in August 2024 and it is still broken a few weeks later, so let's fix it here for now.
-      // P.S. AWS: that's now how !important works. :-)
-      spanElement.style.cursor = 'pointer';
-      const divElement = spanElement.parentElement;
-      if (divElement instanceof HTMLDivElement) {
-        divElement.style.cursor = 'pointer';
-        const imgElement = divElement.querySelector('img,svg');
-        if (isHTMLElement(imgElement)) {
-          imgElement.style.cursor = 'pointer';
-        }
       }
     }
 

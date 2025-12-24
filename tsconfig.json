@@ -16,7 +16,8 @@
       "ES2023",
       "DOM",
       "DOM.Iterable",
-      "WebWorker"
+      "WebWorker",
+      "ESNext"
     ],
     // "jsx": "preserve",                                /* Specify what JSX code is generated. */
     // "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */

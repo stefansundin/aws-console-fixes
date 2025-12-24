@@ -3,3 +3,8 @@
 #mrc-sunrise-chat {
   display: none !important;
 }
+
+/* Hide feedback button */
+button[data-testid="feedback-button"] {
+  display: none !important;
+}
