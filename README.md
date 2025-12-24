@@ -36,3 +36,12 @@ npm run build
 The `chrome/` directory contains most of the extension files, and `firefox/` only has the Firefox-specific files.
 
 To load the extension in Firefox, run `npm run build` and then load `firefox/manifest.json` in Firefox.
+
+To run web-ext linter:
+
+```shell
+npm run build
+npm install -g web-ext
+cd firefox
+web-ext lint
+```
