@@ -19,15 +19,15 @@
   "homepage": "https://github.com/stefansundin/aws-console-fixes#readme",
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
-    "@types/chrome": "^0.0.270",
-    "eslint": "^8.57.0",
-    "type-fest": "^4.25.0",
-    "typescript": "^5.5.4",
-    "zx": "^8.1.4"
+    "@types/chrome": "^0.1.32",
+    "eslint": "^9.39.2",
+    "type-fest": "^5.3.1",
+    "typescript": "^5.9.3",
+    "zx": "^8.8.5"
   },
   "scripts": {
     "build": "./scripts/build.mjs",
-    "lint": "eslint chrome",
+    "lint": "tsc && eslint chrome",
     "prebuild": "npm run lint"
   }
 }
