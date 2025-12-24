@@ -28,6 +28,7 @@
   "scripts": {
     "build": "./scripts/build.mjs",
     "lint": "tsc && eslint chrome",
+    "pngcrush": "find . -type f -iname '*.png' -exec pngcrush -new -brute -ow {} \\;",
     "prebuild": "npm run lint"
   }
 }
